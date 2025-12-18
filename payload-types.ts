@@ -69,6 +69,9 @@ export interface Config {
   collections: {
     users: User;
     media: Media;
+    'home-page': HomePage;
+    'blog-posts': BlogPost;
+    'blog-categories': BlogCategory;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -78,6 +81,9 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
+    'home-page': HomePageSelect<false> | HomePageSelect<true>;
+    'blog-posts': BlogPostsSelect<false> | BlogPostsSelect<true>;
+    'blog-categories': BlogCategoriesSelect<false> | BlogCategoriesSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -87,8 +93,12 @@ export interface Config {
     defaultIDType: string;
   };
   fallbackLocale: null;
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    footer: Footer;
+  };
+  globalsSelect: {
+    footer: FooterSelect<false> | FooterSelect<true>;
+  };
   locale: null;
   user: User & {
     collection: 'users';
@@ -161,6 +171,208 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "home-page".
+ */
+export interface HomePage {
+  id: string;
+  /**
+   * Заголовок сторінки
+   */
+  title: string;
+  /**
+   * Мета-опис для SEO
+   */
+  metaDescription?: string | null;
+  sections?:
+    | {
+        sectionType: 'hero' | 'about' | 'services' | 'gallery' | 'testimonials' | 'contacts' | 'custom';
+        /**
+         * Заголовок секції
+         */
+        title: string;
+        /**
+         * Підзаголовок секції
+         */
+        subtitle?: string | null;
+        /**
+         * Основний контент секції
+         */
+        content?: {
+          root: {
+            type: string;
+            children: {
+              type: any;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        } | null;
+        /**
+         * Зображення для секції
+         */
+        image?: (string | null) | Media;
+        images?:
+          | {
+              image: string | Media;
+              caption?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        services?:
+          | {
+              title: string;
+              description?: string | null;
+              icon?: (string | null) | Media;
+              id?: string | null;
+            }[]
+          | null;
+        testimonials?:
+          | {
+              author: string;
+              text: string;
+              rating?: number | null;
+              avatar?: (string | null) | Media;
+              id?: string | null;
+            }[]
+          | null;
+        /**
+         * Текст кнопки (якщо потрібна)
+         */
+        buttonText?: string | null;
+        /**
+         * Посилання кнопки
+         */
+        buttonLink?: string | null;
+        /**
+         * Колір фону (hex код, наприклад #ffffff)
+         */
+        backgroundColor?: string | null;
+        /**
+         * Колір тексту (hex код)
+         */
+        textColor?: string | null;
+        /**
+         * Порядок відображення секції
+         */
+        order?: number | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "blog-posts".
+ */
+export interface BlogPost {
+  id: string;
+  /**
+   * Заголовок статті
+   */
+  title: string;
+  /**
+   * URL-адреса статті (наприклад: my-article)
+   */
+  slug: string;
+  /**
+   * Автор статті
+   */
+  author: string | User;
+  /**
+   * Дата публікації
+   */
+  publishedAt?: string | null;
+  /**
+   * Статус статті
+   */
+  status: 'draft' | 'published' | 'archived';
+  /**
+   * Головне зображення статті
+   */
+  featuredImage?: (string | null) | Media;
+  /**
+   * Короткий опис статті (для превью)
+   */
+  excerpt?: string | null;
+  /**
+   * Основний контент статті
+   */
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  /**
+   * Категорії статті
+   */
+  categories?: (string | BlogCategory)[] | null;
+  /**
+   * Теги для статті
+   */
+  tags?:
+    | {
+        tag: string;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * SEO заголовок (якщо відрізняється від основного)
+   */
+  metaTitle?: string | null;
+  /**
+   * SEO опис
+   */
+  metaDescription?: string | null;
+  /**
+   * Час читання в хвилинах (заповнюється автоматично або вручну)
+   */
+  readTime?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "blog-categories".
+ */
+export interface BlogCategory {
+  id: string;
+  /**
+   * Назва категорії
+   */
+  name: string;
+  /**
+   * URL-адреса категорії
+   */
+  slug: string;
+  /**
+   * Опис категорії
+   */
+  description?: string | null;
+  /**
+   * Колір категорії (hex код, наприклад: #ff0000)
+   */
+  color?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -190,6 +402,18 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'media';
         value: string | Media;
+      } | null)
+    | ({
+        relationTo: 'home-page';
+        value: string | HomePage;
+      } | null)
+    | ({
+        relationTo: 'blog-posts';
+        value: string | BlogPost;
+      } | null)
+    | ({
+        relationTo: 'blog-categories';
+        value: string | BlogCategory;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -275,6 +499,93 @@ export interface MediaSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "home-page_select".
+ */
+export interface HomePageSelect<T extends boolean = true> {
+  title?: T;
+  metaDescription?: T;
+  sections?:
+    | T
+    | {
+        sectionType?: T;
+        title?: T;
+        subtitle?: T;
+        content?: T;
+        image?: T;
+        images?:
+          | T
+          | {
+              image?: T;
+              caption?: T;
+              id?: T;
+            };
+        services?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              icon?: T;
+              id?: T;
+            };
+        testimonials?:
+          | T
+          | {
+              author?: T;
+              text?: T;
+              rating?: T;
+              avatar?: T;
+              id?: T;
+            };
+        buttonText?: T;
+        buttonLink?: T;
+        backgroundColor?: T;
+        textColor?: T;
+        order?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "blog-posts_select".
+ */
+export interface BlogPostsSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  author?: T;
+  publishedAt?: T;
+  status?: T;
+  featuredImage?: T;
+  excerpt?: T;
+  content?: T;
+  categories?: T;
+  tags?:
+    | T
+    | {
+        tag?: T;
+        id?: T;
+      };
+  metaTitle?: T;
+  metaDescription?: T;
+  readTime?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "blog-categories_select".
+ */
+export interface BlogCategoriesSelect<T extends boolean = true> {
+  name?: T;
+  slug?: T;
+  description?: T;
+  color?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv_select".
  */
 export interface PayloadKvSelect<T extends boolean = true> {
@@ -312,6 +623,76 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * Налаштування футера та контактної інформації
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer".
+ */
+export interface Footer {
+  id: string;
+  contactInfo?: {
+    /**
+     * Номер телефону для контактів
+     */
+    phone?: string | null;
+    /**
+     * Email адреса
+     */
+    email?: string | null;
+    /**
+     * Telegram username або посилання (наприклад: @username або https://t.me/username)
+     */
+    telegram?: string | null;
+    /**
+     * Instagram username або посилання (наприклад: @username або https://instagram.com/username)
+     */
+    instagram?: string | null;
+  };
+  /**
+   * Текст copyright (наприклад: © 2024 RUH Camp. Всі права захищені.)
+   */
+  copyright?: string | null;
+  additionalLinks?:
+    | {
+        label: string;
+        url: string;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Короткий опис проєкту для футера
+   */
+  description?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer_select".
+ */
+export interface FooterSelect<T extends boolean = true> {
+  contactInfo?:
+    | T
+    | {
+        phone?: T;
+        email?: T;
+        telegram?: T;
+        instagram?: T;
+      };
+  copyright?: T;
+  additionalLinks?:
+    | T
+    | {
+        label?: T;
+        url?: T;
+        id?: T;
+      };
+  description?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
