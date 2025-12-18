@@ -69,7 +69,6 @@ export interface Config {
   collections: {
     users: User;
     media: Media;
-    'home-page': HomePage;
     'blog-posts': BlogPost;
     'blog-categories': BlogCategory;
     'payload-kv': PayloadKv;
@@ -81,7 +80,6 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
-    'home-page': HomePageSelect<false> | HomePageSelect<true>;
     'blog-posts': BlogPostsSelect<false> | BlogPostsSelect<true>;
     'blog-categories': BlogCategoriesSelect<false> | BlogCategoriesSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
@@ -94,9 +92,11 @@ export interface Config {
   };
   fallbackLocale: null;
   globals: {
+    home: Home;
     footer: Footer;
   };
   globalsSelect: {
+    home: HomeSelect<false> | HomeSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
   };
   locale: null;
@@ -168,103 +168,6 @@ export interface Media {
   height?: number | null;
   focalX?: number | null;
   focalY?: number | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "home-page".
- */
-export interface HomePage {
-  id: string;
-  /**
-   * Заголовок сторінки
-   */
-  title: string;
-  /**
-   * Мета-опис для SEO
-   */
-  metaDescription?: string | null;
-  sections?:
-    | {
-        sectionType: 'hero' | 'about' | 'services' | 'gallery' | 'testimonials' | 'contacts' | 'custom';
-        /**
-         * Заголовок секції
-         */
-        title: string;
-        /**
-         * Підзаголовок секції
-         */
-        subtitle?: string | null;
-        /**
-         * Основний контент секції
-         */
-        content?: {
-          root: {
-            type: string;
-            children: {
-              type: any;
-              version: number;
-              [k: string]: unknown;
-            }[];
-            direction: ('ltr' | 'rtl') | null;
-            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-            indent: number;
-            version: number;
-          };
-          [k: string]: unknown;
-        } | null;
-        /**
-         * Зображення для секції
-         */
-        image?: (string | null) | Media;
-        images?:
-          | {
-              image: string | Media;
-              caption?: string | null;
-              id?: string | null;
-            }[]
-          | null;
-        services?:
-          | {
-              title: string;
-              description?: string | null;
-              icon?: (string | null) | Media;
-              id?: string | null;
-            }[]
-          | null;
-        testimonials?:
-          | {
-              author: string;
-              text: string;
-              rating?: number | null;
-              avatar?: (string | null) | Media;
-              id?: string | null;
-            }[]
-          | null;
-        /**
-         * Текст кнопки (якщо потрібна)
-         */
-        buttonText?: string | null;
-        /**
-         * Посилання кнопки
-         */
-        buttonLink?: string | null;
-        /**
-         * Колір фону (hex код, наприклад #ffffff)
-         */
-        backgroundColor?: string | null;
-        /**
-         * Колір тексту (hex код)
-         */
-        textColor?: string | null;
-        /**
-         * Порядок відображення секції
-         */
-        order?: number | null;
-        id?: string | null;
-      }[]
-    | null;
-  updatedAt: string;
-  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -404,10 +307,6 @@ export interface PayloadLockedDocument {
         value: string | Media;
       } | null)
     | ({
-        relationTo: 'home-page';
-        value: string | HomePage;
-      } | null)
-    | ({
         relationTo: 'blog-posts';
         value: string | BlogPost;
       } | null)
@@ -499,55 +398,6 @@ export interface MediaSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "home-page_select".
- */
-export interface HomePageSelect<T extends boolean = true> {
-  title?: T;
-  metaDescription?: T;
-  sections?:
-    | T
-    | {
-        sectionType?: T;
-        title?: T;
-        subtitle?: T;
-        content?: T;
-        image?: T;
-        images?:
-          | T
-          | {
-              image?: T;
-              caption?: T;
-              id?: T;
-            };
-        services?:
-          | T
-          | {
-              title?: T;
-              description?: T;
-              icon?: T;
-              id?: T;
-            };
-        testimonials?:
-          | T
-          | {
-              author?: T;
-              text?: T;
-              rating?: T;
-              avatar?: T;
-              id?: T;
-            };
-        buttonText?: T;
-        buttonLink?: T;
-        backgroundColor?: T;
-        textColor?: T;
-        order?: T;
-        id?: T;
-      };
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "blog-posts_select".
  */
 export interface BlogPostsSelect<T extends boolean = true> {
@@ -625,6 +475,120 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   createdAt?: T;
 }
 /**
+ * Налаштування домашньої сторінки та її секцій
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "home".
+ */
+export interface Home {
+  id: string;
+  /**
+   * Заголовок сторінки
+   */
+  title: string;
+  /**
+   * Мета-опис для SEO
+   */
+  metaDescription?: string | null;
+  /**
+   * Додайте секції для домашньої сторінки
+   */
+  sections?:
+    | {
+        /**
+         * Виберіть тип секції
+         */
+        sectionType: 'hero' | 'about' | 'services' | 'gallery' | 'testimonials' | 'contacts' | 'custom';
+        /**
+         * Заголовок секції
+         */
+        title: string;
+        /**
+         * Підзаголовок секції
+         */
+        subtitle?: string | null;
+        /**
+         * Основний контент секції
+         */
+        content?: {
+          root: {
+            type: string;
+            children: {
+              type: any;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        } | null;
+        /**
+         * Зображення для секції
+         */
+        image?: (string | null) | Media;
+        /**
+         * Додайте зображення для галереї
+         */
+        images?:
+          | {
+              image: string | Media;
+              caption?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        /**
+         * Додайте послуги
+         */
+        services?:
+          | {
+              title: string;
+              description?: string | null;
+              icon?: (string | null) | Media;
+              id?: string | null;
+            }[]
+          | null;
+        /**
+         * Додайте відгуки
+         */
+        testimonials?:
+          | {
+              author: string;
+              text: string;
+              rating?: number | null;
+              avatar?: (string | null) | Media;
+              id?: string | null;
+            }[]
+          | null;
+        /**
+         * Текст кнопки (якщо потрібна)
+         */
+        buttonText?: string | null;
+        /**
+         * Посилання кнопки
+         */
+        buttonLink?: string | null;
+        /**
+         * Колір фону (hex код, наприклад #ffffff)
+         */
+        backgroundColor?: string | null;
+        /**
+         * Колір тексту (hex код)
+         */
+        textColor?: string | null;
+        /**
+         * Порядок відображення секції
+         */
+        order?: number | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
  * Налаштування футера та контактної інформації
  *
  * This interface was referenced by `Config`'s JSON-Schema
@@ -667,6 +631,56 @@ export interface Footer {
   description?: string | null;
   updatedAt?: string | null;
   createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "home_select".
+ */
+export interface HomeSelect<T extends boolean = true> {
+  title?: T;
+  metaDescription?: T;
+  sections?:
+    | T
+    | {
+        sectionType?: T;
+        title?: T;
+        subtitle?: T;
+        content?: T;
+        image?: T;
+        images?:
+          | T
+          | {
+              image?: T;
+              caption?: T;
+              id?: T;
+            };
+        services?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              icon?: T;
+              id?: T;
+            };
+        testimonials?:
+          | T
+          | {
+              author?: T;
+              text?: T;
+              rating?: T;
+              avatar?: T;
+              id?: T;
+            };
+        buttonText?: T;
+        buttonLink?: T;
+        backgroundColor?: T;
+        textColor?: T;
+        order?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

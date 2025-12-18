@@ -13,7 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function Home() {
   const homePage = await getHomePage();
-  console.log('homePage---',homePage);
+  console.log("homePage---", homePage);
 
   if (!homePage) {
     return (
@@ -21,7 +21,9 @@ export default async function Home() {
         <div className="text-center">
           <h1 className="text-2xl font-bold mb-4">Ласкаво просимо!</h1>
           <p className="text-gray-600">
-            Створіть домашню сторінку в адмін-панелі Payload CMS
+            Налаштуйте домашню сторінку в адмін-панелі Payload CMS
+            <br />
+            (Globals → Домашня сторінка)
           </p>
           <a
             href="/admin"

@@ -1,9 +1,10 @@
-import type { CollectionConfig } from "payload";
+import type { GlobalConfig } from "payload";
 
-export const HomePage: CollectionConfig = {
-  slug: "home-page",
+export const Home: GlobalConfig = {
+  slug: "home",
+  label: "Домашня сторінка",
   admin: {
-    useAsTitle: "title",
+    description: "Налаштування домашньої сторінки та її секцій",
   },
   access: {
     read: () => true,
@@ -28,7 +29,10 @@ export const HomePage: CollectionConfig = {
       name: "sections",
       type: "array",
       label: "Секції",
-      minRows: 1,
+      minRows: 0,
+      admin: {
+        description: "Додайте секції для домашньої сторінки",
+      },
       fields: [
         {
           name: "sectionType",
@@ -43,6 +47,9 @@ export const HomePage: CollectionConfig = {
             { label: "Контакти", value: "contacts" },
             { label: "Кастомна секція", value: "custom" },
           ],
+          admin: {
+            description: "Виберіть тип секції",
+          },
         },
         {
           name: "title",
@@ -92,6 +99,7 @@ export const HomePage: CollectionConfig = {
           ],
           admin: {
             condition: (data) => data.sectionType === "gallery",
+            description: "Додайте зображення для галереї",
           },
         },
         {
@@ -116,6 +124,7 @@ export const HomePage: CollectionConfig = {
           ],
           admin: {
             condition: (data) => data.sectionType === "services",
+            description: "Додайте послуги",
           },
         },
         {
@@ -147,6 +156,7 @@ export const HomePage: CollectionConfig = {
           ],
           admin: {
             condition: (data) => data.sectionType === "testimonials",
+            description: "Додайте відгуки",
           },
         },
         {
@@ -189,4 +199,3 @@ export const HomePage: CollectionConfig = {
     },
   ],
 };
-

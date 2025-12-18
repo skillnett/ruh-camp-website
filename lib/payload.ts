@@ -67,42 +67,31 @@ export async function fetchPayload<T>(
   }
 
   const jsonData = await response.json();
-  console.log("API Response data:", JSON.stringify(jsonData, null, 2));
+
   return jsonData as T;
 }
 
-// Fetch home page data
+// Fetch home page data (now a Global)
 export async function getHomePage() {
   try {
-    const endpoint = "home-page?limit=1&depth=3";
+    const endpoint = "globals/home?depth=3";
     const apiUrl = getApiUrl();
     const url = `${apiUrl}/${endpoint}`;
     console.log("Fetching home page from:", url);
     console.log("API Base URL:", apiUrl);
 
     const data = await fetchPayload<{
-      docs: Array<{
-        id: string;
-        title: string;
-        metaDescription?: string;
-        sections: Array<Record<string, unknown>>;
-      }>;
+      title: string;
+      metaDescription?: string;
+      sections: Array<Record<string, unknown>>;
     } | null>(endpoint);
-
-    console.log("Home page API response:", JSON.stringify(data, null, 2));
 
     if (!data) {
       console.log("No data returned from API (null response)");
       return null;
     }
 
-    if (!data.docs || data.docs.length === 0) {
-      console.log("No docs in response. Data structure:", Object.keys(data));
-      return null;
-    }
-
-    console.log("Found home page:", data.docs[0]?.title);
-    return data.docs[0] || null;
+    return data;
   } catch (error) {
     console.error("Error fetching home page:", error);
     if (error instanceof Error) {
@@ -211,17 +200,52 @@ export async function getBlogCategories() {
   }
 }
 
-// Get media URL
+// Get base URL for media
+function getBaseUrl(): string {
+  if (typeof window !== "undefined") {
+    // Client-side: use current origin
+    return window.location.origin;
+  }
+  // Server-side: use environment variable or default
+  return (
+    process.env.NEXT_PUBLIC_SITE_URL ||
+    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null) ||
+    "http://localhost:3000"
+  );
+}
+
+// Get media URL - always returns absolute URL for Next.js Image component
 export function getMediaUrl(media: unknown): string {
   if (!media) return "";
-  if (typeof media === "string") return media;
+  if (typeof media === "string") {
+    // If it's already an absolute URL, return as is
+    if (media.startsWith("http://") || media.startsWith("https://")) {
+      return media;
+    }
+    // If it's a relative path, make it absolute
+    const baseUrl = getBaseUrl();
+    return media.startsWith("/") ? `${baseUrl}${media}` : `${baseUrl}/${media}`;
+  }
   if (typeof media === "object" && media !== null) {
     const mediaObj = media as Record<string, unknown>;
-    if (typeof mediaObj.url === "string") return mediaObj.url;
+
+    // If url exists, use it (Payload provides the correct URL)
+    if (typeof mediaObj.url === "string") {
+      const url = mediaObj.url;
+      // Always return absolute URL for Next.js Image
+      if (url.startsWith("http://") || url.startsWith("https://")) {
+        return url;
+      }
+      // Convert relative path to absolute
+      const baseUrl = getBaseUrl();
+      return url.startsWith("/") ? `${baseUrl}${url}` : `${baseUrl}/${url}`;
+    }
+
+    // Fallback: construct URL from filename
     if (typeof mediaObj.filename === "string") {
-      const apiUrl = getApiUrl();
-      const baseUrl = apiUrl.replace("/api", "");
-      return `${baseUrl}/media/${mediaObj.filename}`;
+      const filename = mediaObj.filename;
+      const baseUrl = getBaseUrl();
+      return `${baseUrl}/api/media/file/${filename}`;
     }
   }
   return "";

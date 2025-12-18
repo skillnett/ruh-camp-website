@@ -24,6 +24,7 @@ function HeroSection({ section }: SectionProps) {
             fill
             className="object-cover opacity-50"
             priority
+            unoptimized
           />
         </div>
       )}
@@ -71,11 +72,14 @@ function AboutSection({ section }: SectionProps) {
                 alt={section.title || ""}
                 fill
                 className="object-cover rounded-lg"
+                unoptimized
               />
             </div>
           )}
           <div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">{section.title}</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              {section.title}
+            </h2>
             {section.subtitle && (
               <p className="text-xl text-gray-600 mb-6">{section.subtitle}</p>
             )}
@@ -105,7 +109,9 @@ function ServicesSection({ section }: SectionProps) {
           {section.title}
         </h2>
         {section.subtitle && (
-          <p className="text-xl text-center text-gray-600 mb-12">{section.subtitle}</p>
+          <p className="text-xl text-center text-gray-600 mb-12">
+            {section.subtitle}
+          </p>
         )}
         {section.services && section.services.length > 0 && (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -119,6 +125,7 @@ function ServicesSection({ section }: SectionProps) {
                       width={64}
                       height={64}
                       className="mx-auto"
+                      unoptimized
                     />
                   </div>
                 )}
@@ -136,6 +143,29 @@ function ServicesSection({ section }: SectionProps) {
 }
 
 function GallerySection({ section }: SectionProps) {
+  // Get images from either images array or single image field
+  const galleryImages: Array<{ image: unknown; caption?: string }> = [];
+  
+  // First, check if there's an images array
+  if (section.images && Array.isArray(section.images) && section.images.length > 0) {
+    section.images.forEach((item: any) => {
+      if (item.image) {
+        galleryImages.push({
+          image: item.image,
+          caption: item.caption,
+        });
+      }
+    });
+  }
+  
+  // If no images in array, but there's a single image, use it
+  if (galleryImages.length === 0 && section.image) {
+    galleryImages.push({
+      image: section.image,
+      caption: undefined,
+    });
+  }
+
   return (
     <section
       className="py-16"
@@ -149,26 +179,38 @@ function GallerySection({ section }: SectionProps) {
           {section.title}
         </h2>
         {section.subtitle && (
-          <p className="text-xl text-center text-gray-600 mb-12">{section.subtitle}</p>
+          <p className="text-xl text-center text-gray-600 mb-12">
+            {section.subtitle}
+          </p>
         )}
-        {section.images && section.images.length > 0 && (
+        {galleryImages.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {section.images.map((item: any, index: number) => (
-              <div key={index} className="relative h-64">
-                <Image
-                  src={getMediaUrl(item.image)}
-                  alt={item.caption || section.title || ""}
-                  fill
-                  className="object-cover rounded-lg"
-                />
-                {item.caption && (
-                  <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-2 rounded-b-lg">
-                    {item.caption}
-                  </div>
-                )}
-              </div>
-            ))}
+            {galleryImages.map((item, index) => {
+              const imageUrl = getMediaUrl(item.image);
+              if (!imageUrl) return null;
+              
+              return (
+                <div key={index} className="relative h-64">
+                  <Image
+                    src={imageUrl}
+                    alt={item.caption || section.title || ""}
+                    fill
+                    className="object-cover rounded-lg"
+                    unoptimized
+                  />
+                  {item.caption && (
+                    <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-2 rounded-b-lg">
+                      {item.caption}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           </div>
+        ) : (
+          <p className="text-center text-gray-500">
+            Немає зображень для відображення
+          </p>
         )}
       </div>
     </section>
@@ -189,21 +231,20 @@ function TestimonialsSection({ section }: SectionProps) {
           {section.title}
         </h2>
         {section.subtitle && (
-          <p className="text-xl text-center text-gray-600 mb-12">{section.subtitle}</p>
+          <p className="text-xl text-center text-gray-600 mb-12">
+            {section.subtitle}
+          </p>
         )}
         {section.testimonials && section.testimonials.length > 0 && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {section.testimonials.map((testimonial: any, index: number) => (
-              <div
-                key={index}
-                className="bg-gray-50 p-6 rounded-lg shadow-md"
-              >
+              <div key={index} className="bg-gray-50 p-6 rounded-lg shadow-md">
                 {testimonial.rating && (
-                  <div className="mb-2">
-                    {"⭐".repeat(testimonial.rating)}
-                  </div>
+                  <div className="mb-2">{"⭐".repeat(testimonial.rating)}</div>
                 )}
-                <p className="text-gray-700 mb-4 italic">"{testimonial.text}"</p>
+                <p className="text-gray-700 mb-4 italic">
+                  "{testimonial.text}"
+                </p>
                 <div className="flex items-center">
                   {testimonial.avatar && (
                     <Image
@@ -212,6 +253,7 @@ function TestimonialsSection({ section }: SectionProps) {
                       width={40}
                       height={40}
                       className="rounded-full mr-3"
+                      unoptimized
                     />
                   )}
                   <span className="font-semibold">{testimonial.author}</span>
@@ -248,6 +290,7 @@ function CustomSection({ section }: SectionProps) {
               alt={section.title || ""}
               fill
               className="object-cover rounded-lg"
+              unoptimized
             />
           </div>
         )}
@@ -270,6 +313,7 @@ function CustomSection({ section }: SectionProps) {
 }
 
 export function HomeSections({ sections }: { sections: any[] }) {
+  console.log("sections---", sections);
   if (!sections || sections.length === 0) {
     return null;
   }
@@ -303,4 +347,3 @@ export function HomeSections({ sections }: { sections: any[] }) {
     </>
   );
 }
-
