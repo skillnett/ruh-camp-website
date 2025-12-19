@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+:root {
+  --color-background: #ffffff;
+  --color-foreground: #171717;
+  --color-accent: #f26db3;
+  --color-green: #00b557;
+  --color-yellow: #ffed00;
+  --color-orange: #ff7a00;
+  --color-blue: #00adf2;
+
+  --color-pink-light: #ffbcdf;
+  --color-green-light: #4eea7a;
+  --color-yellow-light: #ffec00;
+  --color-orange-light: #ff7900;
+  --color-blue-light: #30abef;
+  --color-black: #000000;
+
+  --gradient-pink: linear-gradient(to right, var(--color-accent), var(--color-pink-light));
+  --gradient-green: linear-gradient(to right, var(--color-black), var(--color-green-light));
+  --gradient-yellow: linear-gradient(to right, var(--color-black), var(--color-yellow-light));
+  --gradient-orange: linear-gradient(to right, var(--color-black), var(--color-orange-light));
+  --gradient-blue: linear-gradient(to right, var(--color-black), var(--color-blue-light));
+
+  --transition-hover: all 0.2s ease-in-out;
+}
+
+.transition-hover {
+  transition: var(--transition-hover);
+}
+
+@theme inline {
+  --color-background: var(--color-background);
+  --color-foreground: var(--color-foreground);
+  --color-accent: var(--color-accent);
+  --color-green: var(--color-green);
+  --color-yellow: var(--color-yellow);
+  --color-orange: var(--color-orange);
+  --color-blue: var(--color-blue);
+  --color-pink-light: var(--color-pink-light);
+  --color-green-light: var(--color-green-light);
+  --color-yellow-light: var(--color-yellow-light);
+  --color-orange-light: var(--color-orange-light);
+  --color-blue-light: var(--color-blue-light);
+  --color-black: var(--color-black);
+  --font-sans: var(--font-inter);
+  --font-benzin: var(--font-benzin);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: #0a0a0a;
+    --color-foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-inter), sans-serif;
+}
+
+.gradient-pink {
+  background: var(--gradient-pink);
+}
+
+.gradient-green {
+  background: var(--gradient-green);
+}
+
+.gradient-yellow {
+  background: var(--gradient-yellow);
+}
+
+.gradient-orange {
+  background: var(--gradient-orange);
+}
+
+.gradient-blue {
+  background: var(--gradient-blue);
+}
+
+.section-bg-1 {
+  background-image: url("/backgrounds/bg-1.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.section-bg-2 {
+  background-image: url("/backgrounds/bg-2.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.section-bg-3 {
+  background-image: url("/backgrounds/bg-3.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.section-bg-4 {
+  background-image: url("/backgrounds/bg-4.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.section-bg-5 {
+  background-image: url("/backgrounds/bg-5.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}

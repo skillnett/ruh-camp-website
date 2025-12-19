@@ -491,14 +491,43 @@ export interface Home {
    */
   metaDescription?: string | null;
   /**
-   * Додайте секції для домашньої сторінки
+   * Налаштування головної секції
+   */
+  heroSection: {
+    /**
+     * Заголовок hero секції
+     */
+    title: string;
+    /**
+     * Підзаголовок hero секції
+     */
+    subtitle?: string | null;
+    /**
+     * Текст першої кнопки
+     */
+    buttonText?: string | null;
+    /**
+     * Посилання першої кнопки
+     */
+    buttonLink?: string | null;
+    /**
+     * Текст другої кнопки
+     */
+    button2Text?: string | null;
+    /**
+     * Посилання другої кнопки
+     */
+    button2Link?: string | null;
+  };
+  /**
+   * Додайте інші секції для домашньої сторінки
    */
   sections?:
     | {
         /**
          * Виберіть тип секції
          */
-        sectionType: 'hero' | 'about' | 'services' | 'gallery' | 'testimonials' | 'contacts' | 'custom';
+        sectionType: 'about' | 'services' | 'gallery' | 'testimonials' | 'contacts' | 'custom';
         /**
          * Заголовок секції
          */
@@ -507,28 +536,6 @@ export interface Home {
          * Підзаголовок секції
          */
         subtitle?: string | null;
-        /**
-         * Основний контент секції
-         */
-        content?: {
-          root: {
-            type: string;
-            children: {
-              type: any;
-              version: number;
-              [k: string]: unknown;
-            }[];
-            direction: ('ltr' | 'rtl') | null;
-            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-            indent: number;
-            version: number;
-          };
-          [k: string]: unknown;
-        } | null;
-        /**
-         * Зображення для секції
-         */
-        image?: (string | null) | Media;
         /**
          * Додайте зображення для галереї
          */
@@ -562,26 +569,6 @@ export interface Home {
               id?: string | null;
             }[]
           | null;
-        /**
-         * Текст кнопки (якщо потрібна)
-         */
-        buttonText?: string | null;
-        /**
-         * Посилання кнопки
-         */
-        buttonLink?: string | null;
-        /**
-         * Колір фону (hex код, наприклад #ffffff)
-         */
-        backgroundColor?: string | null;
-        /**
-         * Колір тексту (hex код)
-         */
-        textColor?: string | null;
-        /**
-         * Порядок відображення секції
-         */
-        order?: number | null;
         id?: string | null;
       }[]
     | null;
@@ -614,10 +601,6 @@ export interface Footer {
      */
     instagram?: string | null;
   };
-  /**
-   * Текст copyright (наприклад: © 2024 RUH Camp. Всі права захищені.)
-   */
-  copyright?: string | null;
   additionalLinks?:
     | {
         label: string;
@@ -625,10 +608,6 @@ export interface Footer {
         id?: string | null;
       }[]
     | null;
-  /**
-   * Короткий опис проєкту для футера
-   */
-  description?: string | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -639,14 +618,22 @@ export interface Footer {
 export interface HomeSelect<T extends boolean = true> {
   title?: T;
   metaDescription?: T;
+  heroSection?:
+    | T
+    | {
+        title?: T;
+        subtitle?: T;
+        buttonText?: T;
+        buttonLink?: T;
+        button2Text?: T;
+        button2Link?: T;
+      };
   sections?:
     | T
     | {
         sectionType?: T;
         title?: T;
         subtitle?: T;
-        content?: T;
-        image?: T;
         images?:
           | T
           | {
@@ -671,11 +658,6 @@ export interface HomeSelect<T extends boolean = true> {
               avatar?: T;
               id?: T;
             };
-        buttonText?: T;
-        buttonLink?: T;
-        backgroundColor?: T;
-        textColor?: T;
-        order?: T;
         id?: T;
       };
   updatedAt?: T;
@@ -695,7 +677,6 @@ export interface FooterSelect<T extends boolean = true> {
         telegram?: T;
         instagram?: T;
       };
-  copyright?: T;
   additionalLinks?:
     | T
     | {
@@ -703,7 +684,6 @@ export interface FooterSelect<T extends boolean = true> {
         url?: T;
         id?: T;
       };
-  description?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

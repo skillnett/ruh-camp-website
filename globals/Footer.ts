@@ -36,7 +36,8 @@ export const Footer: GlobalConfig = {
           type: "text",
           label: "Telegram",
           admin: {
-            description: "Telegram username або посилання (наприклад: @username або https://t.me/username)",
+            description:
+              "Telegram username або посилання (наприклад: @username або https://t.me/username)",
           },
         },
         {
@@ -44,18 +45,11 @@ export const Footer: GlobalConfig = {
           type: "text",
           label: "Instagram",
           admin: {
-            description: "Instagram username або посилання (наприклад: @username або https://instagram.com/username)",
+            description:
+              "Instagram username або посилання (наприклад: @username або https://instagram.com/username)",
           },
         },
       ],
-    },
-    {
-      name: "copyright",
-      type: "text",
-      label: "Copyright текст",
-      admin: {
-        description: "Текст copyright (наприклад: © 2024 RUH Camp. Всі права захищені.)",
-      },
     },
     {
       name: "additionalLinks",
@@ -74,14 +68,5 @@ export const Footer: GlobalConfig = {
         },
       ],
     },
-    {
-      name: "description",
-      type: "textarea",
-      label: "Опис",
-      admin: {
-        description: "Короткий опис проєкту для футера",
-      },
-    },
   ],
 };
-

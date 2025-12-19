@@ -1,6 +1,10 @@
+import { HomePage } from "@/fauters/Home";
 import { getHomePage } from "@/lib/payload";
-import { HomeSections } from "@/components/HomeSections";
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+
+// Force dynamic rendering to always fetch fresh data
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata(): Promise<Metadata> {
   const homePage = await getHomePage();
@@ -13,32 +17,15 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function Home() {
   const homePage = await getHomePage();
-  console.log("homePage---", homePage);
 
   if (!homePage) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold mb-4">Ласкаво просимо!</h1>
-          <p className="text-gray-600">
-            Налаштуйте домашню сторінку в адмін-панелі Payload CMS
-            <br />
-            (Globals → Домашня сторінка)
-          </p>
-          <a
-            href="/admin"
-            className="mt-4 inline-block bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700"
-          >
-            Перейти до адмін-панелі
-          </a>
-        </div>
-      </div>
-    );
+    notFound();
   }
 
   return (
-    <main>
-      <HomeSections sections={homePage.sections || []} />
-    </main>
+    <HomePage
+      heroSection={homePage.heroSection}
+      sections={homePage.sections || []}
+    />
   );
 }

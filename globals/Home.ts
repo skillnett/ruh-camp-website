@@ -26,12 +26,65 @@ export const Home: GlobalConfig = {
       },
     },
     {
+      name: "heroSection",
+      type: "group",
+      label: "Hero секція",
+      admin: {
+        description: "Налаштування головної секції",
+      },
+      fields: [
+        {
+          name: "title",
+          type: "text",
+          required: true,
+          admin: {
+            description: "Заголовок hero секції",
+          },
+        },
+        {
+          name: "subtitle",
+          type: "text",
+          admin: {
+            description: "Підзаголовок hero секції",
+          },
+        },
+        {
+          name: "buttonText",
+          type: "text",
+          admin: {
+            description: "Текст першої кнопки",
+          },
+        },
+        {
+          name: "buttonLink",
+          type: "text",
+          admin: {
+            description: "Посилання першої кнопки",
+          },
+        },
+        {
+          name: "button2Text",
+          type: "text",
+          admin: {
+            description: "Текст другої кнопки",
+          },
+        },
+        {
+          name: "button2Link",
+          type: "text",
+          admin: {
+            description: "Посилання другої кнопки",
+          },
+        },
+      ],
+    },
+    {
       name: "sections",
       type: "array",
-      label: "Секції",
+      label: "Інші секції",
       minRows: 0,
       admin: {
-        description: "Додайте секції для домашньої сторінки",
+        description: "Додайте інші секції для домашньої сторінки",
       },
       fields: [
         {
@@ -39,7 +92,6 @@ export const Home: GlobalConfig = {
           type: "select",
           required: true,
           options: [
-            { label: "Герой (Hero)", value: "hero" },
             { label: "Про нас", value: "about" },
             { label: "Послуги", value: "services" },
             { label: "Галерея", value: "gallery" },
@@ -64,21 +116,6 @@ export const Home: GlobalConfig = {
           type: "text",
           admin: {
             description: "Підзаголовок секції",
-          },
-        },
-        {
-          name: "content",
-          type: "richText",
-          admin: {
-            description: "Основний контент секції",
-          },
-        },
-        {
-          name: "image",
-          type: "upload",
-          relationTo: "media",
-          admin: {
-            description: "Зображення для секції",
           },
         },
         {
@@ -158,42 +195,6 @@ export const Home: GlobalConfig = {
             condition: (data) => data.sectionType === "testimonials",
             description: "Додайте відгуки",
           },
-        },
-        {
-          name: "buttonText",
-          type: "text",
-          admin: {
-            description: "Текст кнопки (якщо потрібна)",
-          },
-        },
-        {
-          name: "buttonLink",
-          type: "text",
-          admin: {
-            description: "Посилання кнопки",
-          },
-        },
-        {
-          name: "backgroundColor",
-          type: "text",
-          admin: {
-            description: "Колір фону (hex код, наприклад #ffffff)",
-          },
-        },
-        {
-          name: "textColor",
-          type: "text",
-          admin: {
-            description: "Колір тексту (hex код)",
-          },
-        },
-        {
-          name: "order",
-          type: "number",
-          admin: {
-            description: "Порядок відображення секції",
-          },
-          defaultValue: 0,
         },
       ],
     },

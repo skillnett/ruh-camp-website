@@ -48,7 +48,8 @@ export async function fetchPayload<T>(
       "Content-Type": "application/json",
       ...options?.headers,
     },
-    next: { revalidate: 60 }, // Revalidate every 60 seconds
+    cache: "no-store", // Disable caching for development - always fetch fresh data
+    // next: { revalidate: 60 }, // Revalidate every 60 seconds (for production)
   });
 
   console.log("Response status:", response.status, response.statusText);
@@ -83,6 +84,7 @@ export async function getHomePage() {
     const data = await fetchPayload<{
       title: string;
       metaDescription?: string;
+      heroSection?: Record<string, unknown>;
       sections: Array<Record<string, unknown>>;
     } | null>(endpoint);
 
