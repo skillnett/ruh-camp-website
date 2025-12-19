@@ -28,7 +28,7 @@ export const Home: GlobalConfig = {
     {
       name: "heroSection",
       type: "group",
-      label: "Hero секція",
+      label: "Секція 'Hero'",
       admin: {
         description: "Налаштування головної секції",
       },
@@ -79,6 +79,52 @@ export const Home: GlobalConfig = {
       ],
     },
     {
+      name: "aboutSection",
+      type: "group",
+      label: "Секція 'Про нас'",
+      admin: {
+        description: "Налаштування секції 'Про нас'",
+      },
+      fields: [
+        {
+          name: "title",
+          type: "text",
+          required: true,
+          admin: {
+            description: "Заголовок секції 'Про нас'",
+          },
+        },
+        {
+          name: "aboutCards",
+          type: "array",
+          label: "Карточки про нас",
+          minRows: 0,
+          maxRows: 4,
+          fields: [
+            {
+              name: "text",
+              type: "text",
+              required: true,
+              admin: {
+                description: "Текст карточки",
+              },
+            },
+            {
+              name: "image",
+              type: "upload",
+              relationTo: "media",
+              admin: {
+                description: "Зображення для карточки",
+              },
+            },
+          ],
+          admin: {
+            description: "Додайте до 4 карточок для секції 'Про нас'",
+          },
+        },
+      ],
+    },
+    {
       name: "sections",
       type: "array",
       label: "Інші секції",
@@ -92,7 +138,6 @@ export const Home: GlobalConfig = {
           type: "select",
           required: true,
           options: [
-            { label: "Про нас", value: "about" },
             { label: "Послуги", value: "services" },
             { label: "Галерея", value: "gallery" },
             { label: "Відгуки", value: "testimonials" },

@@ -16,11 +16,31 @@
   --color-blue-light: #30abef;
   --color-black: #000000;
 
-  --gradient-pink: linear-gradient(to right, var(--color-accent), var(--color-pink-light));
-  --gradient-green: linear-gradient(to right, var(--color-black), var(--color-green-light));
-  --gradient-yellow: linear-gradient(to right, var(--color-black), var(--color-yellow-light));
-  --gradient-orange: linear-gradient(to right, var(--color-black), var(--color-orange-light));
-  --gradient-blue: linear-gradient(to right, var(--color-black), var(--color-blue-light));
+  --gradient-pink: linear-gradient(
+    to right,
+    var(--color-pink-light),
+    var(--color-accent)
+  );
+  --gradient-green: linear-gradient(
+    to right,
+    var(--color-black),
+    var(--color-green-light)
+  );
+  --gradient-yellow: linear-gradient(
+    to right,
+    var(--color-black),
+    var(--color-yellow-light)
+  );
+  --gradient-orange: linear-gradient(
+    to right,
+    var(--color-black),
+    var(--color-orange-light)
+  );
+  --gradient-blue: linear-gradient(
+    to right,
+    var(--color-black),
+    var(--color-blue-light)
+  );
 
   --transition-hover: all 0.2s ease-in-out;
 }

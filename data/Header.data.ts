@@ -9,22 +9,22 @@ export const headerData = {
     {
       label: "Сезони",
       href: "/",
-      sectionId: "seasons",
+      sectionId: "#seasons",
     },
     {
       label: "Про нас",
       href: "/",
-      sectionId: "about",
+      sectionId: "#about",
     },
     {
       label: "WOW-фішки",
       href: "/",
-      sectionId: "services",
+      sectionId: "#services",
     },
     {
       label: "Контакти",
       href: "/",
-      sectionId: "contacts",
+      sectionId: "#contacts",
     },
   ] as NavigationItem[],
 };

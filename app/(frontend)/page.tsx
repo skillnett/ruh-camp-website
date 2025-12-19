@@ -25,6 +25,7 @@ export default async function Home() {
   return (
     <HomePage
       heroSection={homePage.heroSection}
+      aboutSection={homePage.aboutSection}
       sections={homePage.sections || []}
     />
   );

@@ -520,6 +520,31 @@ export interface Home {
     button2Link?: string | null;
   };
   /**
+   * Налаштування секції 'Про нас'
+   */
+  aboutSection: {
+    /**
+     * Заголовок секції 'Про нас'
+     */
+    title: string;
+    /**
+     * Додайте до 4 карточок для секції 'Про нас'
+     */
+    aboutCards?:
+      | {
+          /**
+           * Текст карточки
+           */
+          text: string;
+          /**
+           * Зображення для карточки
+           */
+          image?: (string | null) | Media;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  /**
    * Додайте інші секції для домашньої сторінки
    */
   sections?:
@@ -527,7 +552,7 @@ export interface Home {
         /**
          * Виберіть тип секції
          */
-        sectionType: 'about' | 'services' | 'gallery' | 'testimonials' | 'contacts' | 'custom';
+        sectionType: 'services' | 'gallery' | 'testimonials' | 'contacts' | 'custom';
         /**
          * Заголовок секції
          */
@@ -627,6 +652,18 @@ export interface HomeSelect<T extends boolean = true> {
         buttonLink?: T;
         button2Text?: T;
         button2Link?: T;
+      };
+  aboutSection?:
+    | T
+    | {
+        title?: T;
+        aboutCards?:
+          | T
+          | {
+              text?: T;
+              image?: T;
+              id?: T;
+            };
       };
   sections?:
     | T

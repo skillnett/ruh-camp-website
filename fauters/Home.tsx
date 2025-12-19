@@ -16,19 +16,21 @@ interface Section {
 
 export function HomePage({
   heroSection,
+  aboutSection,
   sections,
 }: {
   heroSection?: Record<string, unknown>;
+  aboutSection?: Record<string, unknown>;
   sections: Section[];
 }) {
   console.log("heroSection---", heroSection);
+  console.log("aboutSection---", aboutSection);
   console.log("sections---", sections);
 
   // Map sectionType to sectionId for navigation
   const getSectionId = (section: Section): string => {
     if (section.id) return section.id;
     const typeToId: Record<string, string> = {
-      about: "about",
       services: "services",
       gallery: "gallery",
       testimonials: "testimonials",
@@ -48,14 +50,14 @@ export function HomePage({
     <>
       {/* Hero section is always first */}
       {heroSection && <HeroSection section={heroSection} id="hero" />}
+      {/* About section */}
+      {aboutSection && <AboutSection section={aboutSection} id="about" />}
       {/* Other sections */}
       {sortedSections.map((section, index) => {
         const key = section.id || `section-${index}`;
         const sectionId = getSectionId(section);
 
         switch (section.sectionType || "custom") {
-          case "about":
-            return <AboutSection key={key} section={section} id={sectionId} />;
           case "services":
             return (
               <ServicesSection key={key} section={section} id={sectionId} />
