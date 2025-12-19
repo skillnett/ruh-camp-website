@@ -125,6 +125,119 @@ export const Home: GlobalConfig = {
       ],
     },
     {
+      name: "servicesSection",
+      type: "group",
+      label: "Секція 'Послуги'",
+      admin: {
+        description: "Налаштування секції 'Послуги'",
+      },
+      fields: [
+        {
+          name: "title",
+          type: "text",
+          required: true,
+          admin: {
+            description: "Заголовок секції 'Послуги'",
+          },
+        },
+        {
+          name: "number",
+          type: "text",
+          admin: {
+            description: "Число для відображення (наприклад, '4')",
+          },
+        },
+        {
+          name: "serviceCards",
+          type: "array",
+          label: "Карточки послуг",
+          minRows: 0,
+          maxRows: 4,
+          fields: [
+            {
+              name: "variant",
+              type: "select",
+              required: true,
+              options: [
+                { label: "Зелений", value: "green" },
+                { label: "Жовтий", value: "yellow" },
+                { label: "Помаранчевий", value: "orange" },
+                { label: "Синій", value: "blue" },
+              ],
+              admin: {
+                description: "Варіант кольору карточки",
+              },
+            },
+            {
+              name: "title",
+              type: "text",
+              required: true,
+              admin: {
+                description: "Назва табору (наприклад, 'Next Camp')",
+              },
+            },
+            {
+              name: "subtitle",
+              type: "text",
+              admin: {
+                description: "Підзаголовок (наприклад, 'Весна')",
+              },
+            },
+            {
+              name: "content",
+              type: "array",
+              label: "Список пунктів",
+              minRows: 0,
+              fields: [
+                {
+                  name: "item",
+                  type: "text",
+                  required: true,
+                  admin: {
+                    description: "Текст пункту списку",
+                  },
+                },
+              ],
+              admin: {
+                description: "Додайте пункти списку для карточки",
+              },
+            },
+            {
+              name: "firstButtonText",
+              type: "text",
+              admin: {
+                description: "Текст першої кнопки",
+              },
+            },
+            {
+              name: "firstButtonLink",
+              type: "text",
+              admin: {
+                description: "Посилання першої кнопки",
+              },
+            },
+            {
+              name: "secondButtonText",
+              type: "text",
+              admin: {
+                description: "Текст другої кнопки",
+              },
+            },
+            {
+              name: "secondButtonLink",
+              type: "text",
+              admin: {
+                description: "Посилання другої кнопки",
+              },
+            },
+          ],
+          admin: {
+            description: "Додайте до 4 карточок для секції 'Послуги'",
+          },
+        },
+      ],
+    },
+    {
       name: "sections",
       type: "array",
       label: "Інші секції",
@@ -138,7 +251,6 @@ export const Home: GlobalConfig = {
           type: "select",
           required: true,
           options: [
-            { label: "Послуги", value: "services" },
             { label: "Галерея", value: "gallery" },
             { label: "Відгуки", value: "testimonials" },
             { label: "Контакти", value: "contacts" },
@@ -182,31 +294,6 @@ export const Home: GlobalConfig = {
           admin: {
             condition: (data) => data.sectionType === "gallery",
             description: "Додайте зображення для галереї",
-          },
-        },
-        {
-          name: "services",
-          type: "array",
-          label: "Список послуг",
-          fields: [
-            {
-              name: "title",
-              type: "text",
-              required: true,
-            },
-            {
-              name: "description",
-              type: "textarea",
-            },
-            {
-              name: "icon",
-              type: "upload",
-              relationTo: "media",
-            },
-          ],
-          admin: {
-            condition: (data) => data.sectionType === "services",
-            description: "Додайте послуги",
           },
         },
         {

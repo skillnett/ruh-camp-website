@@ -86,6 +86,7 @@ export async function getHomePage() {
       metaDescription?: string;
       heroSection?: Record<string, unknown>;
       aboutSection?: Record<string, unknown>;
+      servicesSection?: Record<string, unknown>;
       sections: Array<Record<string, unknown>>;
     } | null>(endpoint);
 

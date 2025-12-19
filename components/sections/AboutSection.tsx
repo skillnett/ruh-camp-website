@@ -31,10 +31,9 @@ export function AboutSection({ section, id }: SectionProps) {
         className="flex flex-col gap-4 sm:gap-6 md:gap-8 lg:gap-24 mx-auto px-4 container"
         id="about"
       >
-        <TitleH2
-          text={(section.title as string) || ""}
-          className="2xl:text-[86px] xl:text-[56px] text-3xl lg:text-5xl"
-        />
+        <TitleH2 className="2xl:text-[86px] xl:text-[56px] text-3xl lg:text-5xl">
+          {(section.title as string) || ""}
+        </TitleH2>
         <div className="items-center gap-4 sm:gap-6 md:gap-8 2xl:gap-x-[190px] xl:gap-x-[90px] xl:gap-y-[90px] grid grid-cols-1 md:grid-cols-2">
           {aboutCards.length > 0 &&
             aboutCards.map((card, index) => {

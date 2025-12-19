@@ -545,6 +545,67 @@ export interface Home {
       | null;
   };
   /**
+   * Налаштування секції 'Послуги'
+   */
+  servicesSection: {
+    /**
+     * Заголовок секції 'Послуги'
+     */
+    title: string;
+    /**
+     * Число для відображення (наприклад, '4')
+     */
+    number?: string | null;
+    /**
+     * Додайте до 4 карточок для секції 'Послуги'
+     */
+    serviceCards?:
+      | {
+          /**
+           * Варіант кольору карточки
+           */
+          variant: 'green' | 'yellow' | 'orange' | 'blue';
+          /**
+           * Назва табору (наприклад, 'Next Camp')
+           */
+          title: string;
+          /**
+           * Підзаголовок (наприклад, 'Весна')
+           */
+          subtitle?: string | null;
+          /**
+           * Додайте пункти списку для карточки
+           */
+          content?:
+            | {
+                /**
+                 * Текст пункту списку
+                 */
+                item: string;
+                id?: string | null;
+              }[]
+            | null;
+          /**
+           * Текст першої кнопки
+           */
+          firstButtonText?: string | null;
+          /**
+           * Посилання першої кнопки
+           */
+          firstButtonLink?: string | null;
+          /**
+           * Текст другої кнопки
+           */
+          secondButtonText?: string | null;
+          /**
+           * Посилання другої кнопки
+           */
+          secondButtonLink?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  /**
    * Додайте інші секції для домашньої сторінки
    */
   sections?:
@@ -552,7 +613,7 @@ export interface Home {
         /**
          * Виберіть тип секції
          */
-        sectionType: 'services' | 'gallery' | 'testimonials' | 'contacts' | 'custom';
+        sectionType: 'gallery' | 'testimonials' | 'contacts' | 'custom';
         /**
          * Заголовок секції
          */
@@ -568,17 +629,6 @@ export interface Home {
           | {
               image: string | Media;
               caption?: string | null;
-              id?: string | null;
-            }[]
-          | null;
-        /**
-         * Додайте послуги
-         */
-        services?:
-          | {
-              title: string;
-              description?: string | null;
-              icon?: (string | null) | Media;
               id?: string | null;
             }[]
           | null;
@@ -665,6 +715,30 @@ export interface HomeSelect<T extends boolean = true> {
               id?: T;
             };
       };
+  servicesSection?:
+    | T
+    | {
+        title?: T;
+        number?: T;
+        serviceCards?:
+          | T
+          | {
+              variant?: T;
+              title?: T;
+              subtitle?: T;
+              content?:
+                | T
+                | {
+                    item?: T;
+                    id?: T;
+                  };
+              firstButtonText?: T;
+              firstButtonLink?: T;
+              secondButtonText?: T;
+              secondButtonLink?: T;
+              id?: T;
+            };
+      };
   sections?:
     | T
     | {
@@ -676,14 +750,6 @@ export interface HomeSelect<T extends boolean = true> {
           | {
               image?: T;
               caption?: T;
-              id?: T;
-            };
-        services?:
-          | T
-          | {
-              title?: T;
-              description?: T;
-              icon?: T;
               id?: T;
             };
         testimonials?:

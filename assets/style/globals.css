@@ -23,24 +23,20 @@
   );
   --gradient-green: linear-gradient(
     to right,
-    var(--color-black),
+    #0a1f0f,
     var(--color-green-light)
   );
   --gradient-yellow: linear-gradient(
     to right,
-    var(--color-black),
+    #222000,
     var(--color-yellow-light)
   );
   --gradient-orange: linear-gradient(
     to right,
-    var(--color-black),
+    #221000,
     var(--color-orange-light)
   );
-  --gradient-blue: linear-gradient(
-    to right,
-    var(--color-black),
-    var(--color-blue-light)
-  );
+  --gradient-blue: linear-gradient(to right, #061620, var(--color-blue-light));
 
   --transition-hover: all 0.2s ease-in-out;
 }
