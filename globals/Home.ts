@@ -265,6 +265,107 @@ export const Home: GlobalConfig = {
       ],
     },
     {
+      name: "informationCampSection",
+      type: "group",
+      label: "Секція 'Next SPORTS + SKILLS'",
+      admin: {
+        description: "Налаштування секції 'Next SPORTS + SKILLS'",
+      },
+      fields: [
+        {
+          name: "title",
+          type: "text",
+          required: true,
+          admin: {
+            description: "Заголовок секції",
+          },
+        },
+        {
+          name: "description",
+          type: "textarea",
+          admin: {
+            description: "Опис секції",
+          },
+        },
+        {
+          name: "subtitle",
+          type: "text",
+          admin: {
+            description: "Підзаголовок секції",
+          },
+        },
+        {
+          name: "sportsCard",
+          type: "group",
+          label: "Карточка 'NEXT SPORTS'",
+          fields: [
+            {
+              name: "title",
+              type: "text",
+              required: true,
+              admin: {
+                description:
+                  "Заголовок карточки (наприклад, 'NEXT SPORTS' або 'SPORTS')",
+              },
+            },
+            {
+              name: "items",
+              type: "array",
+              label: "Список спортивних активностей",
+              minRows: 0,
+              fields: [
+                {
+                  name: "item",
+                  type: "text",
+                  required: true,
+                  admin: {
+                    description: "Назва активності",
+                  },
+                },
+              ],
+              admin: {
+                description: "Додайте спортивні активності",
+              },
+            },
+          ],
+        },
+        {
+          name: "skillsCard",
+          type: "group",
+          label: "Карточка 'NEXT SKILLS'",
+          fields: [
+            {
+              name: "title",
+              type: "text",
+              required: true,
+              admin: {
+                description: "Заголовок карточки (наприклад, 'NEXT SKILLS')",
+              },
+            },
+            {
+              name: "items",
+              type: "array",
+              label: "Список навичок",
+              minRows: 0,
+              fields: [
+                {
+                  name: "item",
+                  type: "text",
+                  required: true,
+                  admin: {
+                    description: "Назва навички",
+                  },
+                },
+              ],
+              admin: {
+                description: "Додайте навички",
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
       name: "sections",
       type: "array",
       label: "Інші секції",

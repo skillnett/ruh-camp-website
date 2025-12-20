@@ -28,6 +28,7 @@ export default async function Home() {
       aboutSection={homePage.aboutSection}
       servicesSection={homePage.servicesSection}
       advantagesSection={homePage.advantagesSection}
+      informationCampSection={homePage.informationCampSection}
       sections={homePage.sections || []}
     />
   );

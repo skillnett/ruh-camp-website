@@ -1,6 +1,6 @@
+import { Button } from "@/components/ui";
 import heroImage from "@/public/images/hero.webp";
 import Image from "next/image";
-import { Button } from "../ui";
 
 interface HeroSectionProps {
   section: Record<string, unknown>;
@@ -20,7 +20,7 @@ export function HeroSection({ section, id }: HeroSectionProps) {
   return (
     <section
       id={id}
-      className="relative flex justify-center items-center w-full "
+      className="relative flex justify-center items-center w-full"
     >
       <div className="z-0 absolute inset-0 w-full h-full">
         <Image

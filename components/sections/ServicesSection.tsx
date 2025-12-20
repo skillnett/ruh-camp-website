@@ -1,5 +1,4 @@
-import { TitleH2 } from "../ui";
-import { ServiceCard } from "../ui/ServiceCard";
+import { ServiceCard, TitleH2 } from "@/components/ui";
 
 interface SectionProps {
   section: Record<string, unknown>;

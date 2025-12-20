@@ -619,6 +619,59 @@ export interface Home {
     image: string | Media;
   };
   /**
+   * Налаштування секції 'Next SPORTS + SKILLS'
+   */
+  informationCampSection: {
+    /**
+     * Заголовок секції
+     */
+    title: string;
+    /**
+     * Опис секції
+     */
+    description?: string | null;
+    /**
+     * Підзаголовок секції
+     */
+    subtitle?: string | null;
+    sportsCard: {
+      /**
+       * Заголовок карточки (наприклад, 'NEXT SPORTS' або 'SPORTS')
+       */
+      title: string;
+      /**
+       * Додайте спортивні активності
+       */
+      items?:
+        | {
+            /**
+             * Назва активності
+             */
+            item: string;
+            id?: string | null;
+          }[]
+        | null;
+    };
+    skillsCard: {
+      /**
+       * Заголовок карточки (наприклад, 'NEXT SKILLS')
+       */
+      title: string;
+      /**
+       * Додайте навички
+       */
+      items?:
+        | {
+            /**
+             * Назва навички
+             */
+            item: string;
+            id?: string | null;
+          }[]
+        | null;
+    };
+  };
+  /**
    * Додайте інші секції для домашньої сторінки
    */
   sections?:
@@ -757,6 +810,35 @@ export interface HomeSelect<T extends boolean = true> {
     | {
         title?: T;
         image?: T;
+      };
+  informationCampSection?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        subtitle?: T;
+        sportsCard?:
+          | T
+          | {
+              title?: T;
+              items?:
+                | T
+                | {
+                    item?: T;
+                    id?: T;
+                  };
+            };
+        skillsCard?:
+          | T
+          | {
+              title?: T;
+              items?:
+                | T
+                | {
+                    item?: T;
+                    id?: T;
+                  };
+            };
       };
   sections?:
     | T
