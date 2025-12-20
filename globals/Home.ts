@@ -264,6 +264,7 @@ export const Home: GlobalConfig = {
         },
       ],
     },
+
     {
       name: "informationCampSection",
       type: "group",
@@ -362,6 +363,71 @@ export const Home: GlobalConfig = {
               },
             },
           ],
+        },
+      ],
+    },
+    {
+      name: "aboutMentorSection",
+      type: "group",
+      label: "Секція 'Про ментора'",
+      admin: {
+        description: "Налаштування секції 'Про ментора'",
+      },
+      fields: [
+        {
+          name: "title",
+          type: "text",
+          required: true,
+          admin: {
+            description:
+              "Заголовок секції (наприклад, 'Хто такий ментор на NEXT CAMP?')",
+          },
+        },
+        {
+          name: "titleHighlight",
+          type: "text",
+          admin: {
+            description: "Виділена частина заголовка (наприклад, 'ментор')",
+          },
+        },
+        {
+          name: "description",
+          type: "textarea",
+          required: true,
+          admin: {
+            description: "Основний текст опису ментора",
+          },
+        },
+        {
+          name: "descriptionHighlights",
+          type: "text",
+          admin: {
+            description:
+              "Слова/вирази для виділення в описі (через кому, наприклад: 'Це твоя людина в таборі, він надихає, універсальний друг-наставник')",
+          },
+        },
+        {
+          name: "highlightText",
+          type: "textarea",
+          admin: {
+            description: "Виділений текст внизу секції",
+          },
+        },
+        {
+          name: "highlightTextHighlights",
+          type: "text",
+          admin: {
+            description:
+              "Слова/вирази для виділення в виділеному тексті (через кому, наприклад: 'NEXT CAMP = спорт + навички + ментори, що підтримують, Вони вчаться бути собою')",
+          },
+        },
+        {
+          name: "image",
+          type: "upload",
+          relationTo: "media",
+          admin: {
+            description: "Зображення для секції",
+          },
         },
       ],
     },

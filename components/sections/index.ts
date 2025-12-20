@@ -6,3 +6,5 @@ export { HeroSection } from "./HeroSection";
 export { InformationCampSection } from "./InformationCampSection";
 export { ServicesSection } from "./ServicesSection";
 export { TestimonialsSection } from "./TestimonialsSection";
+
+export { AboutMentorSection } from "./AboutMentorSection";

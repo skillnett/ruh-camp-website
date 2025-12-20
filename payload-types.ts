@@ -672,6 +672,39 @@ export interface Home {
     };
   };
   /**
+   * Налаштування секції 'Про ментора'
+   */
+  aboutMentorSection: {
+    /**
+     * Заголовок секції (наприклад, 'Хто такий ментор на NEXT CAMP?')
+     */
+    title: string;
+    /**
+     * Виділена частина заголовка (наприклад, 'ментор')
+     */
+    titleHighlight?: string | null;
+    /**
+     * Основний текст опису ментора
+     */
+    description: string;
+    /**
+     * Слова/вирази для виділення в описі (через кому, наприклад: 'Це твоя людина в таборі, він надихає, універсальний друг-наставник')
+     */
+    descriptionHighlights?: string | null;
+    /**
+     * Виділений текст внизу секції
+     */
+    highlightText?: string | null;
+    /**
+     * Слова/вирази для виділення в виділеному тексті (через кому, наприклад: 'NEXT CAMP = спорт + навички + ментори, що підтримують, Вони вчаться бути собою')
+     */
+    highlightTextHighlights?: string | null;
+    /**
+     * Зображення для секції
+     */
+    image?: (string | null) | Media;
+  };
+  /**
    * Додайте інші секції для домашньої сторінки
    */
   sections?:
@@ -839,6 +872,17 @@ export interface HomeSelect<T extends boolean = true> {
                     id?: T;
                   };
             };
+      };
+  aboutMentorSection?:
+    | T
+    | {
+        title?: T;
+        titleHighlight?: T;
+        description?: T;
+        descriptionHighlights?: T;
+        highlightText?: T;
+        highlightTextHighlights?: T;
+        image?: T;
       };
   sections?:
     | T
