@@ -87,6 +87,7 @@ export async function getHomePage() {
       heroSection?: Record<string, unknown>;
       aboutSection?: Record<string, unknown>;
       servicesSection?: Record<string, unknown>;
+      advantagesSection?: Record<string, unknown>;
       sections: Array<Record<string, unknown>>;
     } | null>(endpoint);
 

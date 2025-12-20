@@ -606,6 +606,19 @@ export interface Home {
       | null;
   };
   /**
+   * Налаштування секції 'WOW-фішки'
+   */
+  advantagesSection: {
+    /**
+     * Заголовок секції 'WOW-фішки'
+     */
+    title: string;
+    /**
+     * Зображення для секції
+     */
+    image: string | Media;
+  };
+  /**
    * Додайте інші секції для домашньої сторінки
    */
   sections?:
@@ -738,6 +751,12 @@ export interface HomeSelect<T extends boolean = true> {
               secondButtonLink?: T;
               id?: T;
             };
+      };
+  advantagesSection?:
+    | T
+    | {
+        title?: T;
+        image?: T;
       };
   sections?:
     | T

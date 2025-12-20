@@ -27,6 +27,7 @@ export default async function Home() {
       heroSection={homePage.heroSection}
       aboutSection={homePage.aboutSection}
       servicesSection={homePage.servicesSection}
+      advantagesSection={homePage.advantagesSection}
       sections={homePage.sections || []}
     />
   );

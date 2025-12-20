@@ -9,7 +9,7 @@ export const headerData = {
     {
       label: "Сезони",
       href: "/",
-      sectionId: "#seasons",
+      sectionId: "#services",
     },
     {
       label: "Про нас",
@@ -19,7 +19,7 @@ export const headerData = {
     {
       label: "WOW-фішки",
       href: "/",
-      sectionId: "#services",
+      sectionId: "#advantages",
     },
     {
       label: "Контакти",

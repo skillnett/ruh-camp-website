@@ -1,5 +1,6 @@
 import {
   AboutSection,
+  AdvantagesSection,
   CustomSection,
   GallerySection,
   HeroSection,
@@ -18,16 +19,19 @@ export function HomePage({
   heroSection,
   aboutSection,
   servicesSection,
+  advantagesSection,
   sections,
 }: {
   heroSection?: Record<string, unknown>;
   aboutSection?: Record<string, unknown>;
   servicesSection?: Record<string, unknown>;
+  advantagesSection?: Record<string, unknown>;
   sections: Section[];
 }) {
   console.log("heroSection---", heroSection);
   console.log("aboutSection---", aboutSection);
   console.log("servicesSection---", servicesSection);
+  console.log("advantagesSection---", advantagesSection);
   console.log("sections---", sections);
 
   // Map sectionType to sectionId for navigation
@@ -57,6 +61,10 @@ export function HomePage({
       {/* Services section */}
       {servicesSection && (
         <ServicesSection section={servicesSection} id="services" />
+      )}
+      {/* Advantages section */}
+      {advantagesSection && (
+        <AdvantagesSection section={advantagesSection} id="advantages" />
       )}
       {/* Other sections */}
       {sortedSections.map((section, index) => {

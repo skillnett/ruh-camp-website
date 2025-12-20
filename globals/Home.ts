@@ -238,6 +238,33 @@ export const Home: GlobalConfig = {
       ],
     },
     {
+      name: "advantagesSection",
+      type: "group",
+      label: "Секція 'WOW-фішки'",
+      admin: {
+        description: "Налаштування секції 'WOW-фішки'",
+      },
+      fields: [
+        {
+          name: "title",
+          type: "text",
+          required: true,
+          admin: {
+            description: "Заголовок секції 'WOW-фішки'",
+          },
+        },
+        {
+          name: "image",
+          type: "upload",
+          relationTo: "media",
+          required: true,
+          admin: {
+            description: "Зображення для секції",
+          },
+        },
+      ],
+    },
+    {
       name: "sections",
       type: "array",
       label: "Інші секції",

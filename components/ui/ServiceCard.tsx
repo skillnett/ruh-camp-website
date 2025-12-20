@@ -15,11 +15,11 @@ interface ServiceCardProps {
 export function ServiceCard({
   variant = "green",
   title = "Next Camp",
-  subtitle = "Весна",
+  subtitle = "subtitle",
   content,
-  firstButtonText = "Детальніше",
+  firstButtonText = "Details",
   firstButtonLink,
-  secondButtonText = "Записатись",
+  secondButtonText = "Sign up",
   secondButtonLink,
 }: ServiceCardProps) {
   const variantCard = {
