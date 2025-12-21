@@ -3,11 +3,18 @@
 import { BurgerIcon, Logo } from "@/assets/icons";
 import { headerData } from "@/data/Header.data";
 import { scrollToSection } from "@/lib/utils";
+import { motion, useScroll, useSpring } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
 
   const handleNavClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
@@ -15,7 +22,6 @@ export function Header() {
   ) => {
     if (item.sectionId) {
       e.preventDefault();
-      // Remove # if present
       const sectionId = item.sectionId.startsWith("#")
         ? item.sectionId.slice(1)
         : item.sectionId;
@@ -30,6 +36,10 @@ export function Header() {
 
   return (
     <header className="top-0 z-50 fixed bg-black/80 py-5 w-full">
+      <motion.div
+        className="top-0 right-0 left-0 absolute bg-accent h-1 origin-left"
+        style={{ scaleX }}
+      />
       <div className="relative mx-auto px-4 container">
         <nav className="flex justify-between items-center">
           <Link href="/">

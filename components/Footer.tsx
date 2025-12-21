@@ -37,7 +37,7 @@ export async function Footer() {
                 href={`tel:${contactInfo.phone}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 hover:text-accent whitespace-nowrap transition-colors"
+                className="flex items-center gap-2 hover:text-accent whitespace-nowrap transition-colors transition-hover"
               >
                 <PhoneIcon className="w-4 lg:w-5 h-4 lg:h-5" />
                 <span>{contactInfo.phone}</span>
@@ -48,7 +48,7 @@ export async function Footer() {
                 href={`mailto:${contactInfo.email}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 hover:text-accent lg:text-left text-center break-all lg:break-normal transition-colors"
+                className="flex items-center gap-2 hover:text-accent lg:text-left text-center break-all lg:break-normal transition-colors transition-hover"
               >
                 <EmailIcon className="w-4 lg:w-5 h-4 lg:h-5" />
                 <span>{contactInfo.email}</span>
@@ -60,7 +60,7 @@ export async function Footer() {
                 <Link
                   key={index}
                   href={link.url}
-                  className="text-gray-300 hover:text-accent transition-colors"
+                  className="text-gray-300 hover:text-accent transition-colors transition-hover"
                 >
                   {link.label}
                 </Link>
@@ -76,7 +76,7 @@ export async function Footer() {
                 }
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-accent transition-colors cursor-pointer"
+                className="hover:text-accent transition-colors transition-hover cursor-pointer"
                 aria-label="Telegram"
               >
                 <TelegramIcon className="w-6 xl:w-11 h-6 xl:h-11" />
@@ -94,7 +94,7 @@ export async function Footer() {
                 }
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-accent transition-colors cursor-pointer"
+                className="hover:text-accent transition-colors transition-hover cursor-pointer"
                 aria-label="Instagram"
               >
                 <InstagramIcon className="w-6 xl:w-11 h-6 xl:h-11" />
