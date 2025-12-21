@@ -3,25 +3,26 @@ import React from "react";
 export function scrollToSection(sectionId: string, headerOffset: number = 100) {
   const element = document.getElementById(sectionId);
   if (element) {
+    const header = document.querySelector("header");
+    const headerHeight = header
+      ? header.getBoundingClientRect().height
+      : headerOffset;
     const elementPosition = element.getBoundingClientRect().top;
-    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+    const offsetPosition =
+      elementPosition + window.pageYOffset - headerHeight - 0;
 
     window.scrollTo({
-      top: offsetPosition,
+      top: Math.max(0, offsetPosition),
       behavior: "smooth",
     });
   }
 }
 
-/**
- * Extract plain text from Lexical rich text content
- */
 export function extractTextFromLexical(content: unknown): string {
   if (!content || typeof content !== "object") {
     return typeof content === "string" ? content : "";
   }
 
-  // Check if it's a Lexical rich text object
   if (
     "root" in content &&
     typeof content.root === "object" &&

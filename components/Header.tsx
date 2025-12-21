@@ -15,7 +15,11 @@ export function Header() {
   ) => {
     if (item.sectionId) {
       e.preventDefault();
-      scrollToSection(item.sectionId);
+      // Remove # if present
+      const sectionId = item.sectionId.startsWith("#")
+        ? item.sectionId.slice(1)
+        : item.sectionId;
+      scrollToSection(sectionId);
       setIsMobileMenuOpen(false);
     }
   };

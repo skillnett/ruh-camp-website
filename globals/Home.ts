@@ -432,6 +432,61 @@ export const Home: GlobalConfig = {
       ],
     },
     {
+      name: "guestsSection",
+      type: "group",
+      label: "Секція 'Зіркові гості'",
+      admin: {
+        description: "Налаштування секції 'Зіркові гості'",
+      },
+      fields: [
+        {
+          name: "title",
+          type: "text",
+          required: true,
+          admin: {
+            description:
+              "Заголовок секції (наприклад, 'Зіркові гості на кожній зміні')",
+          },
+        },
+        {
+          name: "guests",
+          type: "array",
+          label: "Гості",
+          minRows: 0,
+          fields: [
+            {
+              name: "name",
+              type: "text",
+              required: true,
+              admin: {
+                description: "Ім'я гостя",
+              },
+            },
+            {
+              name: "role",
+              type: "text",
+              required: true,
+              admin: {
+                description:
+                  "Роль/професія гостя (наприклад, 'блогер', 'спортсмен')",
+              },
+            },
+            {
+              name: "image",
+              type: "upload",
+              relationTo: "media",
+              admin: {
+                description: "Фото гостя",
+              },
+            },
+          ],
+          admin: {
+            description: "Додайте гостей для секції",
+          },
+        },
+      ],
+    },
+    {
       name: "sections",
       type: "array",
       label: "Інші секції",

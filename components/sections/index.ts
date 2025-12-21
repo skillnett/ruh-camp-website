@@ -1,10 +1,10 @@
+export { AboutMentorSection } from "./AboutMentorSection";
 export { AboutSection } from "./AboutSection";
 export { AdvantagesSection } from "./AdvantagesSection";
 export { CustomSection } from "./CustomSection";
 export { GallerySection } from "./GallerySection";
+export { GuestsSection } from "./GuestsSection";
 export { HeroSection } from "./HeroSection";
 export { InformationCampSection } from "./InformationCampSection";
 export { ServicesSection } from "./ServicesSection";
 export { TestimonialsSection } from "./TestimonialsSection";
-
-export { AboutMentorSection } from "./AboutMentorSection";

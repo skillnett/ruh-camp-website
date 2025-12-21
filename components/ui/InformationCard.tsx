@@ -19,7 +19,7 @@ export function InformationCard({
         <span className="text-black">{titlePrefix}</span> {title as string}
       </h5>
       {items.length > 0 && (
-        <ul className="space-y-2 pl-6 text-black text-2xl lg:text-3xl list-disc list-outside">
+        <ul className="space-y-1 lg:space-y-2 pl-6 text-black text-xl lg:text-3xl list-disc list-outside">
           {items.map((item, index) => (
             <li key={index}>{item}</li>
           ))}

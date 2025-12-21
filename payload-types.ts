@@ -705,6 +705,35 @@ export interface Home {
     image?: (string | null) | Media;
   };
   /**
+   * Налаштування секції 'Зіркові гості'
+   */
+  guestsSection: {
+    /**
+     * Заголовок секції (наприклад, 'Зіркові гості на кожній зміні')
+     */
+    title: string;
+    /**
+     * Додайте гостей для секції
+     */
+    guests?:
+      | {
+          /**
+           * Ім'я гостя
+           */
+          name: string;
+          /**
+           * Роль/професія гостя (наприклад, 'блогер', 'спортсмен')
+           */
+          role: string;
+          /**
+           * Фото гостя
+           */
+          image?: (string | null) | Media;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  /**
    * Додайте інші секції для домашньої сторінки
    */
   sections?:
@@ -883,6 +912,19 @@ export interface HomeSelect<T extends boolean = true> {
         highlightText?: T;
         highlightTextHighlights?: T;
         image?: T;
+      };
+  guestsSection?:
+    | T
+    | {
+        title?: T;
+        guests?:
+          | T
+          | {
+              name?: T;
+              role?: T;
+              image?: T;
+              id?: T;
+            };
       };
   sections?:
     | T

@@ -24,7 +24,7 @@ export const headerData = {
     {
       label: "Контакти",
       href: "/",
-      sectionId: "#contacts",
+      sectionId: "#footer",
     },
   ] as NavigationItem[],
 };

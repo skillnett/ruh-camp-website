@@ -18,7 +18,10 @@ export async function Footer() {
   const { contactInfo, additionalLinks } = footerData;
 
   return (
-    <footer className="bg-black/80 py-4 lg:py-6 text-white">
+    <footer
+      className="z-10 relative bg-black/80 -mt-[273px] md:-mt-[165px] lg:-mt-[112px] py-4 lg:py-6 text-white"
+      id="footer"
+    >
       <div className="mx-auto px-4 container">
         <div className="flex lg:flex-row flex-col justify-between items-center gap-4 lg:gap-8">
           <Link href="/" className="flex flex-col items-center gap-1 lg:gap-2">
@@ -28,7 +31,7 @@ export async function Footer() {
               subtitleClassName="text-[6px] lg:text-[8px]"
             />
           </Link>
-          <div className="flex md:flex-row flex-col items-center gap-3 lg:gap-8 xl:gap-16 text-xs lg:text-base 2xl:text-2xl">
+          <div className="flex md:flex-row flex-col items-center gap-3 lg:gap-8 xl:gap-16 text-md lg:text-base 2xl:text-2xl">
             {contactInfo?.phone && (
               <Link
                 href={`tel:${contactInfo.phone}`}

@@ -26,13 +26,10 @@ export function InformationCampSection({ section, id }: SectionProps) {
   const skillsItems = getItemsFromCard(skillsCard);
 
   return (
-    <section
-      id={id}
-      className="section-bg-3 py-8 sm:py-12 md:py-16 lg:py-24 h-fit"
-    >
+    <section id={id} className="section-bg-3 py-16 lg:py-24 h-fit">
       <div className="mx-auto px-4 text-center container">
         {(section?.title as string) && (
-          <TitleH2 className="mb-5 lg:mb-12 text-accent xl:text-[86px] text-3xl lg:text-5xl text-balance">
+          <TitleH2 className="mb-5 lg:mb-12 text-accent xl:text-[86px] text-balance">
             {(section.title as string) || ""}
           </TitleH2>
         )}

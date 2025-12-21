@@ -6,11 +6,8 @@ interface TitleH2Props {
 }
 
 export function TitleH2({ children, className = "" }: TitleH2Props) {
-  const baseStyles = "font-semibold uppercase font-benzin text-center";
+  const baseStyles =
+    "font-semibold uppercase font-benzin text-3xl lg:text-5xl text-center text-balance";
 
-  return (
-    <h2 className={`${baseStyles} ${className ?? "xl:text-7xl text-5xl"} `}>
-      {children}
-    </h2>
-  );
+  return <h2 className={`${baseStyles} ${className}`}>{children}</h2>;
 }

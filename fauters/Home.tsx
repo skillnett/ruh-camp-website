@@ -1,8 +1,10 @@
 import {
+  AboutMentorSection,
   AboutSection,
   AdvantagesSection,
   CustomSection,
   GallerySection,
+  GuestsSection,
   HeroSection,
   InformationCampSection,
   ServicesSection,
@@ -19,6 +21,8 @@ interface Section {
 export function HomePage({
   heroSection,
   aboutSection,
+  aboutMentorSection,
+  guestsSection,
   servicesSection,
   advantagesSection,
   informationCampSection,
@@ -26,6 +30,8 @@ export function HomePage({
 }: {
   heroSection?: Record<string, unknown>;
   aboutSection?: Record<string, unknown>;
+  aboutMentorSection?: Record<string, unknown>;
+  guestsSection?: Record<string, unknown>;
   servicesSection?: Record<string, unknown>;
   advantagesSection?: Record<string, unknown>;
   informationCampSection?: Record<string, unknown>;
@@ -77,6 +83,12 @@ export function HomePage({
           id="information-camp"
         />
       )}
+      {/* About Mentor section */}
+      {aboutMentorSection && (
+        <AboutMentorSection section={aboutMentorSection} id="about-mentor" />
+      )}
+      {/* Guests section */}
+      {guestsSection && <GuestsSection section={guestsSection} id="guests" />}
       {/* Other sections */}
       {sortedSections.map((section, index) => {
         const key = section.id || `section-${index}`;

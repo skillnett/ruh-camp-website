@@ -1,10 +1,8 @@
-import { AboutMentorSection } from "@/components/sections";
 import { HomePage } from "@/fauters/Home";
 import { getHomePage } from "@/lib/payload";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-// Force dynamic rendering to always fetch fresh data
 export const dynamic = "force-dynamic";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -24,21 +22,15 @@ export default async function Home() {
   }
 
   return (
-    <>
-      <HomePage
-        heroSection={homePage.heroSection}
-        aboutSection={homePage.aboutSection}
-        servicesSection={homePage.servicesSection}
-        advantagesSection={homePage.advantagesSection}
-        informationCampSection={homePage.informationCampSection}
-        sections={homePage.sections || []}
-      />
-      {homePage.aboutMentorSection && (
-        <AboutMentorSection
-          section={homePage.aboutMentorSection}
-          id="about-mentor"
-        />
-      )}
-    </>
+    <HomePage
+      heroSection={homePage.heroSection}
+      aboutSection={homePage.aboutSection}
+      aboutMentorSection={homePage.aboutMentorSection}
+      guestsSection={homePage.guestsSection}
+      servicesSection={homePage.servicesSection}
+      advantagesSection={homePage.advantagesSection}
+      informationCampSection={homePage.informationCampSection}
+      sections={homePage.sections || []}
+    />
   );
 }
