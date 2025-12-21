@@ -733,48 +733,6 @@ export interface Home {
         }[]
       | null;
   };
-  /**
-   * Додайте інші секції для домашньої сторінки
-   */
-  sections?:
-    | {
-        /**
-         * Виберіть тип секції
-         */
-        sectionType: 'gallery' | 'testimonials' | 'contacts' | 'custom';
-        /**
-         * Заголовок секції
-         */
-        title: string;
-        /**
-         * Підзаголовок секції
-         */
-        subtitle?: string | null;
-        /**
-         * Додайте зображення для галереї
-         */
-        images?:
-          | {
-              image: string | Media;
-              caption?: string | null;
-              id?: string | null;
-            }[]
-          | null;
-        /**
-         * Додайте відгуки
-         */
-        testimonials?:
-          | {
-              author: string;
-              text: string;
-              rating?: number | null;
-              avatar?: (string | null) | Media;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-      }[]
-    | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -925,30 +883,6 @@ export interface HomeSelect<T extends boolean = true> {
               image?: T;
               id?: T;
             };
-      };
-  sections?:
-    | T
-    | {
-        sectionType?: T;
-        title?: T;
-        subtitle?: T;
-        images?:
-          | T
-          | {
-              image?: T;
-              caption?: T;
-              id?: T;
-            };
-        testimonials?:
-          | T
-          | {
-              author?: T;
-              text?: T;
-              rating?: T;
-              avatar?: T;
-              id?: T;
-            };
-        id?: T;
       };
   updatedAt?: T;
   createdAt?: T;

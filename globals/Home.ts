@@ -453,6 +453,7 @@ export const Home: GlobalConfig = {
           type: "array",
           label: "Гості",
           minRows: 0,
+          maxRows: 3,
           fields: [
             {
               name: "name",
@@ -482,99 +483,6 @@ export const Home: GlobalConfig = {
           ],
           admin: {
             description: "Додайте гостей для секції",
-          },
-        },
-      ],
-    },
-    {
-      name: "sections",
-      type: "array",
-      label: "Інші секції",
-      minRows: 0,
-      admin: {
-        description: "Додайте інші секції для домашньої сторінки",
-      },
-      fields: [
-        {
-          name: "sectionType",
-          type: "select",
-          required: true,
-          options: [
-            { label: "Галерея", value: "gallery" },
-            { label: "Відгуки", value: "testimonials" },
-            { label: "Контакти", value: "contacts" },
-            { label: "Кастомна секція", value: "custom" },
-          ],
-          admin: {
-            description: "Виберіть тип секції",
-          },
-        },
-        {
-          name: "title",
-          type: "text",
-          required: true,
-          admin: {
-            description: "Заголовок секції",
-          },
-        },
-        {
-          name: "subtitle",
-          type: "text",
-          admin: {
-            description: "Підзаголовок секції",
-          },
-        },
-        {
-          name: "images",
-          type: "array",
-          label: "Галерея зображень",
-          fields: [
-            {
-              name: "image",
-              type: "upload",
-              relationTo: "media",
-              required: true,
-            },
-            {
-              name: "caption",
-              type: "text",
-            },
-          ],
-          admin: {
-            condition: (data) => data.sectionType === "gallery",
-            description: "Додайте зображення для галереї",
-          },
-        },
-        {
-          name: "testimonials",
-          type: "array",
-          label: "Відгуки",
-          fields: [
-            {
-              name: "author",
-              type: "text",
-              required: true,
-            },
-            {
-              name: "text",
-              type: "textarea",
-              required: true,
-            },
-            {
-              name: "rating",
-              type: "number",
-              min: 1,
-              max: 5,
-            },
-            {
-              name: "avatar",
-              type: "upload",
-              relationTo: "media",
-            },
-          ],
-          admin: {
-            condition: (data) => data.sectionType === "testimonials",
-            description: "Додайте відгуки",
           },
         },
       ],
