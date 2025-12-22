@@ -10,6 +10,11 @@ const nextConfig = {
         port: "3000",
         pathname: "/api/media/**",
       },
+      {
+        protocol: "https",
+        hostname: "nextcamp.com.ua",
+        port: "",
+      },
     ],
     // Allow unoptimized images for development (helps with API endpoints)
     unoptimized: process.env.NODE_ENV === "development",
