@@ -38,7 +38,9 @@ export default buildConfig({
   plugins: [
     s3Storage({
       collections: {
-        media: true, // Apply storage to 'media' collection
+        media: {
+          prefix: "",
+        },
       },
       bucket: process.env.S3_BUCKET || "",
       config: {
@@ -46,9 +48,11 @@ export default buildConfig({
           accessKeyId: process.env.S3_ACCESS_KEY_ID || "",
           secretAccessKey: process.env.S3_SECRET || "",
         },
+        forcePathStyle: true,
         region: "auto", // Cloudflare R2 uses 'auto' as the region
         endpoint: process.env.S3_ENDPOINT || "",
       },
+      clientUploads: true, // Enable client-side uploads for platforms with upload size limits
     }),
   ],
 });
