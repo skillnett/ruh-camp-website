@@ -2,14 +2,15 @@ import { mongooseAdapter } from "@payloadcms/db-mongodb";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import path from "path";
 import { buildConfig } from "payload";
-import { fileURLToPath } from "url";
 import sharp from "sharp";
+import { fileURLToPath } from "url";
 
-import { Users } from "./collections/Users";
-import { Media } from "./collections/Media";
-import { BlogPosts } from "./collections/BlogPosts";
 import { BlogCategories } from "./collections/BlogCategories";
+import { BlogPosts } from "./collections/BlogPosts";
+import { Media } from "./collections/Media";
+import { Users } from "./collections/Users";
 import { Footer } from "./globals/Footer";
+import { Header } from "./globals/Header";
 import { Home } from "./globals/Home";
 
 const filename = fileURLToPath(import.meta.url);
@@ -23,7 +24,7 @@ export default buildConfig({
     },
   },
   collections: [Users, Media, BlogPosts, BlogCategories],
-  globals: [Home, Footer],
+  globals: [Home, Footer, Header],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || "",
   typescript: {

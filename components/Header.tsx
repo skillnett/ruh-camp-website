@@ -1,31 +1,52 @@
 "use client";
 
 import { BurgerIcon, Logo } from "@/assets/icons";
-import { headerData } from "@/data/Header.data";
 import { scrollToSection } from "@/lib/utils";
-import { motion, useScroll, useSpring } from "framer-motion";
+import {
+  motion,
+  useMotionValueEvent,
+  useScroll,
+  useSpring,
+} from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
 
-export function Header() {
+interface NavigationItem {
+  label: string;
+  href: string;
+  anchor?: string;
+}
+
+interface HeaderProps {
+  menuItems?: NavigationItem[];
+}
+
+export function Header({ menuItems = [] }: HeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { scrollYProgress } = useScroll();
+  const [blurValue, setBlurValue] = useState(0);
+  const { scrollYProgress, scrollY } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
     restDelta: 0.001,
   });
 
+  useMotionValueEvent(scrollY, "change", (latest: number) => {
+    setBlurValue(latest > 0 ? 8 : 0);
+  });
+
   const handleNavClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
-    item: { href: string; sectionId?: string }
+    item: NavigationItem
   ) => {
-    if (item.sectionId) {
+    if (item.anchor && !item.href.startsWith("http")) {
       e.preventDefault();
-      const sectionId = item.sectionId.startsWith("#")
-        ? item.sectionId.slice(1)
-        : item.sectionId;
+      const sectionId = item.anchor.startsWith("#")
+        ? item.anchor.slice(1)
+        : item.anchor;
       scrollToSection(sectionId);
+      setIsMobileMenuOpen(false);
+    } else {
       setIsMobileMenuOpen(false);
     }
   };
@@ -35,13 +56,24 @@ export function Header() {
   };
 
   return (
-    <header className="top-0 z-50 fixed bg-black/80 py-5 w-full">
+    <motion.header
+      className={`top-0 z-[70] fixed py-5 w-full transition-all duration-300 ${
+        isMobileMenuOpen
+          ? "lg:h-full h-screen bg-black/95 backdrop-blur-md"
+          : "bg-black/80 backdrop-blur-sm"
+      }`}
+      style={{
+        backdropFilter: isMobileMenuOpen
+          ? "blur(12px)"
+          : `blur(${blurValue}px)`,
+      }}
+    >
       <motion.div
         className="top-0 right-0 left-0 absolute bg-accent h-1 origin-left"
         style={{ scaleX }}
       />
-      <div className="relative mx-auto px-4 container">
-        <nav className="flex justify-between items-center">
+      <div className="relative mx-auto px-4 h-full container">
+        <nav className="flex justify-between items-center gap-5">
           <Link href="/">
             <Logo
               className="w-24 lg:w-32 h-12 lg:h-16"
@@ -49,43 +81,45 @@ export function Header() {
               showSubtitle={true}
             />
           </Link>
-          <div className="hidden lg:flex items-center gap-16 xl:gap-32">
-            {headerData.navigationData.map((item) => (
+          {menuItems.length > 0 && (
+            <>
+              <div className="hidden lg:flex flex-wrap items-center gap-16 xl:gap-32">
+                {menuItems.map((item) => (
+                  <Link
+                    key={item.label}
+                    href={item.href}
+                    onClick={(e) => handleNavClick(e, item)}
+                    className="text-white hover:text-accent text-sm lg:text-lg xl:text-3xl transition-hover"
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+              <button
+                onClick={toggleMobileMenu}
+                className="lg:hidden z-[90] relative p-2 text-white"
+                aria-label="Toggle menu"
+              >
+                <BurgerIcon isOpen={isMobileMenuOpen} className="w-8 h-8" />
+              </button>
+            </>
+          )}
+        </nav>
+        {isMobileMenuOpen && menuItems.length > 0 && (
+          <div className="lg:hidden flex flex-col justify-center items-center gap-20 px-4 pt-16 pb-8 overflow-y-auto">
+            {menuItems.map((item) => (
               <Link
                 key={item.label}
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item)}
-                className="text-white hover:text-accent text-sm lg:text-lg xl:text-3xl transition-hover"
+                className="text-white hover:text-accent text-xl transition-hover"
               >
                 {item.label}
               </Link>
             ))}
           </div>
-          <button
-            onClick={toggleMobileMenu}
-            className="lg:hidden z-50 relative p-2 text-white"
-            aria-label="Toggle menu"
-          >
-            <BurgerIcon isOpen={isMobileMenuOpen} className="w-6 h-6" />
-          </button>
-        </nav>
-        {isMobileMenuOpen && (
-          <div className="lg:hidden top-0 z-40 fixed inset-0 bg-black/95 backdrop-blur-sm">
-            <div className="flex flex-col items-center gap-20 px-4 py-8 pt-24 h-full">
-              {headerData.navigationData.map((item) => (
-                <Link
-                  key={item.label}
-                  href={item.href}
-                  onClick={(e) => handleNavClick(e, item)}
-                  className="text-white hover:text-accent text-xl transition-hover"
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </div>
-          </div>
         )}
       </div>
-    </header>
+    </motion.header>
   );
 }

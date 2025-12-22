@@ -94,10 +94,12 @@ export interface Config {
   globals: {
     home: Home;
     footer: Footer;
+    header: Header;
   };
   globalsSelect: {
     home: HomeSelect<false> | HomeSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
+    header: HeaderSelect<false> | HeaderSelect<true>;
   };
   locale: null;
   user: User & {
@@ -773,6 +775,39 @@ export interface Footer {
   createdAt?: string | null;
 }
 /**
+ * Налаштування хедера та навігаційного меню
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "header".
+ */
+export interface Header {
+  id: string;
+  /**
+   * Додайте пункти меню. Якщо вказано посилання (url), воно матиме пріоритет. Якщо url відсутнє, використовується якір (anchor). Посилання може бути як внутрішнім (/blog, /about), так і зовнішнім (https://example.com).
+   */
+  menu?:
+    | {
+        /**
+         * Текст, який відображається в меню
+         */
+        label: string;
+        /**
+         * Посилання на сторінку (наприклад: /blog, /about) або зовнішнє посилання (https://example.com). Якщо вказано, матиме пріоритет над якірем.
+         */
+        url?: string | null;
+        /**
+         * Виберіть ID секції для якоря. Використовується, якщо не вказано посилання.
+         */
+        anchor?:
+          | ('hero' | 'about' | 'services' | 'advantages' | 'information-camp' | 'about-mentor' | 'guests' | 'footer')
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "home_select".
  */
@@ -906,6 +941,23 @@ export interface FooterSelect<T extends boolean = true> {
     | {
         label?: T;
         url?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "header_select".
+ */
+export interface HeaderSelect<T extends boolean = true> {
+  menu?:
+    | T
+    | {
+        label?: T;
+        url?: T;
+        anchor?: T;
         id?: T;
       };
   updatedAt?: T;

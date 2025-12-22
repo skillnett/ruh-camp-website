@@ -1,5 +1,5 @@
 import { Footer } from "@/components/Footer";
-import { Header } from "@/components/Header";
+import { HeaderWrapper } from "@/components/HeaderWrapper";
 
 export default function FrontendLayout({
   children,
@@ -8,7 +8,7 @@ export default function FrontendLayout({
 }>) {
   return (
     <>
-      <Header />
+      <HeaderWrapper />
       <main className="flex-1">{children}</main>
       <Footer />
     </>

@@ -108,6 +108,23 @@ export async function getHomePage() {
     return null;
   }
 }
+export async function getHeader() {
+  try {
+    const data = await fetchPayload<{
+      menu?: Array<{
+        label: string;
+        url?: string;
+        anchor?: string;
+        id?: string;
+      }>;
+    } | null>("globals/header");
+
+    return data;
+  } catch (error) {
+    console.error("Error fetching header:", error);
+    return null;
+  }
+}
 
 // Fetch footer data
 export async function getFooter() {

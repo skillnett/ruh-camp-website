@@ -159,10 +159,10 @@ export const Home: GlobalConfig = {
               type: "select",
               required: true,
               options: [
-                { label: "Зелений", value: "green" },
-                { label: "Жовтий", value: "yellow" },
-                { label: "Помаранчевий", value: "orange" },
-                { label: "Синій", value: "blue" },
+                { label: "Green", value: "green" },
+                { label: "Yellow", value: "yellow" },
+                { label: "Orange", value: "orange" },
+                { label: "Blue", value: "blue" },
               ],
               admin: {
                 description: "Варіант кольору карточки",
