@@ -48,8 +48,7 @@ export async function fetchPayload<T>(
       "Content-Type": "application/json",
       ...options?.headers,
     },
-    cache: "no-store", // Disable caching for development - always fetch fresh data
-    // next: { revalidate: 60 }, // Revalidate every 60 seconds (for production)
+    next: { revalidate: 60 }, // Revalidate every 60 seconds (for production)
   });
 
   console.log("Response status:", response.status, response.statusText);
@@ -185,7 +184,9 @@ export async function getBlogPosts(params?: {
 }
 
 // Fetch single blog post by slug
-export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> {
+export async function getBlogPostBySlug(
+  slug: string
+): Promise<BlogPost | null> {
   try {
     const data = await fetchPayload<{
       docs: BlogPost[];
