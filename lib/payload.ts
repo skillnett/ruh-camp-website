@@ -148,6 +148,8 @@ export async function getFooter() {
   }
 }
 
+import type { BlogPost } from "@/payload-types";
+
 // Fetch blog posts
 export async function getBlogPosts(params?: {
   limit?: number;
@@ -164,7 +166,7 @@ export async function getBlogPosts(params?: {
     queryParams.append("sort", "-publishedAt");
 
     const data = await fetchPayload<{
-      docs: Array<Record<string, unknown>>;
+      docs: BlogPost[];
       totalDocs: number;
       limit: number;
       totalPages: number;
@@ -183,10 +185,10 @@ export async function getBlogPosts(params?: {
 }
 
 // Fetch single blog post by slug
-export async function getBlogPostBySlug(slug: string) {
+export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> {
   try {
     const data = await fetchPayload<{
-      docs: Array<Record<string, unknown>>;
+      docs: BlogPost[];
     } | null>(`blog-posts?where[slug][equals]=${slug}&depth=2&limit=1`);
 
     if (!data || !data.docs || data.docs.length === 0) {
