@@ -45,12 +45,13 @@ export default buildConfig({
       bucket: process.env.S3_BUCKET || "",
       config: {
         credentials: {
-          accessKeyId: process.env.S3_ACCESS_KEY_ID || "",
-          secretAccessKey: process.env.S3_SECRET || "",
+          accessKeyId: process.env.S3_ACCESS_KEY || "",
+          secretAccessKey: process.env.S3_SECRET_KEY || "",
         },
         forcePathStyle: true,
         region: "auto", // Cloudflare R2 uses 'auto' as the region
         endpoint: process.env.S3_ENDPOINT || "",
+        requestChecksumCalculation: "WHEN_REQUIRED",
       },
       clientUploads: true, // Enable client-side uploads for platforms with upload size limits
     }),
