@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "./Button";
+import { Button } from "@/components/ui";
 import { useState } from "react";
 
 interface ContactFormProps {
@@ -20,7 +20,7 @@ export function ContactForm({ className = "" }: ContactFormProps) {
   }>({ type: null, message: "" });
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -69,12 +69,12 @@ export function ContactForm({ className = "" }: ContactFormProps) {
   return (
     <form
       onSubmit={handleSubmit}
-      className={`flex flex-col gap-4 lg:gap-6 ${className}`}
+      className={`flex flex-col gap-4 lg:gap-6  px-4  ${className}`}
     >
       <div className="flex flex-col gap-2">
         <label
           htmlFor="name"
-          className="text-sm lg:text-base font-medium text-white"
+          className="font-medium text-black text-sm lg:text-base"
         >
           Ім&apos;я *
         </label>
@@ -85,7 +85,7 @@ export function ContactForm({ className = "" }: ContactFormProps) {
           value={formData.name}
           onChange={handleChange}
           required
-          className="px-4 py-3 lg:px-6 lg:py-4 rounded-lg lg:rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
+          className="bg-white/40 px-4 lg:px-6 py-3 lg:py-4 border border-white/20 focus:border-transparent rounded-lg lg:rounded-xl focus:outline-none focus:ring-2 focus:ring-accent text-black placeholder:text-black/50 transition-all"
           placeholder="Введіть ваше ім'я"
         />
       </div>
@@ -93,7 +93,7 @@ export function ContactForm({ className = "" }: ContactFormProps) {
       <div className="flex flex-col gap-2">
         <label
           htmlFor="email"
-          className="text-sm lg:text-base font-medium text-white"
+          className="font-medium text-black text-sm lg:text-base"
         >
           Email *
         </label>
@@ -104,7 +104,7 @@ export function ContactForm({ className = "" }: ContactFormProps) {
           value={formData.email}
           onChange={handleChange}
           required
-          className="px-4 py-3 lg:px-6 lg:py-4 rounded-lg lg:rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
+          className="bg-white/40 px-4 lg:px-6 py-3 lg:py-4 border border-white/20 focus:border-transparent rounded-lg lg:rounded-xl focus:outline-none focus:ring-2 focus:ring-accent text-black placeholder:text-black/50 transition-all"
           placeholder="your.email@example.com"
         />
       </div>
@@ -112,7 +112,7 @@ export function ContactForm({ className = "" }: ContactFormProps) {
       <div className="flex flex-col gap-2">
         <label
           htmlFor="phone"
-          className="text-sm lg:text-base font-medium text-white"
+          className="font-medium text-black text-sm lg:text-base"
         >
           Телефон *
         </label>
@@ -123,7 +123,7 @@ export function ContactForm({ className = "" }: ContactFormProps) {
           value={formData.phone}
           onChange={handleChange}
           required
-          className="px-4 py-3 lg:px-6 lg:py-4 rounded-lg lg:rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
+          className="bg-white/40 px-4 lg:px-6 py-3 lg:py-4 border border-white/20 focus:border-transparent rounded-lg lg:rounded-xl focus:outline-none focus:ring-2 focus:ring-accent text-black placeholder:text-black/50 transition-all"
           placeholder="+380 XX XXX XX XX"
         />
       </div>
@@ -143,9 +143,8 @@ export function ContactForm({ className = "" }: ContactFormProps) {
       <Button
         type="submit"
         variant="primary"
-        size="md"
-        className="mt-2"
-        onClick={() => {}}
+        size="sm"
+        className="mx-auto mt-4"
       >
         {isSubmitting ? "Відправка..." : "Відправити заявку"}
       </Button>

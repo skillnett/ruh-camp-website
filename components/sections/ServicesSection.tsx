@@ -1,4 +1,12 @@
-import { ServiceCard, TitleH2 } from "@/components/ui";
+"use client";
+
+import {
+  ContactForm,
+  ModalWrapper,
+  ServiceCard,
+  TitleH2,
+} from "@/components/ui";
+import { useState } from "react";
 
 interface SectionProps {
   section: Record<string, unknown>;
@@ -6,6 +14,7 @@ interface SectionProps {
 }
 
 export function ServicesSection({ section, id }: SectionProps) {
+  const [isContactFormOpen, setIsContactFormOpen] = useState(false);
   const serviceCards: Array<{
     variant: string;
     title?: string;
@@ -14,7 +23,6 @@ export function ServicesSection({ section, id }: SectionProps) {
     firstButtonText?: string;
     firstButtonLink?: string;
     secondButtonText?: string;
-    secondButtonLink?: string;
   }> = [];
 
   if (section.serviceCards && Array.isArray(section.serviceCards)) {
@@ -28,7 +36,6 @@ export function ServicesSection({ section, id }: SectionProps) {
         firstButtonText: itemData.firstButtonText as string | undefined,
         firstButtonLink: itemData.firstButtonLink as string | undefined,
         secondButtonText: itemData.secondButtonText as string | undefined,
-        secondButtonLink: itemData.secondButtonLink as string | undefined,
       });
     });
   }
@@ -75,7 +82,7 @@ export function ServicesSection({ section, id }: SectionProps) {
                 firstButtonText={card.firstButtonText}
                 firstButtonLink={card.firstButtonLink}
                 secondButtonText={card.secondButtonText}
-                secondButtonLink={card.secondButtonLink}
+                onSecondButtonClick={() => setIsContactFormOpen(true)}
               />
             </div>
           ))}
@@ -89,7 +96,7 @@ export function ServicesSection({ section, id }: SectionProps) {
                 firstButtonText={card.firstButtonText}
                 firstButtonLink={card.firstButtonLink}
                 secondButtonText={card.secondButtonText}
-                secondButtonLink={card.secondButtonLink}
+                onSecondButtonClick={() => setIsContactFormOpen(true)}
               />
             </div>
           ))}
@@ -105,11 +112,18 @@ export function ServicesSection({ section, id }: SectionProps) {
               firstButtonText={card.firstButtonText}
               firstButtonLink={card.firstButtonLink}
               secondButtonText={card.secondButtonText}
-              secondButtonLink={card.secondButtonLink}
+              onSecondButtonClick={() => setIsContactFormOpen(true)}
             />
           ))}
         </div>
       </div>
+      <ModalWrapper
+        isOpen={isContactFormOpen}
+        onClose={() => setIsContactFormOpen(false)}
+        title="Записатись"
+      >
+        <ContactForm />
+      </ModalWrapper>
     </section>
   );
 }

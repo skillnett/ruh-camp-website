@@ -10,6 +10,7 @@ interface ServiceCardProps {
   firstButtonLink?: string;
   secondButtonText?: string;
   secondButtonLink?: string;
+  onSecondButtonClick?: () => void;
 }
 
 export function ServiceCard({
@@ -21,6 +22,7 @@ export function ServiceCard({
   firstButtonLink,
   secondButtonText = "Sign up",
   secondButtonLink,
+  onSecondButtonClick,
 }: ServiceCardProps) {
   const variantCard = {
     green: {
@@ -108,7 +110,8 @@ export function ServiceCard({
           <Button
             variant="custom"
             className={variantStyles.secondButton}
-            href={secondButtonLink}
+            href={onSecondButtonClick ? undefined : secondButtonLink}
+            onClick={onSecondButtonClick}
           >
             {secondButtonText}
           </Button>

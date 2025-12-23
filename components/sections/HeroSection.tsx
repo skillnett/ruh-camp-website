@@ -1,9 +1,10 @@
 "use client";
 
-import { Button } from "@/components/ui";
+import { Button, ContactForm, ModalWrapper } from "@/components/ui";
 import { scrollToSection } from "@/lib/utils";
 import heroImage from "@/public/images/hero.webp";
 import Image from "next/image";
+import { useState } from "react";
 
 interface HeroSectionProps {
   section: Record<string, unknown>;
@@ -11,6 +12,8 @@ interface HeroSectionProps {
 }
 
 export function HeroSection({ section, id }: HeroSectionProps) {
+  const [isContactFormOpen, setIsContactFormOpen] = useState(false);
+
   const buttonText =
     typeof section.buttonText === "string" ? section.buttonText : null;
   const buttonLink =
@@ -19,8 +22,6 @@ export function HeroSection({ section, id }: HeroSectionProps) {
     typeof section.buttonAnchor === "string" ? section.buttonAnchor : null;
   const button2Text =
     typeof section.button2Text === "string" ? section.button2Text : null;
-  const button2Link =
-    typeof section.button2Link === "string" ? section.button2Link : null;
 
   const handleButtonClick = (
     e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>,
@@ -81,7 +82,7 @@ export function HeroSection({ section, id }: HeroSectionProps) {
                 <Button
                   variant="primary"
                   size="md"
-                  href={button2Link || undefined}
+                  onClick={() => setIsContactFormOpen(true)}
                 >
                   {button2Text}
                 </Button>
@@ -90,6 +91,13 @@ export function HeroSection({ section, id }: HeroSectionProps) {
           </div>
         </div>
       </div>
+      <ModalWrapper
+        isOpen={isContactFormOpen}
+        onClose={() => setIsContactFormOpen(false)}
+        title="Записатись"
+      >
+        <ContactForm />
+      </ModalWrapper>
     </section>
   );
 }

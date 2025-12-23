@@ -113,14 +113,7 @@ export const Home: GlobalConfig = {
           name: "button2Text",
           type: "text",
           admin: {
-            description: "Текст другої кнопки",
-          },
-        },
-        {
-          name: "button2Link",
-          type: "text",
-          admin: {
-            description: "Посилання другої кнопки",
+            description: "Текст другої кнопки (відкриває форму зв'язку)",
           },
         },
       ],
@@ -267,14 +260,7 @@ export const Home: GlobalConfig = {
               name: "secondButtonText",
               type: "text",
               admin: {
-                description: "Текст другої кнопки",
-              },
-            },
-            {
-              name: "secondButtonLink",
-              type: "text",
-              admin: {
-                description: "Посилання другої кнопки",
+                description: "Текст другої кнопки (відкриває форму зв'язку)",
               },
             },
           ],

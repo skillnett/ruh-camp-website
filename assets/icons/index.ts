@@ -1,7 +1,7 @@
-export { Logo } from "./Logo";
 export { BurgerIcon } from "./BurgerIcon";
 export { EmailIcon } from "./EmailIcon";
+export { InstagramIcon } from "./InstagramIcon";
+export { Logo } from "./Logo";
 export { PhoneIcon } from "./PhoneIcon";
 export { TelegramIcon } from "./TelegramIcon";
-export { InstagramIcon } from "./InstagramIcon";
-
+export { XIcon } from "./XIcon";

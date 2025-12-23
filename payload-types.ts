@@ -13,53 +13,53 @@
  * via the `definition` "supportedTimezones".
  */
 export type SupportedTimezones =
-  | "Pacific/Midway"
-  | "Pacific/Niue"
-  | "Pacific/Honolulu"
-  | "Pacific/Rarotonga"
-  | "America/Anchorage"
-  | "Pacific/Gambier"
-  | "America/Los_Angeles"
-  | "America/Tijuana"
-  | "America/Denver"
-  | "America/Phoenix"
-  | "America/Chicago"
-  | "America/Guatemala"
-  | "America/New_York"
-  | "America/Bogota"
-  | "America/Caracas"
-  | "America/Santiago"
-  | "America/Buenos_Aires"
-  | "America/Sao_Paulo"
-  | "Atlantic/South_Georgia"
-  | "Atlantic/Azores"
-  | "Atlantic/Cape_Verde"
-  | "Europe/London"
-  | "Europe/Berlin"
-  | "Africa/Lagos"
-  | "Europe/Athens"
-  | "Africa/Cairo"
-  | "Europe/Moscow"
-  | "Asia/Riyadh"
-  | "Asia/Dubai"
-  | "Asia/Baku"
-  | "Asia/Karachi"
-  | "Asia/Tashkent"
-  | "Asia/Calcutta"
-  | "Asia/Dhaka"
-  | "Asia/Almaty"
-  | "Asia/Jakarta"
-  | "Asia/Bangkok"
-  | "Asia/Shanghai"
-  | "Asia/Singapore"
-  | "Asia/Tokyo"
-  | "Asia/Seoul"
-  | "Australia/Brisbane"
-  | "Australia/Sydney"
-  | "Pacific/Guam"
-  | "Pacific/Noumea"
-  | "Pacific/Auckland"
-  | "Pacific/Fiji";
+  | 'Pacific/Midway'
+  | 'Pacific/Niue'
+  | 'Pacific/Honolulu'
+  | 'Pacific/Rarotonga'
+  | 'America/Anchorage'
+  | 'Pacific/Gambier'
+  | 'America/Los_Angeles'
+  | 'America/Tijuana'
+  | 'America/Denver'
+  | 'America/Phoenix'
+  | 'America/Chicago'
+  | 'America/Guatemala'
+  | 'America/New_York'
+  | 'America/Bogota'
+  | 'America/Caracas'
+  | 'America/Santiago'
+  | 'America/Buenos_Aires'
+  | 'America/Sao_Paulo'
+  | 'Atlantic/South_Georgia'
+  | 'Atlantic/Azores'
+  | 'Atlantic/Cape_Verde'
+  | 'Europe/London'
+  | 'Europe/Berlin'
+  | 'Africa/Lagos'
+  | 'Europe/Athens'
+  | 'Africa/Cairo'
+  | 'Europe/Moscow'
+  | 'Asia/Riyadh'
+  | 'Asia/Dubai'
+  | 'Asia/Baku'
+  | 'Asia/Karachi'
+  | 'Asia/Tashkent'
+  | 'Asia/Calcutta'
+  | 'Asia/Dhaka'
+  | 'Asia/Almaty'
+  | 'Asia/Jakarta'
+  | 'Asia/Bangkok'
+  | 'Asia/Shanghai'
+  | 'Asia/Singapore'
+  | 'Asia/Tokyo'
+  | 'Asia/Seoul'
+  | 'Australia/Brisbane'
+  | 'Australia/Sydney'
+  | 'Pacific/Guam'
+  | 'Pacific/Noumea'
+  | 'Pacific/Auckland'
+  | 'Pacific/Fiji';
 
 export interface Config {
   auth: {
@@ -69,33 +69,25 @@ export interface Config {
   collections: {
     users: User;
     media: Media;
-    "blog-posts": BlogPost;
-    "blog-categories": BlogCategory;
-    "form-submissions": FormSubmission;
-    "payload-kv": PayloadKv;
-    "payload-locked-documents": PayloadLockedDocument;
-    "payload-preferences": PayloadPreference;
-    "payload-migrations": PayloadMigration;
+    'blog-posts': BlogPost;
+    'blog-categories': BlogCategory;
+    'form-submissions': FormSubmission;
+    'payload-kv': PayloadKv;
+    'payload-locked-documents': PayloadLockedDocument;
+    'payload-preferences': PayloadPreference;
+    'payload-migrations': PayloadMigration;
   };
   collectionsJoins: {};
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
-    "blog-posts": BlogPostsSelect<false> | BlogPostsSelect<true>;
-    "blog-categories": BlogCategoriesSelect<false> | BlogCategoriesSelect<true>;
-    "form-submissions":
-      | FormSubmissionsSelect<false>
-      | FormSubmissionsSelect<true>;
-    "payload-kv": PayloadKvSelect<false> | PayloadKvSelect<true>;
-    "payload-locked-documents":
-      | PayloadLockedDocumentsSelect<false>
-      | PayloadLockedDocumentsSelect<true>;
-    "payload-preferences":
-      | PayloadPreferencesSelect<false>
-      | PayloadPreferencesSelect<true>;
-    "payload-migrations":
-      | PayloadMigrationsSelect<false>
-      | PayloadMigrationsSelect<true>;
+    'blog-posts': BlogPostsSelect<false> | BlogPostsSelect<true>;
+    'blog-categories': BlogCategoriesSelect<false> | BlogCategoriesSelect<true>;
+    'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
+    'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
+    'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
+    'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
+    'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
   };
   db: {
     defaultIDType: string;
@@ -113,7 +105,7 @@ export interface Config {
   };
   locale: null;
   user: User & {
-    collection: "users";
+    collection: 'users';
   };
   jobs: {
     tasks: unknown;
@@ -207,7 +199,7 @@ export interface BlogPost {
   /**
    * Статус статті
    */
-  status: "draft" | "published" | "archived";
+  status: 'draft' | 'published' | 'archived';
   /**
    * Головне зображення статті
    */
@@ -227,8 +219,8 @@ export interface BlogPost {
         version: number;
         [k: string]: unknown;
       }[];
-      direction: ("ltr" | "rtl") | null;
-      format: "left" | "start" | "center" | "right" | "end" | "justify" | "";
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
       indent: number;
       version: number;
     };
@@ -333,28 +325,28 @@ export interface PayloadLockedDocument {
   id: string;
   document?:
     | ({
-        relationTo: "users";
+        relationTo: 'users';
         value: string | User;
       } | null)
     | ({
-        relationTo: "media";
+        relationTo: 'media';
         value: string | Media;
       } | null)
     | ({
-        relationTo: "blog-posts";
+        relationTo: 'blog-posts';
         value: string | BlogPost;
       } | null)
     | ({
-        relationTo: "blog-categories";
+        relationTo: 'blog-categories';
         value: string | BlogCategory;
       } | null)
     | ({
-        relationTo: "form-submissions";
+        relationTo: 'form-submissions';
         value: string | FormSubmission;
       } | null);
   globalSlug?: string | null;
   user: {
-    relationTo: "users";
+    relationTo: 'users';
     value: string | User;
   };
   updatedAt: string;
@@ -367,7 +359,7 @@ export interface PayloadLockedDocument {
 export interface PayloadPreference {
   id: string;
   user: {
-    relationTo: "users";
+    relationTo: 'users';
     value: string | User;
   };
   key?: string | null;
@@ -532,8 +524,13 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
  */
 export interface Home {
   id: string;
+  /**
+   * Заголовок сторінки
+   */
   title: string;
-
+  /**
+   * Мета-опис для SEO
+   */
   metaDescription?: string | null;
   /**
    * Налаштування головної секції
@@ -555,22 +552,20 @@ export interface Home {
      * Посилання на сторінку (наприклад: /blog, /about) або зовнішнє посилання (https://example.com). Якщо вказано, матиме пріоритет над якірем.
      */
     buttonLink?: string | null;
+    /**
+     * Виберіть ID секції для якоря. Використовується, якщо не вказано посилання.
+     */
     buttonAnchor?:
-      | (
-          | "hero"
-          | "about"
-          | "services"
-          | "advantages"
-          | "information-camp"
-          | "about-mentor"
-          | "guests"
-          | "footer"
-        )
+      | ('hero' | 'about' | 'services' | 'advantages' | 'information-camp' | 'about-mentor' | 'guests' | 'footer')
       | null;
+    /**
+     * Текст другої кнопки (відкриває форму зв'язку)
+     */
     button2Text?: string | null;
-    button2Link?: string | null;
   };
-
+  /**
+   * Налаштування секції 'Про нас'
+   */
   aboutSection: {
     /**
      * Заголовок секції 'Про нас'
@@ -613,7 +608,7 @@ export interface Home {
           /**
            * Варіант кольору карточки
            */
-          variant: "green" | "yellow" | "orange" | "blue";
+          variant: 'green' | 'yellow' | 'orange' | 'blue';
           /**
            * Назва табору (наприклад, 'Next Camp')
            */
@@ -643,13 +638,9 @@ export interface Home {
            */
           firstButtonLink?: string | null;
           /**
-           * Текст другої кнопки
+           * Текст другої кнопки (відкриває форму зв'язку)
            */
           secondButtonText?: string | null;
-          /**
-           * Посилання другої кнопки
-           */
-          secondButtonLink?: string | null;
           id?: string | null;
         }[]
       | null;
@@ -846,16 +837,7 @@ export interface Header {
          * Виберіть ID секції для якоря. Використовується, якщо не вказано посилання.
          */
         anchor?:
-          | (
-              | "hero"
-              | "about"
-              | "services"
-              | "advantages"
-              | "information-camp"
-              | "about-mentor"
-              | "guests"
-              | "footer"
-            )
+          | ('hero' | 'about' | 'services' | 'advantages' | 'information-camp' | 'about-mentor' | 'guests' | 'footer')
           | null;
         id?: string | null;
       }[]
@@ -879,7 +861,6 @@ export interface HomeSelect<T extends boolean = true> {
         buttonLink?: T;
         buttonAnchor?: T;
         button2Text?: T;
-        button2Link?: T;
       };
   aboutSection?:
     | T
@@ -913,7 +894,6 @@ export interface HomeSelect<T extends boolean = true> {
               firstButtonText?: T;
               firstButtonLink?: T;
               secondButtonText?: T;
-              secondButtonLink?: T;
               id?: T;
             };
       };
@@ -1029,6 +1009,7 @@ export interface Auth {
   [k: string]: unknown;
 }
 
-declare module "payload" {
+
+declare module 'payload' {
   export interface GeneratedTypes extends Config {}
 }
