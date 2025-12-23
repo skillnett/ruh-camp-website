@@ -6,13 +6,16 @@ import { ReactNode, useRef } from "react";
 interface TitleH2Props {
   children: ReactNode;
   className?: string;
+  color?: string;
 }
 
-export function TitleH2({ children, className = "" }: TitleH2Props) {
+export function TitleH2({ children, className = "", color }: TitleH2Props) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const baseStyles =
     "font-semibold uppercase font-benzin text-3xl lg:text-5xl text-center text-balance";
+
+  const style = color ? { color: color as string } : { color: "#000000" };
 
   return (
     <motion.h2
@@ -21,6 +24,7 @@ export function TitleH2({ children, className = "" }: TitleH2Props) {
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={`${baseStyles} ${className}`}
+      style={style}
     >
       {children}
     </motion.h2>

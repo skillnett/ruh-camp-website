@@ -37,7 +37,10 @@ export function GuestsSection({ section, id }: SectionProps) {
     >
       <div className="flex flex-col gap-4 sm:gap-6 md:gap-8 lg:gap-24 mx-auto px-4 container">
         {title && (
-          <TitleH2 className="text-black 2xl:text-[88px] xl:text-[56px] xl:leading-[96px]">
+          <TitleH2
+            className="2xl:text-[88px] xl:text-[56px] xl:leading-[96px]"
+            color={section.titleColor as string}
+          >
             {title}
           </TitleH2>
         )}

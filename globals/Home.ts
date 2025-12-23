@@ -42,6 +42,14 @@ export const Home: GlobalConfig = {
           },
         },
         {
+          name: "titleColor",
+          type: "text",
+          admin: {
+            description:
+              "Колір заголовка у форматі HEX (наприклад: #FF5733 або #000000)",
+          },
+        },
+        {
           name: "subtitle",
           type: "text",
           admin: {
@@ -135,6 +143,14 @@ export const Home: GlobalConfig = {
           },
         },
         {
+          name: "titleColor",
+          type: "text",
+          admin: {
+            description:
+              "Колір заголовка у форматі HEX (наприклад: #FF5733 або #000000)",
+          },
+        },
+        {
           name: "aboutCards",
           type: "array",
           label: "Карточки про нас",
@@ -178,6 +194,14 @@ export const Home: GlobalConfig = {
           required: true,
           admin: {
             description: "Заголовок секції 'Послуги'",
+          },
+        },
+        {
+          name: "titleColor",
+          type: "text",
+          admin: {
+            description:
+              "Колір заголовка у форматі HEX (наприклад: #FF5733 або #000000)",
           },
         },
         {
@@ -287,6 +311,14 @@ export const Home: GlobalConfig = {
           },
         },
         {
+          name: "titleColor",
+          type: "text",
+          admin: {
+            description:
+              "Колір заголовка у форматі HEX (наприклад: #FF5733 або #000000)",
+          },
+        },
+        {
           name: "image",
           type: "upload",
           relationTo: "media",
@@ -312,6 +344,14 @@ export const Home: GlobalConfig = {
           required: true,
           admin: {
             description: "Заголовок секції",
+          },
+        },
+        {
+          name: "titleColor",
+          type: "text",
+          admin: {
+            description:
+              "Колір заголовка у форматі HEX (наприклад: #FF5733 або #000000)",
           },
         },
         {
@@ -417,6 +457,14 @@ export const Home: GlobalConfig = {
           },
         },
         {
+          name: "titleColor",
+          type: "text",
+          admin: {
+            description:
+              "Колір заголовка у форматі HEX (наприклад: #FF5733 або #000000)",
+          },
+        },
+        {
           name: "titleHighlight",
           type: "text",
           admin: {
@@ -479,6 +527,14 @@ export const Home: GlobalConfig = {
           admin: {
             description:
               "Заголовок секції (наприклад, 'Зіркові гості на кожній зміні')",
+          },
+        },
+        {
+          name: "titleColor",
+          type: "text",
+          admin: {
+            description:
+              "Колір заголовка у форматі HEX (наприклад: #FF5733 або #000000)",
           },
         },
         {

@@ -24,17 +24,20 @@ export function AboutMentorSection({ section, id }: SectionProps) {
 
   const highlightedDescription = applyHighlights(
     description,
-    descriptionHighlights
+    descriptionHighlights,
   );
   const highlightedText = applyHighlights(
     highlightText,
-    highlightTextHighlights
+    highlightTextHighlights,
   );
 
   return (
     <section id={id} className="section-bg-4 py-16 lg:py-24 h-fit">
       <div className="flex flex-col gap-4 sm:gap-6 md:gap-8 mx-auto px-4 container">
-        <TitleH2 className="text-black xl:text-[80px] text-left">
+        <TitleH2
+          className="xl:text-[80px] text-left"
+          color={section.titleColor as string}
+        >
           {hasHighlight ? (
             <>
               {titleParts[0]}

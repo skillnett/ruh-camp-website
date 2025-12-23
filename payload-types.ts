@@ -541,6 +541,10 @@ export interface Home {
      */
     title: string;
     /**
+     * Колір заголовка у форматі HEX (наприклад: #FF5733 або #000000)
+     */
+    titleColor?: string | null;
+    /**
      * Підзаголовок hero секції
      */
     subtitle?: string | null;
@@ -572,6 +576,10 @@ export interface Home {
      */
     title: string;
     /**
+     * Колір заголовка у форматі HEX (наприклад: #FF5733 або #000000)
+     */
+    titleColor?: string | null;
+    /**
      * Додайте до 4 карточок для секції 'Про нас'
      */
     aboutCards?:
@@ -596,6 +604,10 @@ export interface Home {
      * Заголовок секції 'Послуги'
      */
     title: string;
+    /**
+     * Колір заголовка у форматі HEX (наприклад: #FF5733 або #000000)
+     */
+    titleColor?: string | null;
     /**
      * Число для відображення (наприклад, '4')
      */
@@ -654,6 +666,10 @@ export interface Home {
      */
     title: string;
     /**
+     * Колір заголовка у форматі HEX (наприклад: #FF5733 або #000000)
+     */
+    titleColor?: string | null;
+    /**
      * Зображення для секції
      */
     image: string | Media;
@@ -666,6 +682,10 @@ export interface Home {
      * Заголовок секції
      */
     title: string;
+    /**
+     * Колір заголовка у форматі HEX (наприклад: #FF5733 або #000000)
+     */
+    titleColor?: string | null;
     /**
      * Опис секції
      */
@@ -720,6 +740,10 @@ export interface Home {
      */
     title: string;
     /**
+     * Колір заголовка у форматі HEX (наприклад: #FF5733 або #000000)
+     */
+    titleColor?: string | null;
+    /**
      * Виділена частина заголовка (наприклад, 'ментор')
      */
     titleHighlight?: string | null;
@@ -752,6 +776,10 @@ export interface Home {
      * Заголовок секції (наприклад, 'Зіркові гості на кожній зміні')
      */
     title: string;
+    /**
+     * Колір заголовка у форматі HEX (наприклад: #FF5733 або #000000)
+     */
+    titleColor?: string | null;
     /**
      * Додайте гостей для секції
      */
@@ -864,6 +892,7 @@ export interface HomeSelect<T extends boolean = true> {
     | T
     | {
         title?: T;
+        titleColor?: T;
         subtitle?: T;
         buttonText?: T;
         buttonLink?: T;
@@ -874,6 +903,7 @@ export interface HomeSelect<T extends boolean = true> {
     | T
     | {
         title?: T;
+        titleColor?: T;
         aboutCards?:
           | T
           | {
@@ -886,6 +916,7 @@ export interface HomeSelect<T extends boolean = true> {
     | T
     | {
         title?: T;
+        titleColor?: T;
         number?: T;
         serviceCards?:
           | T
@@ -909,12 +940,14 @@ export interface HomeSelect<T extends boolean = true> {
     | T
     | {
         title?: T;
+        titleColor?: T;
         image?: T;
       };
   informationCampSection?:
     | T
     | {
         title?: T;
+        titleColor?: T;
         description?: T;
         subtitle?: T;
         sportsCard?:
@@ -944,6 +977,7 @@ export interface HomeSelect<T extends boolean = true> {
     | T
     | {
         title?: T;
+        titleColor?: T;
         titleHighlight?: T;
         description?: T;
         descriptionHighlights?: T;
@@ -955,6 +989,7 @@ export interface HomeSelect<T extends boolean = true> {
     | T
     | {
         title?: T;
+        titleColor?: T;
         guests?:
           | T
           | {

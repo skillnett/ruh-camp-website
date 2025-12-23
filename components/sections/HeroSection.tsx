@@ -22,6 +22,10 @@ export function HeroSection({ section, id }: HeroSectionProps) {
     typeof section.buttonAnchor === "string" ? section.buttonAnchor : null;
   const button2Text =
     typeof section.button2Text === "string" ? section.button2Text : null;
+  const titleColor =
+    typeof section.titleColor === "string" && section.titleColor
+      ? section.titleColor
+      : undefined;
 
   const handleButtonClick = (
     e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>,
@@ -58,7 +62,10 @@ export function HeroSection({ section, id }: HeroSectionProps) {
       </div>
       <div className="z-10 relative gap-4 md:gap-8 grid grid-cols-1 md:grid-cols-2 mx-auto px-4 pt-54 md:pt-76 pb-24 container">
         <div className="flex flex-col justify-end items-center h-full">
-          <h1 className="mb-1 md:mb-4 font-benzin font-bold text-3xl lg:text-4xl xl:text-6xl text-center">
+          <h1
+            className="mb-1 md:mb-4 font-benzin font-bold text-3xl lg:text-4xl xl:text-6xl text-center"
+            style={titleColor ? { color: titleColor } : { color: "#ffffff" }}
+          >
             {(section.title as string) || ""}
           </h1>
         </div>

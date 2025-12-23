@@ -25,7 +25,10 @@ export function AboutSection({ section, id }: SectionProps) {
   return (
     <section id={id} className="section-bg-1 py-12 md:py-16 lg:py-24 h-fit">
       <div className="flex flex-col gap-4 sm:gap-6 md:gap-8 lg:gap-24 mx-auto px-4 container">
-        <TitleH2 className="2xl:text-[86px] xl:text-[56px]">
+        <TitleH2
+          className="2xl:text-[86px] xl:text-[56px]"
+          color={section.titleColor as string}
+        >
           {(section.title as string) || ""}
         </TitleH2>
         <div className="items-center gap-4 sm:gap-6 md:gap-8 2xl:gap-x-47.5 xl:gap-x-22.5 xl:gap-y-22.5 grid grid-cols-1 md:grid-cols-2">
