@@ -39,8 +39,15 @@ export const FormSubmissions: CollectionConfig = {
   hooks: {
     afterChange: [
       async ({ doc, operation }) => {
+        console.log("FormSubmissions afterChange hook triggered:", {
+          operation,
+          docId: doc.id,
+          name: doc.name,
+        });
+        
         // Send data to Google Sheets only when creating a new record
         if (operation === "create") {
+          console.log("Creating new record, attempting to send to Google Sheets...");
           try {
             const { sendToGoogleSheets } = await import("../lib/googleSheets");
             await sendToGoogleSheets({
@@ -49,10 +56,13 @@ export const FormSubmissions: CollectionConfig = {
               phone: doc.phone,
               createdAt: doc.createdAt || new Date().toISOString(),
             });
+            console.log("✅ Successfully sent to Google Sheets from hook");
           } catch (error) {
-            console.error("Error sending to Google Sheets:", error);
+            console.error("❌ Error sending to Google Sheets from hook:", error);
             // Don't throw error to avoid blocking database save
           }
+        } else {
+          console.log("Operation is not 'create', skipping Google Sheets submission");
         }
       },
     ],
