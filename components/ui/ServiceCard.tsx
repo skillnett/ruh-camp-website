@@ -66,7 +66,7 @@ export function ServiceCard({
           <div className="w-full">
             <h3 className="font-bold text-2xl leading-tight">{title}</h3>
             {subtitle && (
-              <span className={`${variantStyles.text} text-base`}>
+              <span className={`${variantStyles.text} text-base text-white`}>
                 {subtitle}
               </span>
             )}
@@ -77,7 +77,7 @@ export function ServiceCard({
             showSubtitle={false}
           />
         </div>
-        <div className="h-full">
+        <div className="h-full text-white">
           {content && Array.isArray(content) && content.length > 0 && (
             <ul className="space-y-1">
               {content.map((item, index) => {
