@@ -40,6 +40,10 @@ export default buildConfig({
       collections: {
         media: {
           prefix: "",
+          generateFileURL: ({ filename }) => {
+            const cleanFilename = filename.replace(/^[./]+/, "");
+            return `${process.env.NEXT_PUBLIC_S3_PUBLIC_URL}/${cleanFilename}`;
+          },
         },
       },
       bucket: process.env.S3_BUCKET || "",
