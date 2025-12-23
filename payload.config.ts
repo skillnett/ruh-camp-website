@@ -7,6 +7,7 @@ import { fileURLToPath } from "url";
 
 import { BlogCategories } from "./collections/BlogCategories";
 import { BlogPosts } from "./collections/BlogPosts";
+import { FormSubmissions } from "./collections/FormSubmissions";
 import { Media } from "./collections/Media";
 import { Users } from "./collections/Users";
 import { Footer } from "./globals/Footer";
@@ -24,7 +25,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, BlogPosts, BlogCategories],
+  collections: [Users, Media, BlogPosts, BlogCategories, FormSubmissions],
   globals: [Home, Footer, Header],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || "",
