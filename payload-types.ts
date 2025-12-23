@@ -769,6 +769,14 @@ export interface Home {
            * Фото гостя
            */
           image?: (string | null) | Media;
+          /**
+           * Посилання на соціальну мережу гостя (відкривається в новій вкладці)
+           */
+          networkLink?: string | null;
+          /**
+           * Текст посилання (за замовчуванням 'Network')
+           */
+          linkText?: string | null;
           id?: string | null;
         }[]
       | null;
@@ -953,6 +961,8 @@ export interface HomeSelect<T extends boolean = true> {
               name?: T;
               role?: T;
               image?: T;
+              networkLink?: T;
+              linkText?: T;
               id?: T;
             };
       };

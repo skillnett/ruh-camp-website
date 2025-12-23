@@ -5,9 +5,17 @@ interface GuestCardProps {
   name: string;
   role: string;
   image?: unknown;
+  networkLink?: string;
+  linkText?: string;
 }
 
-export function GuestCard({ name, role, image }: GuestCardProps) {
+export function GuestCard({
+  name,
+  role,
+  image,
+  networkLink,
+  linkText,
+}: GuestCardProps) {
   const imageUrl = image ? getMediaUrl(image) : null;
 
   return (
@@ -26,7 +34,17 @@ export function GuestCard({ name, role, image }: GuestCardProps) {
       <span className="block mb-4 px-1.5 font-bold text-[20px] lg:text-[26px] text-balance leading-7">
         {name}
       </span>
-      <span>{role}</span>
+      <span className="block mb-2">{role}</span>
+      {networkLink && networkLink.trim() && (
+        <a
+          href={networkLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-black/50 hover:text-accent transition-hover"
+        >
+          {linkText || "Link to profile"}
+        </a>
+      )}
     </div>
   );
 }

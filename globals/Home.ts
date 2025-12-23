@@ -513,6 +513,21 @@ export const Home: GlobalConfig = {
                 description: "Фото гостя",
               },
             },
+            {
+              name: "networkLink",
+              type: "text",
+              admin: {
+                description:
+                  "Посилання на соціальну мережу гостя (відкривається в новій вкладці)",
+              },
+            },
+            {
+              name: "linkText",
+              type: "text",
+              admin: {
+                description: "Текст посилання (за замовчуванням 'Network')",
+              },
+            },
           ],
           admin: {
             description: "Додайте гостей для секції",

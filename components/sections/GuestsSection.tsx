@@ -7,7 +7,13 @@ interface SectionProps {
 
 export function GuestsSection({ section, id }: SectionProps) {
   const title = (section?.title as string) || "";
-  const guests: Array<{ name: string; role: string; image?: unknown }> = [];
+  const guests: Array<{
+    name: string;
+    role: string;
+    image?: unknown;
+    networkLink?: string;
+    linkText?: string;
+  }> = [];
 
   if (section.guests && Array.isArray(section.guests)) {
     section.guests.forEach((item: unknown) => {
@@ -17,6 +23,8 @@ export function GuestsSection({ section, id }: SectionProps) {
           name: itemData.name as string,
           role: itemData.role as string,
           image: itemData.image,
+          networkLink: itemData.networkLink as string,
+          linkText: itemData.linkText as string | undefined,
         });
       }
     });
@@ -41,6 +49,8 @@ export function GuestsSection({ section, id }: SectionProps) {
                 name={guest.name}
                 role={guest.role}
                 image={guest.image}
+                networkLink={guest.networkLink}
+                linkText={guest.linkText}
               />
             ))}
           </div>
