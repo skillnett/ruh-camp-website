@@ -1,4 +1,7 @@
+"use client";
+
 import { Button } from "@/components/ui";
+import { scrollToSection } from "@/lib/utils";
 import heroImage from "@/public/images/hero.webp";
 import Image from "next/image";
 
@@ -12,10 +15,30 @@ export function HeroSection({ section, id }: HeroSectionProps) {
     typeof section.buttonText === "string" ? section.buttonText : null;
   const buttonLink =
     typeof section.buttonLink === "string" ? section.buttonLink : null;
+  const buttonAnchor =
+    typeof section.buttonAnchor === "string" ? section.buttonAnchor : null;
   const button2Text =
     typeof section.button2Text === "string" ? section.button2Text : null;
   const button2Link =
     typeof section.button2Link === "string" ? section.button2Link : null;
+
+  const handleButtonClick = (
+    e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>,
+    link: string | null,
+    anchor: string | null,
+  ) => {
+    if (anchor) {
+      e.preventDefault();
+      const sectionId = anchor.startsWith("#") ? anchor.slice(1) : anchor;
+      scrollToSection(sectionId);
+    }
+  };
+
+  const getButtonHref = (link: string | null, anchor: string | null) => {
+    if (link) return link;
+    if (anchor) return `#${anchor}`;
+    return undefined;
+  };
 
   return (
     <section
@@ -47,7 +70,8 @@ export function HeroSection({ section, id }: HeroSectionProps) {
               <Button
                 variant="secondary"
                 size="sm"
-                href={buttonLink || undefined}
+                href={getButtonHref(buttonLink, buttonAnchor)}
+                onClick={(e) => handleButtonClick(e, buttonLink, buttonAnchor)}
               >
                 {buttonText}
               </Button>

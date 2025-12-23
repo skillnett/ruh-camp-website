@@ -5,7 +5,9 @@ interface ButtonProps {
   variant?: "primary" | "secondary" | "custom";
   size?: "sm" | "md" | "default";
   className?: string;
-  onClick?: () => void;
+  onClick?: (
+    e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>,
+  ) => void;
   type?: "button" | "submit" | "reset";
   href?: string;
 }
@@ -37,7 +39,7 @@ export function Button({
 
   if (href) {
     return (
-      <a href={href} className={classes}>
+      <a href={href} className={classes} onClick={onClick}>
         {children}
       </a>
     );

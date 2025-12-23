@@ -58,9 +58,56 @@ export const Home: GlobalConfig = {
         {
           name: "buttonLink",
           type: "text",
+          label: "Посилання",
           admin: {
-            description: "Посилання першої кнопки",
+            description:
+              "Посилання на сторінку (наприклад: /blog, /about) або зовнішнє посилання (https://example.com). Якщо вказано, матиме пріоритет над якірем.",
+            condition: (_, siblingData) => !siblingData?.buttonAnchor,
           },
+        },
+        {
+          name: "buttonAnchor",
+          type: "select",
+          label: "Якір (ID секції)",
+          admin: {
+            description:
+              "Виберіть ID секції для якоря. Використовується, якщо не вказано посилання.",
+            condition: (_, siblingData) => !siblingData?.buttonLink,
+          },
+          options: [
+            {
+              label: "Hero",
+              value: "hero",
+            },
+            {
+              label: "Про нас",
+              value: "about",
+            },
+            {
+              label: "Послуги",
+              value: "services",
+            },
+            {
+              label: "WOW-фішки",
+              value: "advantages",
+            },
+            {
+              label: "Next SPORTS + SKILLS",
+              value: "information-camp",
+            },
+            {
+              label: "Про ментора",
+              value: "about-mentor",
+            },
+            {
+              label: "Зіркові гості",
+              value: "guests",
+            },
+            {
+              label: "Футер",
+              value: "footer",
+            },
+          ],
         },
         {
           name: "button2Text",
