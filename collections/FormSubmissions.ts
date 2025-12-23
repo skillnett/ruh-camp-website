@@ -39,7 +39,7 @@ export const FormSubmissions: CollectionConfig = {
   hooks: {
     afterChange: [
       async ({ doc, operation }) => {
-        // Відправляємо дані в Google Sheets тільки при створенні нового запису
+        // Send data to Google Sheets only when creating a new record
         if (operation === "create") {
           try {
             const { sendToGoogleSheets } = await import("../lib/googleSheets");
@@ -50,8 +50,8 @@ export const FormSubmissions: CollectionConfig = {
               createdAt: doc.createdAt || new Date().toISOString(),
             });
           } catch (error) {
-            console.error("Помилка відправки в Google Sheets:", error);
-            // Не викидаємо помилку, щоб не блокувати збереження в базу
+            console.error("Error sending to Google Sheets:", error);
+            // Don't throw error to avoid blocking database save
           }
         }
       },

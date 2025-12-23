@@ -92,7 +92,7 @@ export function HeroSection({ section, id }: HeroSectionProps) {
         </div>
       </div>
       <ModalWrapper
-        isOpen={isContactFormOpen}
+        isOpen={true}
         onClose={() => setIsContactFormOpen(false)}
         title="Записатись"
       >

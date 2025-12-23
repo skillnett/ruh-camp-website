@@ -12,7 +12,7 @@ export async function sendToGoogleSheets(data: FormData): Promise<void> {
     !process.env.GOOGLE_PRIVATE_KEY
   ) {
     console.warn(
-      "Google Sheets credentials не налаштовані. Пропускаємо відправку."
+      "Google Sheets credentials not configured. Skipping submission."
     );
     return;
   }
@@ -57,9 +57,9 @@ export async function sendToGoogleSheets(data: FormData): Promise<void> {
       }),
     });
 
-    console.log("Дані успішно відправлені в Google Sheets");
+    console.log("Data successfully sent to Google Sheets");
   } catch (error) {
-    console.error("Помилка відправки в Google Sheets:", error);
+    console.error("Error sending to Google Sheets:", error);
     throw error;
   }
 }
