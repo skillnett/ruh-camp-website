@@ -48,7 +48,7 @@ export function HeroSection({ section, id }: HeroSectionProps) {
   return (
     <section
       id={id}
-      className="relative flex justify-center items-center w-full"
+      className="relative flex justify-center items-center w-full  pb-100"
     >
       <div className="z-0 absolute inset-0 w-full h-full">
         <Image
@@ -63,7 +63,7 @@ export function HeroSection({ section, id }: HeroSectionProps) {
       <div className="z-10 relative gap-4 md:gap-8 grid grid-cols-1 md:grid-cols-2 mx-auto px-4 pt-54 md:pt-76 pb-24 container">
         <div className="flex flex-col justify-end items-center h-full">
           <h1
-            className="mb-1 md:mb-4 font-benzin font-bold text-3xl lg:text-4xl xl:text-6xl text-center"
+            className="mb-1 md:mb-4 font-benzin font-bold text-3xl lg:text-4xl xl:text-6xl text-center uppercase"
             style={titleColor ? { color: titleColor } : { color: "#ffffff" }}
           >
             {(section.title as string) || ""}

@@ -19,7 +19,7 @@ export async function Footer() {
 
   return (
     <footer
-      className="z-10 relative bg-black/80 -mt-[273px] md:-mt-[165px] lg:-mt-[112px] py-4 lg:py-6 text-white"
+      className="z-10 relative bg-black/80 -mt-[273px] md:-mt-[165px] lg:-mt-[106px] py-4 lg:py-6 text-white"
       id="footer"
     >
       <div className="mx-auto px-4 container">
@@ -89,7 +89,7 @@ export async function Footer() {
                     ? contactInfo.instagram
                     : `https://instagram.com/${contactInfo.instagram.replace(
                         "@",
-                        ""
+                        "",
                       )}`
                 }
                 target="_blank"

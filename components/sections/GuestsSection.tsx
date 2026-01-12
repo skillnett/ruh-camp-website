@@ -33,7 +33,7 @@ export function GuestsSection({ section, id }: SectionProps) {
   return (
     <section
       id={id}
-      className="section-bg-5 pt-16 lg:pt-32 pb-96 md:pb-64 lg:pb-76 h-fit"
+      className="section-bg-5 pt-16 lg:pt-64 pb-96 md:pb-64 lg:pb-114 h-fit"
     >
       <div className="flex flex-col gap-4 sm:gap-6 md:gap-8 lg:gap-24 mx-auto px-4 container">
         {title && (

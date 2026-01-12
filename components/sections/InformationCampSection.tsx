@@ -49,7 +49,7 @@ export function InformationCampSection({ section, id }: SectionProps) {
         <div className="flex lg:flex-row flex-col justify-center gap-6 lg:gap-20 2xl:gap-72">
           {sportsCard && (sportsCard.title as string) && (
             <InformationCard
-              titlePrefix="NEXT"
+              titlePrefix="STEP"
               title={sportsCard.title as string}
               items={sportsItems}
               defaultImage="/images/ball.webp"
@@ -57,7 +57,7 @@ export function InformationCampSection({ section, id }: SectionProps) {
           )}
           {skillsCard && (skillsCard.title as string) && (
             <InformationCard
-              titlePrefix="NEXT"
+              titlePrefix="STEP"
               title={skillsCard.title as string}
               items={skillsItems}
               defaultImage="/images/settings.webp"
