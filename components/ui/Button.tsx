@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 interface ButtonProps {
   children: ReactNode;
   variant?: "primary" | "secondary" | "custom";
-  size?: "sm" | "md" | "default";
+  size?: "sm" | "md" | "default" | "custom";
   className?: string;
   onClick?: (
     e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>,
@@ -33,6 +33,7 @@ export function Button({
     sm: "px-4 py-2 lg:px-7 lg:py-5 text-md lg:text-2xl rounded-full font-medium ",
     md: "px-6 lg:px-11 py-4 lg:py-7 text-2xl lg:text-5xl rounded-[28px] lg:rounded-[40px] font-medium",
     default: "px-6 lg:px-8 py-2 text-lg xl:text-2xl",
+    custom: "",
   };
 
   const classes = `${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}  `;

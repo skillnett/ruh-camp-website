@@ -1,3 +1,5 @@
+import { Footer } from "@/components/Footer";
+import { HeaderWrapper } from "@/components/HeaderWrapper";
 import { HomePage } from "@/fauters/Home";
 import { getHomePage } from "@/lib/payload";
 import type { Metadata } from "next";
@@ -22,14 +24,18 @@ export default async function Home() {
   }
 
   return (
-    <HomePage
-      heroSection={homePage.heroSection}
-      aboutSection={homePage.aboutSection}
-      aboutMentorSection={homePage.aboutMentorSection}
-      guestsSection={homePage.guestsSection}
-      servicesSection={homePage.servicesSection}
-      advantagesSection={homePage.advantagesSection}
-      informationCampSection={homePage.informationCampSection}
-    />
+    <>
+      <HeaderWrapper />
+      <HomePage
+        heroSection={homePage.heroSection}
+        aboutSection={homePage.aboutSection}
+        aboutMentorSection={homePage.aboutMentorSection}
+        guestsSection={homePage.guestsSection}
+        servicesSection={homePage.servicesSection}
+        advantagesSection={homePage.advantagesSection}
+        informationCampSection={homePage.informationCampSection}
+      />
+      <Footer />
+    </>
   );
 }

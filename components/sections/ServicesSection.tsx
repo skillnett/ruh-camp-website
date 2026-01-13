@@ -6,6 +6,7 @@ import {
   ServiceCard,
   TitleH2,
 } from "@/components/ui";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 interface SectionProps {
@@ -15,6 +16,22 @@ interface SectionProps {
 
 export function ServicesSection({ section, id }: SectionProps) {
   const [isContactFormOpen, setIsContactFormOpen] = useState(false);
+  const router = useRouter();
+
+  const createFirstButtonClickHandler = (
+    title?: string,
+    subtitle?: string,
+    variant?: string,
+  ) => {
+    return () => {
+      if (!title) return;
+      const slug = title.toLowerCase().replace(/\s+/g, "-");
+      const subtitleParam = subtitle
+        ? `&season=${encodeURIComponent(subtitle)}`
+        : "";
+      router.push(`/details/${slug}?v=${variant}${subtitleParam}`);
+    };
+  };
   const serviceCards: Array<{
     variant: string;
     title?: string;
@@ -83,7 +100,11 @@ export function ServicesSection({ section, id }: SectionProps) {
                 subtitle={card.subtitle}
                 content={card.content}
                 firstButtonText={card.firstButtonText}
-                firstButtonLink={card.firstButtonLink}
+                onFirstButtonClick={createFirstButtonClickHandler(
+                  card.title,
+                  card.subtitle,
+                  card.variant,
+                )}
                 secondButtonText={card.secondButtonText}
                 onSecondButtonClick={() => setIsContactFormOpen(true)}
               />
@@ -97,7 +118,11 @@ export function ServicesSection({ section, id }: SectionProps) {
                 subtitle={card.subtitle}
                 content={card.content}
                 firstButtonText={card.firstButtonText}
-                firstButtonLink={card.firstButtonLink}
+                onFirstButtonClick={createFirstButtonClickHandler(
+                  card.title,
+                  card.subtitle,
+                  card.variant,
+                )}
                 secondButtonText={card.secondButtonText}
                 onSecondButtonClick={() => setIsContactFormOpen(true)}
               />
@@ -113,7 +138,11 @@ export function ServicesSection({ section, id }: SectionProps) {
               subtitle={card.subtitle}
               content={card.content}
               firstButtonText={card.firstButtonText}
-              firstButtonLink={card.firstButtonLink}
+              onFirstButtonClick={createFirstButtonClickHandler(
+                card.title,
+                card.subtitle,
+                card.variant,
+              )}
               secondButtonText={card.secondButtonText}
               onSecondButtonClick={() => setIsContactFormOpen(true)}
             />

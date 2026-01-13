@@ -37,4 +37,3 @@ export function BurgerIcon({ isOpen, className }: BurgerIconProps) {
     </svg>
   );
 }
-

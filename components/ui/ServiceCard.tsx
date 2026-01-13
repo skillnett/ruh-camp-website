@@ -7,7 +7,7 @@ interface ServiceCardProps {
   subtitle?: string;
   content?: Array<{ item: string }> | string[];
   firstButtonText?: string;
-  firstButtonLink?: string;
+  onFirstButtonClick?: () => void;
   secondButtonText?: string;
   secondButtonLink?: string;
   onSecondButtonClick?: () => void;
@@ -19,7 +19,7 @@ export function ServiceCard({
   subtitle = "subtitle",
   content,
   firstButtonText = "Details",
-  firstButtonLink,
+  onFirstButtonClick,
   secondButtonText = "Sign up",
   secondButtonLink,
   onSecondButtonClick,
@@ -101,7 +101,7 @@ export function ServiceCard({
           <Button
             variant="custom"
             className={variantStyles.firstButton}
-            href={firstButtonLink}
+            onClick={onFirstButtonClick}
           >
             {firstButtonText}
           </Button>

@@ -1,4 +1,4 @@
-export default function FrontendLayout({
+export default function PackagesLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
