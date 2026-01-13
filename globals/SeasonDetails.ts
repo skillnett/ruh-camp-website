@@ -1,6 +1,6 @@
-import type { GlobalConfig } from "payload";
+import type { Field, GlobalConfig } from "payload";
 
-function createSeasonFields() {
+function createSeasonFields(): Field[] {
   return [
     {
       name: "dateRange",

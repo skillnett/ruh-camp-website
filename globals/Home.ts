@@ -324,7 +324,15 @@ export const Home: GlobalConfig = {
           relationTo: "media",
           required: true,
           admin: {
-            description: "Зображення для секції",
+            description: "Зображення для секції (десктопна версія, показується на lg і більше)",
+          },
+        },
+        {
+          name: "mobileImage",
+          type: "upload",
+          relationTo: "media",
+          admin: {
+            description: "Мобільна версія зображення (показується на екранах менше lg)",
           },
         },
       ],

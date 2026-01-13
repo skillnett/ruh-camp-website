@@ -32,7 +32,7 @@ export async function getPayloadClient() {
 
 export async function fetchPayload<T>(
   endpoint: string,
-  options?: RequestInit
+  options?: RequestInit,
 ): Promise<T> {
   // Remove leading slash if present to avoid double slashes
   const cleanEndpoint = endpoint.startsWith("/") ? endpoint.slice(1) : endpoint;
@@ -62,7 +62,7 @@ export async function fetchPayload<T>(
     const errorText = await response.text();
     console.error("API Error response:", errorText);
     throw new Error(
-      `Failed to fetch ${endpoint}: ${response.statusText} (${response.status})`
+      `Failed to fetch ${endpoint}: ${response.statusText} (${response.status})`,
     );
   }
 
@@ -185,7 +185,7 @@ export async function getBlogPosts(params?: {
 
 // Fetch single blog post by slug
 export async function getBlogPostBySlug(
-  slug: string
+  slug: string,
 ): Promise<BlogPost | null> {
   try {
     const data = await fetchPayload<{

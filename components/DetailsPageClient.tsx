@@ -156,23 +156,6 @@ export function DetailsPageClient({
   return (
     <div className={`min-h-screen ${theme.gradient}`}>
       <div className="mx-auto px-4 py-16 lg:py-20 container">
-        {!details && (
-          <div className="text-center bg-yellow-100 border-2 border-yellow-500 rounded-lg p-6 mb-8">
-            <h3 className="text-xl font-bold text-yellow-800 mb-2">
-              ⚠️ Дані для цього сезону не знайдено
-            </h3>
-            <p className="text-yellow-700 mb-4">
-              Будь ласка, створіть запис для цього сезону в адмін-панелі Payload
-              CMS.
-            </p>
-            <p className="text-sm text-yellow-600">
-              Перейдіть в <strong>/admin</strong> → Global{" "}
-              <strong>&quot;Деталі сезонів&quot;</strong> → Заповніть дані для
-              сезону{" "}
-              <strong>&quot;{season || "весна/літо/осінь/зима"}&quot;</strong>
-            </p>
-          </div>
-        )}
         <div className="flex flex-col xl:flex-row xl:justify-between justify-center items-center lg:mb-8 mb-[20px] ">
           <div className="items-center gap-4 hidden xl:flex">
             {renderComponent("about-button")}

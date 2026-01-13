@@ -672,9 +672,13 @@ export interface Home {
      */
     titleColor?: string | null;
     /**
-     * Зображення для секції
+     * Зображення для секції (десктопна версія, показується на lg і більше)
      */
     image: string | Media;
+    /**
+     * Мобільна версія зображення (показується на екранах менше lg)
+     */
+    mobileImage?: (string | null) | Media;
   };
   /**
    * Налаштування секції 'Next SPORTS + SKILLS'
@@ -1257,6 +1261,7 @@ export interface HomeSelect<T extends boolean = true> {
         title?: T;
         titleColor?: T;
         image?: T;
+        mobileImage?: T;
       };
   informationCampSection?:
     | T
