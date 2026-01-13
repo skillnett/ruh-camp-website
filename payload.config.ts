@@ -13,6 +13,7 @@ import { Users } from "./collections/Users";
 import { Footer } from "./globals/Footer";
 import { Header } from "./globals/Header";
 import { Home } from "./globals/Home";
+import { SeasonDetails } from "./globals/SeasonDetails";
 import { s3Storage } from "@payloadcms/storage-s3";
 
 const filename = fileURLToPath(import.meta.url);
@@ -26,7 +27,7 @@ export default buildConfig({
     },
   },
   collections: [Users, Media, BlogPosts, BlogCategories, FormSubmissions],
-  globals: [Home, Footer, Header],
+  globals: [Home, Footer, Header, SeasonDetails],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || "",
   typescript: {

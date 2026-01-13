@@ -3,7 +3,7 @@ import { Button } from "./Button";
 interface PacketCardProps {
   title: string;
   variant?: "gold" | "silver";
-  list?: Array<{ item: string }> | string[];
+  list?: Array<{ item: string; isBold?: boolean }> | string[];
   price: string | number;
   buttonText: string;
   onButtonClick?: () => void;
@@ -58,14 +58,17 @@ export function PacketCard({
               const itemText =
                 typeof item === "string"
                   ? item
-                  : (item as { item: string })?.item;
+                  : (item as { item: string; isBold?: boolean })?.item;
+              const isBold =
+                typeof item === "object" &&
+                (item as { isBold?: boolean })?.isBold;
               return itemText ? (
                 <li
                   key={index}
                   className={`flex items-start  text-[clamp(0.875rem,1.5vw+0.5rem,1.25rem)]  leading-[1.3]`}
                 >
                   <span className="mr-2">•</span>
-                  <span>{itemText}</span>
+                  <span className={isBold ? "font-bold" : ""}>{itemText}</span>
                 </li>
               ) : null;
             })}

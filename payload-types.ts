@@ -97,11 +97,13 @@ export interface Config {
     home: Home;
     footer: Footer;
     header: Header;
+    'season-details': SeasonDetail;
   };
   globalsSelect: {
     home: HomeSelect<false> | HomeSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
     header: HeaderSelect<false> | HeaderSelect<true>;
+    'season-details': SeasonDetailsSelect<false> | SeasonDetailsSelect<true>;
   };
   locale: null;
   user: User & {
@@ -882,6 +884,319 @@ export interface Header {
   createdAt?: string | null;
 }
 /**
+ * Редагування деталей для всіх сезонів табору
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "season-details".
+ */
+export interface SeasonDetail {
+  id: string;
+  /**
+   * Дані, які використовуються для всіх сезонів
+   */
+  common?: {
+    buttons?: {
+      /**
+       * Текст кнопки 'Про табір'
+       */
+      aboutButtonText?: string | null;
+      /**
+       * Текст кнопки 'Програма табору'
+       */
+      programButtonText?: string | null;
+      /**
+       * Текст кнопки реєстрації
+       */
+      registerButtonText?: string | null;
+    };
+    packages?: {
+      silverPackage?: {
+        /**
+         * Назва пакету
+         */
+        title?: string | null;
+        /**
+         * Текст кнопки
+         */
+        buttonText?: string | null;
+      };
+      goldPackage?: {
+        /**
+         * Назва пакету
+         */
+        title?: string | null;
+        /**
+         * Текст кнопки
+         */
+        buttonText?: string | null;
+      };
+    };
+    content?: {
+      /**
+       * Заголовок умов бронювання
+       */
+      bookingConditionsTitle?: string | null;
+      /**
+       * Додайте параграфи для умов бронювання
+       */
+      bookingConditionsParagraphs?:
+        | {
+            text: string;
+            id?: string | null;
+          }[]
+        | null;
+      /**
+       * Заголовок додаткових послуг
+       */
+      additionalServicesTitle?: string | null;
+      additionalServices?:
+        | {
+            /**
+             * Назва послуги
+             */
+            serviceName: string;
+            /**
+             * Ціна послуги
+             */
+            servicePrice: number;
+            id?: string | null;
+          }[]
+        | null;
+      /**
+       * Заголовок контактів
+       */
+      contactTitle?: string | null;
+      managers?:
+        | {
+            /**
+             * Ім'я менеджера
+             */
+            name: string;
+            /**
+             * Телефон менеджера
+             */
+            phone: string;
+            id?: string | null;
+          }[]
+        | null;
+    };
+  };
+  /**
+   * Унікальні дані для весняного сезону
+   */
+  весна?: {
+    /**
+     * Діапазон дат (наприклад: 14.03 — 21.03)
+     */
+    dateRange?: string | null;
+    announcements?: {
+      /**
+       * Фото анонс
+       */
+      photoAnnouncement?: (string | null) | Media;
+      /**
+       * Відео анонс
+       */
+      videoAnnouncement?: (string | null) | Media;
+    };
+    packages?: {
+      silverPackage?: {
+        /**
+         * Ціна пакету
+         */
+        price?: number | null;
+        features?:
+          | {
+              feature: string;
+              /**
+               * Відмітьте, щоб зробити текст жирним
+               */
+              isBold?: boolean | null;
+              id?: string | null;
+            }[]
+          | null;
+      };
+      goldPackage?: {
+        /**
+         * Ціна пакету
+         */
+        price?: number | null;
+        features?:
+          | {
+              feature: string;
+              /**
+               * Відмітьте, щоб зробити текст жирним
+               */
+              isBold?: boolean | null;
+              id?: string | null;
+            }[]
+          | null;
+      };
+    };
+  };
+  /**
+   * Унікальні дані для літнього сезону
+   */
+  літо?: {
+    /**
+     * Діапазон дат (наприклад: 14.03 — 21.03)
+     */
+    dateRange?: string | null;
+    announcements?: {
+      /**
+       * Фото анонс
+       */
+      photoAnnouncement?: (string | null) | Media;
+      /**
+       * Відео анонс
+       */
+      videoAnnouncement?: (string | null) | Media;
+    };
+    packages?: {
+      silverPackage?: {
+        /**
+         * Ціна пакету
+         */
+        price?: number | null;
+        features?:
+          | {
+              feature: string;
+              /**
+               * Відмітьте, щоб зробити текст жирним
+               */
+              isBold?: boolean | null;
+              id?: string | null;
+            }[]
+          | null;
+      };
+      goldPackage?: {
+        /**
+         * Ціна пакету
+         */
+        price?: number | null;
+        features?:
+          | {
+              feature: string;
+              /**
+               * Відмітьте, щоб зробити текст жирним
+               */
+              isBold?: boolean | null;
+              id?: string | null;
+            }[]
+          | null;
+      };
+    };
+  };
+  /**
+   * Унікальні дані для осіннього сезону
+   */
+  осінь?: {
+    /**
+     * Діапазон дат (наприклад: 14.03 — 21.03)
+     */
+    dateRange?: string | null;
+    announcements?: {
+      /**
+       * Фото анонс
+       */
+      photoAnnouncement?: (string | null) | Media;
+      /**
+       * Відео анонс
+       */
+      videoAnnouncement?: (string | null) | Media;
+    };
+    packages?: {
+      silverPackage?: {
+        /**
+         * Ціна пакету
+         */
+        price?: number | null;
+        features?:
+          | {
+              feature: string;
+              /**
+               * Відмітьте, щоб зробити текст жирним
+               */
+              isBold?: boolean | null;
+              id?: string | null;
+            }[]
+          | null;
+      };
+      goldPackage?: {
+        /**
+         * Ціна пакету
+         */
+        price?: number | null;
+        features?:
+          | {
+              feature: string;
+              /**
+               * Відмітьте, щоб зробити текст жирним
+               */
+              isBold?: boolean | null;
+              id?: string | null;
+            }[]
+          | null;
+      };
+    };
+  };
+  /**
+   * Унікальні дані для зимового сезону
+   */
+  зима?: {
+    /**
+     * Діапазон дат (наприклад: 14.03 — 21.03)
+     */
+    dateRange?: string | null;
+    announcements?: {
+      /**
+       * Фото анонс
+       */
+      photoAnnouncement?: (string | null) | Media;
+      /**
+       * Відео анонс
+       */
+      videoAnnouncement?: (string | null) | Media;
+    };
+    packages?: {
+      silverPackage?: {
+        /**
+         * Ціна пакету
+         */
+        price?: number | null;
+        features?:
+          | {
+              feature: string;
+              /**
+               * Відмітьте, щоб зробити текст жирним
+               */
+              isBold?: boolean | null;
+              id?: string | null;
+            }[]
+          | null;
+      };
+      goldPackage?: {
+        /**
+         * Ціна пакету
+         */
+        price?: number | null;
+        features?:
+          | {
+              feature: string;
+              /**
+               * Відмітьте, щоб зробити текст жирним
+               */
+              isBold?: boolean | null;
+              id?: string | null;
+            }[]
+          | null;
+      };
+    };
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "home_select".
  */
@@ -1041,6 +1356,225 @@ export interface HeaderSelect<T extends boolean = true> {
         url?: T;
         anchor?: T;
         id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "season-details_select".
+ */
+export interface SeasonDetailsSelect<T extends boolean = true> {
+  common?:
+    | T
+    | {
+        buttons?:
+          | T
+          | {
+              aboutButtonText?: T;
+              programButtonText?: T;
+              registerButtonText?: T;
+            };
+        packages?:
+          | T
+          | {
+              silverPackage?:
+                | T
+                | {
+                    title?: T;
+                    buttonText?: T;
+                  };
+              goldPackage?:
+                | T
+                | {
+                    title?: T;
+                    buttonText?: T;
+                  };
+            };
+        content?:
+          | T
+          | {
+              bookingConditionsTitle?: T;
+              bookingConditionsParagraphs?:
+                | T
+                | {
+                    text?: T;
+                    id?: T;
+                  };
+              additionalServicesTitle?: T;
+              additionalServices?:
+                | T
+                | {
+                    serviceName?: T;
+                    servicePrice?: T;
+                    id?: T;
+                  };
+              contactTitle?: T;
+              managers?:
+                | T
+                | {
+                    name?: T;
+                    phone?: T;
+                    id?: T;
+                  };
+            };
+      };
+  весна?:
+    | T
+    | {
+        dateRange?: T;
+        announcements?:
+          | T
+          | {
+              photoAnnouncement?: T;
+              videoAnnouncement?: T;
+            };
+        packages?:
+          | T
+          | {
+              silverPackage?:
+                | T
+                | {
+                    price?: T;
+                    features?:
+                      | T
+                      | {
+                          feature?: T;
+                          isBold?: T;
+                          id?: T;
+                        };
+                  };
+              goldPackage?:
+                | T
+                | {
+                    price?: T;
+                    features?:
+                      | T
+                      | {
+                          feature?: T;
+                          isBold?: T;
+                          id?: T;
+                        };
+                  };
+            };
+      };
+  літо?:
+    | T
+    | {
+        dateRange?: T;
+        announcements?:
+          | T
+          | {
+              photoAnnouncement?: T;
+              videoAnnouncement?: T;
+            };
+        packages?:
+          | T
+          | {
+              silverPackage?:
+                | T
+                | {
+                    price?: T;
+                    features?:
+                      | T
+                      | {
+                          feature?: T;
+                          isBold?: T;
+                          id?: T;
+                        };
+                  };
+              goldPackage?:
+                | T
+                | {
+                    price?: T;
+                    features?:
+                      | T
+                      | {
+                          feature?: T;
+                          isBold?: T;
+                          id?: T;
+                        };
+                  };
+            };
+      };
+  осінь?:
+    | T
+    | {
+        dateRange?: T;
+        announcements?:
+          | T
+          | {
+              photoAnnouncement?: T;
+              videoAnnouncement?: T;
+            };
+        packages?:
+          | T
+          | {
+              silverPackage?:
+                | T
+                | {
+                    price?: T;
+                    features?:
+                      | T
+                      | {
+                          feature?: T;
+                          isBold?: T;
+                          id?: T;
+                        };
+                  };
+              goldPackage?:
+                | T
+                | {
+                    price?: T;
+                    features?:
+                      | T
+                      | {
+                          feature?: T;
+                          isBold?: T;
+                          id?: T;
+                        };
+                  };
+            };
+      };
+  зима?:
+    | T
+    | {
+        dateRange?: T;
+        announcements?:
+          | T
+          | {
+              photoAnnouncement?: T;
+              videoAnnouncement?: T;
+            };
+        packages?:
+          | T
+          | {
+              silverPackage?:
+                | T
+                | {
+                    price?: T;
+                    features?:
+                      | T
+                      | {
+                          feature?: T;
+                          isBold?: T;
+                          id?: T;
+                        };
+                  };
+              goldPackage?:
+                | T
+                | {
+                    price?: T;
+                    features?:
+                      | T
+                      | {
+                          feature?: T;
+                          isBold?: T;
+                          id?: T;
+                        };
+                  };
+            };
       };
   updatedAt?: T;
   createdAt?: T;
