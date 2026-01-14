@@ -192,7 +192,7 @@ export function DetailsPageClient({
             details.packages.silverPackage?.price !== null) ||
             (details.packages.goldPackage?.price !== undefined &&
               details.packages.goldPackage?.price !== null)) && (
-            <div className="flex flex-col xl:flex-row xl:justify-between items-center gap-10 lg:gap-4 mb-20">
+            <div className="flex flex-col xl:flex-row xl:justify-between items-start  gap-10 lg:gap-4 mb-20">
               {details.packages.silverPackage?.price !== undefined &&
                 details.packages.silverPackage?.price !== null && (
                   <PacketCard
