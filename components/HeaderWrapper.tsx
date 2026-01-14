@@ -1,4 +1,4 @@
-import { getHeader } from "@/lib/payload";
+import { getHeader } from "@/lib/getHeader";
 import { Header } from "./Header";
 
 export async function HeaderWrapper() {
