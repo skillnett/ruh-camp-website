@@ -16,5 +16,5 @@ export async function HeaderWrapper() {
       };
     }) || [];
 
-  return <Header menuItems={menuItems} />;
+  return <Header menuItems={menuItems} phone={headerData?.phone || ""} />;
 }

@@ -42,11 +42,11 @@ export function InformationCampSection({ section, id }: SectionProps) {
           </span>
         )}
         {(section?.subtitle as string) && (
-          <h4 className="mb-5 lg:mb-12 font-bold text-accent text-xl lg:text-2xl">
+          <h4 className="mb-12 font-bold text-accent text-xl lg:text-2xl">
             {section.subtitle as string}
           </h4>
         )}
-        <div className="flex lg:flex-row flex-col justify-center gap-6 lg:gap-20 2xl:gap-72">
+        <div className="flex sm:flex-row flex-col justify-center gap-6 lg:gap-20 2xl:gap-72">
           {sportsCard && (sportsCard.title as string) && (
             <InformationCard
               titlePrefix="STEP"

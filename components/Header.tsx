@@ -1,6 +1,6 @@
 "use client";
 
-import { BurgerIcon, Logo } from "@/assets/icons";
+import { BurgerIcon, Logo, PhoneIcon } from "@/assets/icons";
 import { scrollToSection } from "@/lib/utils";
 import {
   motion,
@@ -19,9 +19,11 @@ interface NavigationItem {
 
 interface HeaderProps {
   menuItems?: NavigationItem[];
+  phone?: string;
 }
 
-export function Header({ menuItems = [] }: HeaderProps) {
+export function Header({ menuItems = [], phone }: HeaderProps) {
+  console.log("Header received phone:", phone);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [blurValue, setBlurValue] = useState(0);
   const { scrollYProgress, scrollY } = useScroll();
@@ -37,7 +39,7 @@ export function Header({ menuItems = [] }: HeaderProps) {
 
   const handleNavClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
-    item: NavigationItem
+    item: NavigationItem,
   ) => {
     if (item.anchor && !item.href.startsWith("http")) {
       e.preventDefault();
@@ -82,28 +84,44 @@ export function Header({ menuItems = [] }: HeaderProps) {
             />
           </Link>
           {menuItems.length > 0 && (
-            <>
-              <div className="hidden lg:flex flex-wrap items-center gap-16 xl:gap-32">
-                {menuItems.map((item) => (
-                  <Link
-                    key={item.label}
-                    href={item.href}
-                    onClick={(e) => handleNavClick(e, item)}
-                    className="text-white hover:text-accent text-sm lg:text-lg xl:text-3xl transition-hover"
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
+            <div className="hidden lg:flex flex-wrap items-center gap-16 xl:gap-32">
+              {menuItems.map((item) => (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  onClick={(e) => handleNavClick(e, item)}
+                  className="text-white hover:text-accent text-sm lg:text-lg xl:text-3xl transition-hover"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          )}
+          <div className="flex lg:hidden items-center gap-5 md:gap-12 z-90 relative">
+            {phone && phone.trim() && (
+              <Link
+                href={`tel:${phone}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 hover:text-accent whitespace-nowrap transition-colors transition-hover text-base"
+              >
+                <PhoneIcon className="w-4 lg:w-5 h-4 lg:h-5" />
+                <span>{phone}</span>
+              </Link>
+            )}
+            {menuItems.length > 0 && (
               <button
                 onClick={toggleMobileMenu}
                 className="lg:hidden z-[90] relative p-2 text-white"
                 aria-label="Toggle menu"
               >
-                <BurgerIcon isOpen={isMobileMenuOpen} className="w-8 h-8" />
+                <BurgerIcon
+                  isOpen={isMobileMenuOpen}
+                  className="w-12 h-12 text-accent"
+                />
               </button>
-            </>
-          )}
+            )}
+          </div>
         </nav>
         {isMobileMenuOpen && menuItems.length > 0 && (
           <div className="lg:hidden flex flex-col justify-center items-center gap-20 px-4 pt-16 pb-8 overflow-y-auto">

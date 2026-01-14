@@ -72,7 +72,7 @@ export function ServiceCard({
             )}
           </div>
           <Logo
-            className="w-24 lg:w-28 h-12 lg:h-14"
+            className="w-24 xl:w-28 h-12 xl:h-14"
             accentClassName={variantStyles.text}
             showSubtitle={false}
           />
@@ -96,7 +96,7 @@ export function ServiceCard({
           )}
         </div>
       </div>
-      <div className="flex justify-between items-center gap-4">
+      <div className="flex justify-between items-center gap-4 md:gap-1 xl:gap-4">
         {firstButtonText && (
           <Button
             variant="custom"

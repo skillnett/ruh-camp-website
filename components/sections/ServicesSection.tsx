@@ -75,15 +75,15 @@ export function ServicesSection({ section, id }: SectionProps) {
 
   return (
     <section id={id} className="bg-black py-16 lg:py-20">
-      <div className="flex lg:flex-row flex-col justify-between gap-6 lg:gap-6 mx-auto px-4 container">
+      <div className="flex lg:flex-row flex-col justify-between gap-6 mx-auto px-4 container">
         <div className="flex justify-center items-center order-1 lg:order-2 mb-8 md:mb-12 lg:mb-0 lg:max-w-1/3">
           {(section?.title as string) && (
             <TitleH2
-              className="text-4xl lg:text-4xl xl:text-5xl 2xl:text-7xl"
+              className="text-[clamp(1.875rem,3vw+0.5rem,4.5rem)]"
               color={section.titleColor as string}
             >
               {(section?.number as string) && (
-                <span className="block 2xl:text-[288px] xl:text-[188px] text-6xl sm:text-7xl md:text-8xl leading-tight lg:leading-20 xl:leading-44">
+                <span className="block 2xl:text-[288px] xl:text-[188px] text-[288px]  lg:text-8xl leading-[0.8] xl:leading-44">
                   {section.number as string}
                 </span>
               )}

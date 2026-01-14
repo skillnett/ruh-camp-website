@@ -33,7 +33,7 @@ export function GuestsSection({ section, id }: SectionProps) {
   return (
     <section
       id={id}
-      className="section-bg-5 pt-16 lg:pt-64 pb-96 md:pb-64 lg:pb-114 h-fit"
+      className="section-bg-5 pt-16 lg:pt-64 pb-20 lg:pb-64  h-fit"
     >
       <div className="flex flex-col gap-4 sm:gap-6 md:gap-8 lg:gap-24 mx-auto px-4 container">
         {title && (
@@ -45,7 +45,7 @@ export function GuestsSection({ section, id }: SectionProps) {
           </TitleH2>
         )}
         {guests.length > 0 && (
-          <div className="flex flex-wrap justify-center gap-7 2xl:gap-40 xl:gap-16">
+          <div className="flex flex-wrap sm:flex-nowrap justify-center gap-7 2xl:gap-40 xl:gap-16">
             {guests.map((guest, index) => (
               <GuestCard
                 key={index}

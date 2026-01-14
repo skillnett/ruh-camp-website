@@ -11,6 +11,14 @@ export const Header: GlobalConfig = {
   },
   fields: [
     {
+      name: "phone",
+      type: "text",
+      label: "Номер телефону",
+      admin: {
+        description: "Номер телефону для відображення в мобільному меню",
+      },
+    },
+    {
       name: "menu",
       type: "array",
       label: "Меню навігації",

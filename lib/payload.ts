@@ -110,14 +110,14 @@ export async function getHomePage() {
 export async function getHeader() {
   try {
     const data = await fetchPayload<{
+      phone?: string | null;
       menu?: Array<{
         label: string;
-        url?: string;
-        anchor?: string;
-        id?: string;
-      }>;
-    } | null>("globals/header");
-
+        url?: string | null;
+        anchor?: string | null;
+        id?: string | null;
+      }> | null;
+    } | null>("globals/header?depth=2");
     return data;
   } catch (error) {
     console.error("Error fetching header:", error);

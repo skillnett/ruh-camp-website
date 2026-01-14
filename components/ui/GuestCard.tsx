@@ -19,9 +19,9 @@ export function GuestCard({
   const imageUrl = image ? getMediaUrl(image) : null;
 
   return (
-    <div className="flex flex-col bg-white px-5 pt-5 pb-2 rounded-4xl max-w-[320px] text-black text-center">
+    <div className="flex flex-col bg-white  p-3 lg:px-5 lg:pt-5 pb-2 lg:rounded-4xl rounded-[25px] max-w-[320px] text-black text-center">
       {imageUrl && (
-        <div className="relative mb-[18px] rounded-[18px] w-full h-[185px] overflow-hidden">
+        <div className="relative lg:mb-[18px] mb-2 rounded-[18px] w-full h-[90px] lg:h-[185px] overflow-hidden">
           <Image
             src={imageUrl}
             alt={name}
@@ -31,16 +31,16 @@ export function GuestCard({
           />
         </div>
       )}
-      <span className="block mb-4 px-1.5 font-bold text-[20px] lg:text-[26px] text-balance leading-7">
+      <span className="block lg:mb-4 mb-1 px-1.5 font-bold text-[13px] lg:text-[26px] text-balance leading-[1.2] lg:leading-7">
         {name}
       </span>
-      <span className="block mb-2">{role}</span>
+      <span className="block mb-2 text-[10px] lg:text-base">{role}</span>
       {networkLink && networkLink.trim() && (
         <a
           href={networkLink}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-black/50 hover:text-accent transition-hover"
+          className="text-black/50 hover:text-accent transition-hover text-[10px] lg:text-base"
         >
           {linkText || "Link to profile"}
         </a>

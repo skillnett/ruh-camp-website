@@ -14,12 +14,12 @@ export function InformationCard({
   defaultImage,
 }: InformationCardProps) {
   return (
-    <div className="relative bg-accent px-12 py-10 rounded-[40px] w-full lg:max-w-[456px] overflow-hidden text-left">
+    <div className="relative bg-accent px-6 lg:px-12 py-10 rounded-[40px] w-full lg:max-w-[456px] overflow-hidden text-left">
       <h5 className="z-10 relative mb-5 lg:mb-10 font-bold text-white text-3xl lg:text-5xl">
         <span className="text-black">{titlePrefix}</span> {title as string}
       </h5>
       {items.length > 0 && (
-        <ul className="space-y-1 lg:space-y-2 pl-6 text-black text-xl lg:text-3xl list-disc list-outside">
+        <ul className="space-y-1 lg:space-y-2 pl-6 text-black text-lg lg:text-3xl list-disc list-outside leading-[1.2]">
           {items.map((item, index) => (
             <li key={index}>{item}</li>
           ))}

@@ -863,6 +863,10 @@ export interface Footer {
 export interface Header {
   id: string;
   /**
+   * Номер телефону для відображення в мобільному меню
+   */
+  phone?: string | null;
+  /**
    * Додайте пункти меню. Якщо вказано посилання (url), воно матиме пріоритет. Якщо url відсутнє, використовується якір (anchor). Посилання може бути як внутрішнім (/blog, /about), так і зовнішнім (https://example.com).
    */
   menu?:
@@ -1354,6 +1358,7 @@ export interface FooterSelect<T extends boolean = true> {
  * via the `definition` "header_select".
  */
 export interface HeaderSelect<T extends boolean = true> {
+  phone?: T;
   menu?:
     | T
     | {

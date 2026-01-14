@@ -48,15 +48,15 @@ export function AboutMentorSection({ section, id }: SectionProps) {
             title
           )}
         </TitleH2>
-        <div className="justify-between items-center gap-6 md:gap-12 grid grid-cols-1 lg:grid-cols-2">
+        <div className="justify-between items-center gap-6 md:gap-12 grid grid-cols-1 sm:grid-cols-2">
           <div className="flex flex-col gap-10 lg:gap-28 text-black text-balance">
             {highlightedDescription && (
-              <span className="text-base lg:text-2xl">
+              <span className="text-[13px] md:text-base  lg:text-2xl">
                 {parseHighlightedText(highlightedDescription)}
               </span>
             )}
             {highlightText && (
-              <span className="text-2xl lg:text-4xl leading-12">
+              <span className="text-[13px] lg:text-base xl:text-4xl leading-[1.4]">
                 {parseHighlightedText(highlightedText)}
               </span>
             )}
