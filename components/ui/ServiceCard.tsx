@@ -58,9 +58,9 @@ export function ServiceCard({
     variantCard[variant as keyof typeof variantCard] || variantCard.green;
 
   return (
-    <div className="w-full md:max-w-131">
+    <div className="w-full md:max-w-131 ">
       <div
-        className={`${variantStyles.background} py-7 pr-6 pl-10 rounded-t-[40px] mb-4`}
+        className={`${variantStyles.background} py-7 pr-6 pl-10 rounded-t-[40px] mb-4 min-h-[256px]`}
       >
         <div className="flex justify-between items-center mb-9">
           <div className="w-full">

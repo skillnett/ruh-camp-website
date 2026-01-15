@@ -37,7 +37,7 @@ export function InformationCampSection({ section, id }: SectionProps) {
           </TitleH2>
         )}
         {(section?.description as string) && (
-          <span className="block mb-5 lg:mb-11 text-xl lg:text-2xl text-balance">
+          <span className="block mb-5 lg:mb-11 text-xl lg:text-2xl text-balance text-white dark:text-white">
             {section.description as string}
           </span>
         )}
