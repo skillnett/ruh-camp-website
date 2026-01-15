@@ -2,20 +2,23 @@ import React from "react";
 
 export function scrollToSection(sectionId: string, headerOffset: number = 100) {
   const element = document.getElementById(sectionId);
-  if (element) {
-    const header = document.querySelector("header");
-    const headerHeight = header
+  if (!element) return;
+
+  const header = document.querySelector("header");
+  const nav = header?.querySelector("nav");
+  const headerHeight = nav
+    ? nav.getBoundingClientRect().height
+    : header
       ? header.getBoundingClientRect().height
       : headerOffset;
-    const elementPosition = element.getBoundingClientRect().top;
-    const offsetPosition =
-      elementPosition + window.pageYOffset - headerHeight - 0;
 
-    window.scrollTo({
-      top: Math.max(0, offsetPosition),
-      behavior: "smooth",
-    });
-  }
+  const elementPosition = element.getBoundingClientRect().top;
+  const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+
+  window.scrollTo({
+    top: Math.max(0, offsetPosition),
+    behavior: "smooth",
+  });
 }
 
 export function extractTextFromLexical(content: unknown): string {

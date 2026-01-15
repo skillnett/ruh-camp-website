@@ -46,8 +46,16 @@ export function Header({ menuItems = [], phone }: HeaderProps) {
       const sectionId = item.anchor.startsWith("#")
         ? item.anchor.slice(1)
         : item.anchor;
-      scrollToSection(sectionId);
-      setIsMobileMenuOpen(false);
+
+      if (isMobileMenuOpen) {
+        setIsMobileMenuOpen(false);
+        // Wait for header to collapse before measuring offset
+        window.setTimeout(() => {
+          scrollToSection(sectionId);
+        }, 100);
+      } else {
+        scrollToSection(sectionId);
+      }
     } else {
       setIsMobileMenuOpen(false);
     }
