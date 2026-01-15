@@ -97,7 +97,7 @@ export function HeroSection({ section, id }: HeroSectionProps) {
                 </Button>
               )}
               {button2Text && (
-                <div className="flex flex-col items-center md:items-end  lg:mt-20 md:w-full">
+                <div className="flex flex-col items-center md:items-end md:mt-10 lg:mt-20 md:w-full">
                   <Button
                     variant="primary"
                     size="md"
