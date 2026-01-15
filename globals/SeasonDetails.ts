@@ -30,7 +30,15 @@ function createSeasonFields(): Field[] {
           relationTo: "media",
           label: "Відео анонс",
           admin: {
-            description: "Відео анонс",
+            description: "Відео анонс (завантажене відео)",
+          },
+        },
+        {
+          name: "youtubeVideoUrl",
+          type: "text",
+          label: "YouTube посилання",
+          admin: {
+            description: "Посилання на YouTube відео (для Shorts або звичайних відео). Приклад: https://www.youtube.com/watch?v=VIDEO_ID або https://youtu.be/VIDEO_ID",
           },
         },
       ],

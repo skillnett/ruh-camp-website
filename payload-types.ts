@@ -1003,9 +1003,13 @@ export interface SeasonDetail {
        */
       photoAnnouncement?: (string | null) | Media;
       /**
-       * Відео анонс
+       * Відео анонс (завантажене відео)
        */
       videoAnnouncement?: (string | null) | Media;
+      /**
+       * Посилання на YouTube відео (для Shorts або звичайних відео). Приклад: https://www.youtube.com/watch?v=VIDEO_ID або https://youtu.be/VIDEO_ID
+       */
+      youtubeVideoUrl?: string | null;
     };
     packages?: {
       silverPackage?: {
@@ -1056,9 +1060,13 @@ export interface SeasonDetail {
        */
       photoAnnouncement?: (string | null) | Media;
       /**
-       * Відео анонс
+       * Відео анонс (завантажене відео)
        */
       videoAnnouncement?: (string | null) | Media;
+      /**
+       * Посилання на YouTube відео (для Shorts або звичайних відео). Приклад: https://www.youtube.com/watch?v=VIDEO_ID або https://youtu.be/VIDEO_ID
+       */
+      youtubeVideoUrl?: string | null;
     };
     packages?: {
       silverPackage?: {
@@ -1109,9 +1117,13 @@ export interface SeasonDetail {
        */
       photoAnnouncement?: (string | null) | Media;
       /**
-       * Відео анонс
+       * Відео анонс (завантажене відео)
        */
       videoAnnouncement?: (string | null) | Media;
+      /**
+       * Посилання на YouTube відео (для Shorts або звичайних відео). Приклад: https://www.youtube.com/watch?v=VIDEO_ID або https://youtu.be/VIDEO_ID
+       */
+      youtubeVideoUrl?: string | null;
     };
     packages?: {
       silverPackage?: {
@@ -1162,9 +1174,13 @@ export interface SeasonDetail {
        */
       photoAnnouncement?: (string | null) | Media;
       /**
-       * Відео анонс
+       * Відео анонс (завантажене відео)
        */
       videoAnnouncement?: (string | null) | Media;
+      /**
+       * Посилання на YouTube відео (для Shorts або звичайних відео). Приклад: https://www.youtube.com/watch?v=VIDEO_ID або https://youtu.be/VIDEO_ID
+       */
+      youtubeVideoUrl?: string | null;
     };
     packages?: {
       silverPackage?: {
@@ -1439,6 +1455,7 @@ export interface SeasonDetailsSelect<T extends boolean = true> {
           | {
               photoAnnouncement?: T;
               videoAnnouncement?: T;
+              youtubeVideoUrl?: T;
             };
         packages?:
           | T
@@ -1478,6 +1495,7 @@ export interface SeasonDetailsSelect<T extends boolean = true> {
           | {
               photoAnnouncement?: T;
               videoAnnouncement?: T;
+              youtubeVideoUrl?: T;
             };
         packages?:
           | T
@@ -1517,6 +1535,7 @@ export interface SeasonDetailsSelect<T extends boolean = true> {
           | {
               photoAnnouncement?: T;
               videoAnnouncement?: T;
+              youtubeVideoUrl?: T;
             };
         packages?:
           | T
@@ -1556,6 +1575,7 @@ export interface SeasonDetailsSelect<T extends boolean = true> {
           | {
               photoAnnouncement?: T;
               videoAnnouncement?: T;
+              youtubeVideoUrl?: T;
             };
         packages?:
           | T

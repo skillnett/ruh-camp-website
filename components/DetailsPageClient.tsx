@@ -25,6 +25,7 @@ interface DetailsPageClientProps {
     announcements?: {
       photoAnnouncement?: unknown;
       videoAnnouncement?: unknown;
+      youtubeVideoUrl?: string | null;
     } | null;
     content?: {
       bookingConditionsTitle?: string | null;
@@ -96,10 +97,41 @@ export function DetailsPageClient({
         const videoUrl = details?.announcements?.videoAnnouncement
           ? getMediaUrl(details.announcements.videoAnnouncement)
           : null;
+        const youtubeUrl = details?.announcements?.youtubeVideoUrl || null;
+
+        // Extract YouTube video ID from various URL formats
+        const getYouTubeVideoId = (url: string | null): string | null => {
+          if (!url) return null;
+          const patterns = [
+            /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/,
+            /youtube\.com\/shorts\/([^&\n?#]+)/,
+          ];
+          for (const pattern of patterns) {
+            const match = url.match(pattern);
+            if (match && match[1]) return match[1];
+          }
+          return null;
+        };
+
+        const youtubeVideoId = youtubeUrl
+          ? getYouTubeVideoId(youtubeUrl)
+          : null;
+        const embedUrl = youtubeVideoId
+          ? `https://www.youtube.com/embed/${youtubeVideoId}`
+          : null;
+
         return (
           <div className="w-full sm:max-w-[clamp(280px,50vw+50px,510px)] flex flex-col gap-[clamp(3.5rem,8vw+1rem,3.5rem)] items-end ">
-            <div className="bg-black text-white px-[clamp(1.5rem,3vw+0.5rem,3rem)] py-[clamp(1rem,2vw+0.25rem,1rem)] rounded-[30px] text-[clamp(1.5rem,4vw+0.5rem,2.6875rem)] border border-white text-center w-full h-[clamp(180px,30vw+50px,292px)] flex items-center justify-center overflow-hidden">
-              {videoUrl ? (
+            <div className="bg-black text-white rounded-[30px] border border-white text-center w-full flex items-center justify-center overflow-hidden aspect-[9/16] max-w-[clamp(180px,30vw+50px,292px)]">
+              {embedUrl ? (
+                <iframe
+                  src={embedUrl}
+                  className="w-full h-full"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  title="YouTube video player"
+                />
+              ) : videoUrl ? (
                 <video
                   src={videoUrl}
                   controls
