@@ -2,7 +2,6 @@ import {
   AboutMentorSection,
   AboutSection,
   AdvantagesSection,
-  GuestsSection,
   HeroSection,
   InformationCampSection,
   ServicesSection,
@@ -51,7 +50,7 @@ export function HomePage({
         <AboutMentorSection section={aboutMentorSection} id="about-mentor" />
       )}
       {/* Guests section */}
-      {guestsSection && <GuestsSection section={guestsSection} id="guests" />}
+      {/* {guestsSection && <GuestsSection section={guestsSection} id="guests" />} */}
     </>
   );
 }

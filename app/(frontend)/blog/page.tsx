@@ -1,10 +1,10 @@
-import Link from "next/link";
-import Image from "next/image";
-import { getBlogPosts, getBlogCategories, getMediaUrl } from "@/lib/payload";
+import { getBlogCategories, getBlogPosts, getMediaUrl } from "@/lib/payload";
 import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Блог | RUH Camp",
+  title: "Блог | STEP CAMP",
   description: "Останні статті та новини",
 };
 
@@ -44,7 +44,10 @@ export default async function BlogPage() {
                 className="px-4 py-2 bg-gray-200 rounded-full hover:bg-gray-300 transition-colors"
                 style={
                   category.color
-                    ? { backgroundColor: category.color + "20", color: category.color }
+                    ? {
+                        backgroundColor: category.color + "20",
+                        color: category.color,
+                      }
                     : {}
                 }
               >
@@ -121,16 +124,17 @@ export default async function BlogPage() {
                     <div className="flex items-center justify-between text-sm text-gray-500">
                       {post.publishedAt && (
                         <time dateTime={post.publishedAt}>
-                          {new Date(post.publishedAt).toLocaleDateString("uk-UA", {
-                            year: "numeric",
-                            month: "long",
-                            day: "numeric",
-                          })}
+                          {new Date(post.publishedAt).toLocaleDateString(
+                            "uk-UA",
+                            {
+                              year: "numeric",
+                              month: "long",
+                              day: "numeric",
+                            },
+                          )}
                         </time>
                       )}
-                      {post.readTime && (
-                        <span>{post.readTime} хв читання</span>
-                      )}
+                      {post.readTime && <span>{post.readTime} хв читання</span>}
                     </div>
                   </div>
                 </article>
@@ -151,7 +155,7 @@ export default async function BlogPage() {
                 >
                   {page}
                 </Link>
-              )
+              ),
             )}
           </div>
         )}
@@ -159,4 +163,3 @@ export default async function BlogPage() {
     </div>
   );
 }
-

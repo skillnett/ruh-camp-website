@@ -111,7 +111,7 @@ export function Header({ menuItems = [], phone }: HeaderProps) {
                 href={`tel:${phone}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 hover:text-accent whitespace-nowrap transition-colors transition-hover text-base"
+                className="flex items-center gap-2 hover:text-accent whitespace-nowrap transition-colors transition-hover text-base text-white dark:text-white"
               >
                 <PhoneIcon className="w-4 lg:w-5 h-4 lg:h-5" />
                 <span>{phone}</span>
@@ -120,7 +120,7 @@ export function Header({ menuItems = [], phone }: HeaderProps) {
             {menuItems.length > 0 && (
               <button
                 onClick={toggleMobileMenu}
-                className="lg:hidden z-[90] relative p-2 text-white"
+                className="lg:hidden z-[90] relative p-2 text-white "
                 aria-label="Toggle menu"
               >
                 <BurgerIcon

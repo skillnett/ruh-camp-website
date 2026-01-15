@@ -36,8 +36,8 @@ const benzin = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "RUH Camp",
-  description: "Ласкаво просимо до RUH Camp",
+  title: "STEP CAMP",
+  description: "Ласкаво просимо до STEP CAMP",
 };
 
 export default function RootLayout({

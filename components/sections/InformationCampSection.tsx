@@ -27,10 +27,10 @@ export function InformationCampSection({ section, id }: SectionProps) {
 
   return (
     <section id={id} className="section-bg-3 py-16 lg:py-24 h-fit">
-      <div className="mx-auto px-4 text-center container">
+      <div className="mx-auto px-4 text-left md:text-center container">
         {(section?.title as string) && (
           <TitleH2
-            className="mb-5 lg:mb-12 text-accent xl:text-[86px] text-balance"
+            className="mb-5 lg:mb-12 text-accent xl:text-[86px] text-balance text-left md:text-center"
             color={section.titleColor as string}
           >
             {(section.title as string) || ""}

@@ -64,9 +64,13 @@ export function ServiceCard({
       >
         <div className="flex justify-between items-center mb-9">
           <div className="w-full">
-            <h3 className="font-bold text-2xl leading-tight">{title}</h3>
+            <h3 className="font-bold text-2xl leading-tight text-white dark:text-white">
+              {title}
+            </h3>
             {subtitle && (
-              <span className={`${variantStyles.text} text-base text-white`}>
+              <span
+                className={`text-base text-white uppercase dark:text-white`}
+              >
                 {subtitle}
               </span>
             )}
@@ -77,7 +81,7 @@ export function ServiceCard({
             showSubtitle={false}
           />
         </div>
-        <div className="h-full text-white">
+        <div className="h-full text-white dark:text-white ">
           {content && Array.isArray(content) && content.length > 0 && (
             <ul className="space-y-1">
               {content.map((item, index) => {
@@ -86,7 +90,10 @@ export function ServiceCard({
                     ? item
                     : (item as { item: string })?.item;
                 return itemText ? (
-                  <li key={index} className="flex items-start">
+                  <li
+                    key={index}
+                    className="flex items-start text-white  dark:text-white"
+                  >
                     <span className="mr-1">•</span>
                     <span>{itemText}</span>
                   </li>

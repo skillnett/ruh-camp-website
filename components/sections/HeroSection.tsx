@@ -87,7 +87,7 @@ export function HeroSection({ section, id }: HeroSectionProps) {
               {buttonText && (
                 <Button
                   variant="secondary"
-                  size="sm"
+                  size="md"
                   href={getButtonHref(buttonLink, buttonAnchor)}
                   onClick={(e) =>
                     handleButtonClick(e, buttonLink, buttonAnchor)

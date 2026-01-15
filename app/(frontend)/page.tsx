@@ -11,8 +11,8 @@ export async function generateMetadata(): Promise<Metadata> {
   const homePage = await getHomePage();
 
   return {
-    title: homePage?.title || "RUH Camp",
-    description: homePage?.metaDescription || "Ласкаво просимо до RUH Camp",
+    title: homePage?.title || "STEP CAMP",
+    description: homePage?.metaDescription || "Ласкаво просимо до STEP CAMP",
   };
 }
 
