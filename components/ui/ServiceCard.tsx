@@ -64,7 +64,7 @@ export function ServiceCard({
       >
         <div className="flex justify-between items-center mb-9">
           <div className="w-full">
-            <h3 className="font-bold text-2xl leading-tight text-white dark:text-white">
+            <h3 className="font-bold text-2xl leading-tight text-white dark:text-white uppercase">
               {title}
             </h3>
             {subtitle && (
