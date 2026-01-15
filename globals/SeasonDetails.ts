@@ -275,10 +275,10 @@ export const SeasonDetails: GlobalConfig = {
                 {
                   name: "servicePrice",
                   type: "number",
-                  required: true,
+                  required: false,
                   label: "Ціна послуги",
                   admin: {
-                    description: "Ціна послуги",
+                    description: "Ціна послуги (необов'язкове поле)",
                   },
                 },
               ],

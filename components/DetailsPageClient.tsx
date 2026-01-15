@@ -228,40 +228,55 @@ export function DetailsPageClient({
           details?.content?.additionalServicesTitle ||
           (details?.content?.additionalServices &&
             details.content.additionalServices.length > 0)) && (
-          <div className="flex justify-between  2xl:gap-52 xl:gap-20 gap-10 xl:mb-4 mb-[116px]">
-            <div className="w-full text-black xl:max-w-[932px]  flex flex-col 2xl:gap-8 gap-4 text-[clamp(1rem,1.5vw+0.5rem,1.875rem)] leading-[1.2]">
-              {details?.content?.bookingConditionsTitle && (
-                <div className="w-fit  bg-black text-white text-[clamp(1rem,2vw+0.5rem,2.25rem)] font-benzin  uppercase  px-[clamp(2rem,2vw+1rem,3.25rem)] pb-6 pt-8 leading-[0.5] rounded-full ">
-                  {details.content.bookingConditionsTitle}
-                </div>
-              )}
-              {details?.content?.bookingConditionsParagraphs &&
-                details.content.bookingConditionsParagraphs.length > 0 &&
-                details.content.bookingConditionsParagraphs
-                  .filter((paragraph) => paragraph && paragraph.text)
-                  .map((paragraph, index) => (
-                    <p
-                      key={index}
-                      className={index === 0 ? "text-balance" : ""}
-                    >
-                      {paragraph.text}
-                    </p>
-                  ))}
-              {details?.content?.additionalServicesTitle && (
-                <p>{details.content.additionalServicesTitle}</p>
-              )}
-              {details?.content?.additionalServices &&
-                details.content.additionalServices.length > 0 && (
-                  <ul className="font-bold list-disc pl-4">
-                    {details.content.additionalServices.map(
-                      (service, index) => (
-                        <li key={index}>
-                          {service.serviceName} — {service.servicePrice} грн
-                        </li>
-                      ),
-                    )}
-                  </ul>
+          <div className="flex justify-between  2xl:gap-52 xl:gap-20 gap-10 xl:mb-20 mb-[56px]">
+            <div className="w-full text-black xl:max-w-[932px]  flex flex-col 2xl:gap-12 gap-10 text-[clamp(1rem,1.5vw+0.5rem,1.875rem)] leading-[1.2]">
+              <div className="w-full">
+                {details?.content?.additionalServicesTitle && (
+                  <div className="w-fit  bg-black text-white text-[clamp(1rem,2vw+0.5rem,2.25rem)] font-benzin  uppercase  px-[clamp(2rem,2vw+1rem,3.25rem)] pb-6 pt-8 leading-[0.5] rounded-full mb-5 ">
+                    {details.content.additionalServicesTitle}
+                  </div>
                 )}
+                {details?.content?.additionalServices &&
+                  details.content.additionalServices.length > 0 && (
+                    <ul className="font-bold list-disc pl-6 md:pl-12 space-y-2">
+                      {details.content.additionalServices.map(
+                        (service, index) => (
+                          <li key={index}>
+                            {service.serviceName}
+                            {service.servicePrice !== undefined &&
+                              service.servicePrice !== null &&
+                              ` — ${service.servicePrice} грн`}
+                          </li>
+                        ),
+                      )}
+                    </ul>
+                  )}
+              </div>
+              <div className="w-full  flex justify-center items-center xl:hidden flex-col gap-14  mb-[60px]">
+                {renderComponent("video-section")}
+                {renderComponent("photo-section")}
+              </div>
+              <div className="w-full ">
+                {details?.content?.bookingConditionsTitle && (
+                  <div className="w-fit  bg-black text-white text-[clamp(1rem,2vw+0.5rem,2.25rem)] font-benzin  uppercase  px-[clamp(2rem,2vw+1rem,3.25rem)] pb-6 pt-8 leading-[0.5] rounded-full mb-4">
+                    {details.content.bookingConditionsTitle}
+                  </div>
+                )}
+                <div className="md:pl-8 pl-3 flex flex-col gap-5">
+                  {details?.content?.bookingConditionsParagraphs &&
+                    details.content.bookingConditionsParagraphs.length > 0 &&
+                    details.content.bookingConditionsParagraphs
+                      .filter((paragraph) => paragraph && paragraph.text)
+                      .map((paragraph, index) => (
+                        <p
+                          key={index}
+                          className={index === 0 ? "text-balance" : ""}
+                        >
+                          {paragraph.text}
+                        </p>
+                      ))}
+                </div>
+              </div>
             </div>
             <div className="w-full max-w-[510px] hidden xl:flex flex-col gap-14 items-end ">
               {renderComponent("video-section")}
@@ -275,7 +290,7 @@ export function DetailsPageClient({
           details.content.managers.some(
             (manager) => manager && manager.name && manager.phone,
           ) && (
-            <div className="flex lg:gap-4 gap-5 flex-col mb-20">
+            <div className="flex lg:gap-4 gap-5 flex-col mb-10 lg:mb-20 bg-white lg:p-10 p-5 rounded-4xl">
               <h4 className="text-[clamp(20px,2vw+0.5rem,2.125rem)] font-benzin uppercase  text-black">
                 {details?.content?.contactTitle || "Маєш запитання? Телефонуй!"}
               </h4>
@@ -293,10 +308,7 @@ export function DetailsPageClient({
               </div>
             </div>
           )}
-        <div className="w-full  flex justify-center items-center xl:hidden flex-col gap-14  mb-[60px]">
-          {renderComponent("video-section")}
-          {renderComponent("photo-section")}
-        </div>
+
         {details?.buttons?.registerButtonText && (
           <div className="flex justify-center w-full">
             <Button

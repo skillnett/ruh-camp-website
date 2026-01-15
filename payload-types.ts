@@ -964,9 +964,9 @@ export interface SeasonDetail {
              */
             serviceName: string;
             /**
-             * Ціна послуги
+             * Ціна послуги (необов'язкове поле)
              */
-            servicePrice: number;
+            servicePrice?: number | null;
             id?: string | null;
           }[]
         | null;
