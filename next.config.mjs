@@ -15,6 +15,12 @@ const nextConfig = {
         hostname: "nextcamp.com.ua",
         port: "",
       },
+      {
+        protocol: "https",
+        hostname: "assets.nextcamp.com.ua",
+        port: "",
+        pathname: "/**",
+      },
     ],
     // Allow unoptimized images for development (helps with API endpoints)
     unoptimized: process.env.NODE_ENV === "development",

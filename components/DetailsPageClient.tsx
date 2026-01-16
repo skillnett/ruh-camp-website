@@ -217,6 +217,7 @@ export function DetailsPageClient({
                           alt={`Фото анонс ${index + 1}`}
                           fill
                           className="object-cover"
+                          unoptimized
                         />
                       </div>
                     </div>
