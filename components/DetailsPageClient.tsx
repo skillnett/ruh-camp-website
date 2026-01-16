@@ -345,7 +345,7 @@ export function DetailsPageClient({
                     </ul>
                   )}
               </div>
-              <div className="w-full  flex justify-center items-center xl:hidden flex-col gap-14  mb-[60px]">
+              <div className="w-full  flex justify-center items-center xl:hidden flex-col gap-14  mb-2 lg:mb-[60px]">
                 {renderComponent("video-section")}
                 {renderComponent("photo-section")}
               </div>
