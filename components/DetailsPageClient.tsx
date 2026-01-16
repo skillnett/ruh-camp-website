@@ -121,8 +121,8 @@ export function DetailsPageClient({
           : null;
 
         return (
-          <div className="w-full sm:max-w-[clamp(280px,50vw+50px,510px)] flex flex-col gap-[clamp(3.5rem,8vw+1rem,3.5rem)] items-end ">
-            <div className="bg-black text-white rounded-[30px] border border-white text-center w-full flex items-center justify-center overflow-hidden aspect-[9/16] max-w-[clamp(180px,30vw+50px,292px)]">
+          <div className="w-full sm:max-w-[clamp(280px,50vw+50px,510px)] flex flex-col gap-[clamp(3.5rem,8vw+1rem,3.5rem)] items-center 2xl:items-end ">
+            <div className="bg-black text-white rounded-[30px] border border-white text-center w-full sm:w-[430px] flex items-center justify-center overflow-hidden aspect-[9/16]">
               {embedUrl ? (
                 <iframe
                   src={embedUrl}
@@ -261,7 +261,7 @@ export function DetailsPageClient({
           (details?.content?.additionalServices &&
             details.content.additionalServices.length > 0)) && (
           <div className="flex justify-between  2xl:gap-52 xl:gap-20 gap-10 xl:mb-20 mb-[56px]">
-            <div className="w-full text-black xl:max-w-[932px]  flex flex-col 2xl:gap-12 gap-10 text-[clamp(1rem,1.5vw+0.5rem,1.875rem)] leading-[1.2]">
+            <div className="w-full text-black xl:max-w-[932px]  flex flex-col 2xl:gap-20 lg:gap-18 gap-10 text-[clamp(1rem,1.5vw+0.5rem,1.875rem)] leading-[1.2]">
               <div className="w-full">
                 {details?.content?.additionalServicesTitle && (
                   <div className="w-fit  bg-black text-white text-[clamp(1rem,2vw+0.5rem,2.25rem)] font-benzin  uppercase  px-[clamp(2rem,2vw+1rem,3.25rem)] pb-6 pt-8 leading-[0.5] rounded-full mb-5 ">
@@ -310,12 +310,14 @@ export function DetailsPageClient({
                 </div>
               </div>
             </div>
-            <div className="w-full max-w-[510px] hidden xl:flex flex-col gap-14 items-end ">
+            <div className="w-full max-w-[430px] hidden xl:flex flex-col gap-14 items-center 2xl:items-end ">
               {renderComponent("video-section")}
-              {renderComponent("photo-section")}
             </div>
           </div>
         )}
+        <div className="flex justify-center w-full mb-20">
+          {renderComponent("photo-section")}
+        </div>
         {details?.content?.managers &&
           Array.isArray(details.content.managers) &&
           details.content.managers.length > 0 &&
