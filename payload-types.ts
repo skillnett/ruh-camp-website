@@ -999,9 +999,17 @@ export interface SeasonDetail {
     dateRange?: string | null;
     announcements?: {
       /**
-       * Фото анонс
+       * Завантажте одне або кілька фото для анонсу (буде показано у слайдері)
        */
-      photoAnnouncement?: (string | null) | Media;
+      photoAnnouncement?:
+        | {
+            /**
+             * Фото анонс
+             */
+            photo: string | Media;
+            id?: string | null;
+          }[]
+        | null;
       /**
        * Відео анонс (завантажене відео)
        */
@@ -1056,9 +1064,17 @@ export interface SeasonDetail {
     dateRange?: string | null;
     announcements?: {
       /**
-       * Фото анонс
+       * Завантажте одне або кілька фото для анонсу (буде показано у слайдері)
        */
-      photoAnnouncement?: (string | null) | Media;
+      photoAnnouncement?:
+        | {
+            /**
+             * Фото анонс
+             */
+            photo: string | Media;
+            id?: string | null;
+          }[]
+        | null;
       /**
        * Відео анонс (завантажене відео)
        */
@@ -1113,9 +1129,17 @@ export interface SeasonDetail {
     dateRange?: string | null;
     announcements?: {
       /**
-       * Фото анонс
+       * Завантажте одне або кілька фото для анонсу (буде показано у слайдері)
        */
-      photoAnnouncement?: (string | null) | Media;
+      photoAnnouncement?:
+        | {
+            /**
+             * Фото анонс
+             */
+            photo: string | Media;
+            id?: string | null;
+          }[]
+        | null;
       /**
        * Відео анонс (завантажене відео)
        */
@@ -1170,9 +1194,17 @@ export interface SeasonDetail {
     dateRange?: string | null;
     announcements?: {
       /**
-       * Фото анонс
+       * Завантажте одне або кілька фото для анонсу (буде показано у слайдері)
        */
-      photoAnnouncement?: (string | null) | Media;
+      photoAnnouncement?:
+        | {
+            /**
+             * Фото анонс
+             */
+            photo: string | Media;
+            id?: string | null;
+          }[]
+        | null;
       /**
        * Відео анонс (завантажене відео)
        */
@@ -1453,7 +1485,12 @@ export interface SeasonDetailsSelect<T extends boolean = true> {
         announcements?:
           | T
           | {
-              photoAnnouncement?: T;
+              photoAnnouncement?:
+                | T
+                | {
+                    photo?: T;
+                    id?: T;
+                  };
               videoAnnouncement?: T;
               youtubeVideoUrl?: T;
             };
@@ -1493,7 +1530,12 @@ export interface SeasonDetailsSelect<T extends boolean = true> {
         announcements?:
           | T
           | {
-              photoAnnouncement?: T;
+              photoAnnouncement?:
+                | T
+                | {
+                    photo?: T;
+                    id?: T;
+                  };
               videoAnnouncement?: T;
               youtubeVideoUrl?: T;
             };
@@ -1533,7 +1575,12 @@ export interface SeasonDetailsSelect<T extends boolean = true> {
         announcements?:
           | T
           | {
-              photoAnnouncement?: T;
+              photoAnnouncement?:
+                | T
+                | {
+                    photo?: T;
+                    id?: T;
+                  };
               videoAnnouncement?: T;
               youtubeVideoUrl?: T;
             };
@@ -1573,7 +1620,12 @@ export interface SeasonDetailsSelect<T extends boolean = true> {
         announcements?:
           | T
           | {
-              photoAnnouncement?: T;
+              photoAnnouncement?:
+                | T
+                | {
+                    photo?: T;
+                    id?: T;
+                  };
               videoAnnouncement?: T;
               youtubeVideoUrl?: T;
             };

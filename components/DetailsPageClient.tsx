@@ -5,6 +5,12 @@ import { Button, ContactForm, ModalWrapper, PacketCard } from "@/components/ui";
 import { getMediaUrl } from "@/lib/payload";
 import Image from "next/image";
 import { useState } from "react";
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import { FreeMode, Navigation, Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 interface DetailsPageClientProps {
   theme: {
@@ -23,7 +29,7 @@ interface DetailsPageClientProps {
       registerButtonText?: string | null;
     } | null;
     announcements?: {
-      photoAnnouncement?: unknown;
+      photoAnnouncement?: Array<{ photo?: unknown }> | null;
       videoAnnouncement?: unknown;
       youtubeVideoUrl?: string | null;
     } | null;
@@ -146,22 +152,77 @@ export function DetailsPageClient({
           </div>
         );
       case "photo-section":
-        const photoUrl = details?.announcements?.photoAnnouncement
-          ? getMediaUrl(details.announcements.photoAnnouncement)
-          : null;
+        const photos = details?.announcements?.photoAnnouncement || [];
+        const photoUrls = photos
+          .map((item) => (item?.photo ? getMediaUrl(item.photo) : null))
+          .filter((url): url is string => url !== null);
+
+        if (photoUrls.length === 0) {
+          return (
+            <div className="w-full sm:max-w-[clamp(280px,50vw+50px,510px)] flex flex-col gap-[clamp(3.5rem,8vw+1rem,3.5rem)] items-center 2xl:items-end">
+              <div className="bg-black text-white px-[clamp(1.5rem,3vw+0.5rem,3rem)] py-[clamp(1rem,2vw+0.25rem,1rem)] rounded-[30px] text-[clamp(1.5rem,4vw+0.5rem,2.6875rem)] border border-white text-center w-full h-[clamp(180px,30vw+50px,292px)] flex items-center justify-center">
+                ФОТО АНОНС
+              </div>
+            </div>
+          );
+        }
+
         return (
-          <div className="w-full sm:max-w-[clamp(280px,50vw+50px,510px)] flex flex-col gap-[clamp(3.5rem,8vw+1rem,3.5rem)] items-end ">
-            <div className="bg-black text-white px-[clamp(1.5rem,3vw+0.5rem,3rem)] py-[clamp(1rem,2vw+0.25rem,1rem)] rounded-[30px] text-[clamp(1.5rem,4vw+0.5rem,2.6875rem)] border border-white text-center w-full h-[clamp(180px,30vw+50px,292px)] flex items-center justify-center overflow-hidden relative">
-              {photoUrl ? (
-                <Image
-                  src={photoUrl}
-                  alt="Фото анонс"
-                  fill
-                  className="object-cover"
-                />
-              ) : (
-                "ФОТО АНОНС"
-              )}
+          <div className="w-full flex flex-col gap-[clamp(3.5rem,8vw+1rem,3.5rem)] items-center 2xl:items-end">
+            <div className="w-full">
+              <Swiper
+                modules={[Navigation, Pagination, FreeMode]}
+                spaceBetween={16}
+                slidesPerView={1.5}
+                freeMode={true}
+                loop={photoUrls.length > 1}
+                navigation={{
+                  enabled: false,
+                }}
+                pagination={{
+                  clickable: true,
+                  dynamicBullets: true,
+                }}
+                breakpoints={{
+                  640: {
+                    slidesPerView: 2,
+                    spaceBetween: 16,
+                    navigation: {
+                      enabled: true,
+                    },
+                  },
+                  1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 16,
+                    navigation: {
+                      enabled: true,
+                    },
+                  },
+                  1280: {
+                    slidesPerView: 4,
+                    spaceBetween: 16,
+                    navigation: {
+                      enabled: true,
+                    },
+                  },
+                }}
+                className="w-full photo-swiper"
+              >
+                {photoUrls.map((photoUrl, index) => (
+                  <SwiperSlide key={index}>
+                    <div className="bg-black rounded-[30px] border border-white overflow-hidden">
+                      <div className="relative w-full aspect-4/3">
+                        <Image
+                          src={photoUrl}
+                          alt={`Фото анонс ${index + 1}`}
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
             </div>
           </div>
         );
@@ -315,7 +376,7 @@ export function DetailsPageClient({
             </div>
           </div>
         )}
-        <div className="flex justify-center w-full mb-20">
+        <div className="hidden justify-center w-full mb-20 xl:flex">
           {renderComponent("photo-section")}
         </div>
         {details?.content?.managers &&

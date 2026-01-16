@@ -76,6 +76,61 @@ body {
   background: var(--gradient-green);
 }
 
+/* Swiper pagination styles */
+.photo-swiper .swiper-pagination {
+  position: static !important;
+  margin-top: 20px;
+  text-align: center !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.photo-swiper .swiper-pagination-bullet {
+  background: var(--color-accent) !important;
+  opacity: 0.5;
+}
+
+.photo-swiper .swiper-pagination-bullet-active {
+  opacity: 1;
+}
+
+/* Swiper navigation arrows - black, smaller, hidden on mobile */
+.photo-swiper .swiper-button-next,
+.photo-swiper .swiper-button-prev {
+  color: #ffffff !important;
+  background: #000000 !important;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .photo-swiper .swiper-button-next,
+  .photo-swiper .swiper-button-prev {
+    display: flex;
+  }
+}
+
+.photo-swiper .swiper-button-next:after,
+.photo-swiper .swiper-button-prev:after {
+  font-size: 7px;
+  font-weight: bold;
+}
+
+.photo-swiper .swiper-button-next:hover,
+.photo-swiper .swiper-button-prev:hover {
+  background: #000000 !important;
+  transform: scale(1.1);
+}
+
+.photo-swiper .swiper-button-next.swiper-button-disabled,
+.photo-swiper .swiper-button-prev.swiper-button-disabled {
+  opacity: 0.35;
+}
+
 .gradient-yellow {
   background: var(--gradient-yellow);
 }

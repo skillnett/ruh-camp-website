@@ -17,11 +17,23 @@ function createSeasonFields(): Field[] {
       fields: [
         {
           name: "photoAnnouncement",
-          type: "upload",
-          relationTo: "media",
-          label: "Фото анонс",
+          type: "array",
+          label: "Фото анонси",
+          minRows: 1,
+          fields: [
+            {
+              name: "photo",
+              type: "upload",
+              relationTo: "media",
+              label: "Фото",
+              required: true,
+              admin: {
+                description: "Фото анонс",
+              },
+            },
+          ],
           admin: {
-            description: "Фото анонс",
+            description: "Завантажте одне або кілька фото для анонсу (буде показано у слайдері)",
           },
         },
         {
