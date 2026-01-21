@@ -11,8 +11,20 @@ export async function generateMetadata(): Promise<Metadata> {
   const homePage = await getHomePage();
 
   return {
-    title: homePage?.title || "STEP CAMP",
-    description: homePage?.metaDescription || "Ласкаво просимо до STEP CAMP",
+    title: {
+      default: homePage?.title || "STEP CAMP — табір, що рухає дітей уперед",
+      template: "%s | STEP CAMP — табір, що рухає дітей уперед",
+    },
+    description: homePage?.metaDescription || "Дитячий та підлітковий кемп, де кожен прокачує свій STEP LEVEL: спорт, скілли, характер, впевненість, навчання та емоції",
+    openGraph: {
+      title: homePage?.title || "STEP CAMP — табір, що рухає дітей уперед",
+      description: homePage?.metaDescription || "Дитячий та підлітковий кемп, де кожен прокачує свій STEP LEVEL: спорт, скілли, характер, впевненість, навчання та емоції",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: homePage?.title || "STEP CAMP — табір, що рухає дітей уперед",
+      description: homePage?.metaDescription || "Дитячий та підлітковий кемп, де кожен прокачує свій STEP LEVEL: спорт, скілли, характер, впевненість, навчання та емоції",
+    },
   };
 }
 

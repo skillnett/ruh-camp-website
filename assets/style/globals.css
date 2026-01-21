@@ -108,6 +108,7 @@ body {
 }
 
 @media (min-width: 640px) {
+
   .photo-swiper .swiper-button-next,
   .photo-swiper .swiper-button-prev {
     display: flex;

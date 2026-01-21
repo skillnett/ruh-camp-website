@@ -36,8 +36,11 @@ const benzin = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "STEP CAMP",
-  description: "Ласкаво просимо до STEP CAMP",
+  title: {
+    default: "STEP CAMP — табір, що рухає дітей уперед",
+    template: "%s | STEP CAMP — табір, що рухає дітей уперед",
+  },
+  description: "Дитячий та підлітковий кемп, де кожен прокачує свій STEP LEVEL: спорт, скілли, характер, впевненість, навчання та емоції",
 };
 
 export default function RootLayout({
