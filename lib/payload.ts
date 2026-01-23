@@ -211,7 +211,7 @@ export async function getBlogCategories() {
 }
 
 // Get base URL for media
-function getBaseUrl(): string {
+export function getBaseUrl(): string {
   if (typeof window !== "undefined") {
     // Client-side: use current origin
     return window.location.origin;

@@ -35,12 +35,29 @@ const benzin = localFont({
   fallback: ["sans-serif"],
 });
 
+// Note: This is a fallback metadata. Child pages should override with generateMetadata
+const getBaseUrl = () => {
+  if (typeof window !== "undefined") {
+    return window.location.origin;
+  }
+  return (
+    process.env.NEXT_PUBLIC_SITE_URL ||
+    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null) ||
+    "http://localhost:3000"
+  );
+};
+
 export const metadata: Metadata = {
   title: {
     default: "STEP CAMP — табір, що рухає дітей уперед",
     template: "%s | STEP CAMP — табір, що рухає дітей уперед",
   },
   description: "Дитячий та підлітковий кемп, де кожен прокачує свій STEP LEVEL: спорт, скілли, характер, впевненість, навчання та емоції",
+  openGraph: {
+    type: "website",
+    siteName: "STEP CAMP",
+    locale: "uk_UA",
+  },
 };
 
 export default function RootLayout({
