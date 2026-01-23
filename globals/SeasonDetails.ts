@@ -179,6 +179,15 @@ export const SeasonDetails: GlobalConfig = {
               },
             },
             {
+              name: "programButtonPdf",
+              type: "upload",
+              relationTo: "media",
+              label: "PDF файл програми табору",
+              admin: {
+                description: "Завантажте PDF файл програми табору. Він відкриється в новій вкладці при натисканні на кнопку 'Програма табору'",
+              },
+            },
+            {
               name: "registerButtonText",
               type: "text",
               label: "Текст кнопки реєстрації",

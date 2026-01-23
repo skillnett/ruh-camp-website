@@ -913,6 +913,10 @@ export interface SeasonDetail {
        */
       programButtonText?: string | null;
       /**
+       * Завантажте PDF файл програми табору. Він відкриється в новій вкладці при натисканні на кнопку 'Програма табору'
+       */
+      programButtonPdf?: (string | null) | Media;
+      /**
        * Текст кнопки реєстрації
        */
       registerButtonText?: string | null;
@@ -1432,6 +1436,7 @@ export interface SeasonDetailsSelect<T extends boolean = true> {
           | {
               aboutButtonText?: T;
               programButtonText?: T;
+              programButtonPdf?: T;
               registerButtonText?: T;
             };
         packages?:

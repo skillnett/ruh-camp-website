@@ -26,6 +26,7 @@ interface DetailsPageClientProps {
     buttons?: {
       aboutButtonText?: string | null;
       programButtonText?: string | null;
+      programButtonPdf?: unknown;
       registerButtonText?: string | null;
     } | null;
     announcements?: {
@@ -77,12 +78,28 @@ export function DetailsPageClient({
     switch (component) {
       case "program-button":
         if (!details?.buttons?.programButtonText) return null;
+        const pdfUrl = details?.buttons?.programButtonPdf
+          ? getMediaUrl(details.buttons.programButtonPdf)
+          : null;
+
+        if (pdfUrl) {
+          return (
+            <a
+              href={pdfUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`${theme.text} text-[clamp(14px,1.5vw+0.5rem,1.5rem)] rounded-full p-4 xl:p-7 bg-black leading-[0.8] xl:leading-[0.7] whitespace-nowrap h-[clamp(48px,2vw+24px,56px)] flex items-center justify-center font-medium transition-all cursor-pointer transition-hover w-fit hover:opacity-80`}
+            >
+              {details.buttons.programButtonText}
+            </a>
+          );
+        }
+        
         return (
           <Button
             variant="custom"
             size="custom"
-            className={`${theme.text} text-[clamp(14px,1.5vw+0.5rem,1.5rem)] rounded-full p-4 xl:p-7 bg-black  leading-[0.8] xl:leading-[0.7] whitespace-nowrap h-[clamp(48px,2vw+24px,56px)] flex items-center justify-center`}
-            href="/"
+            className={`${theme.text} text-[clamp(14px,1.5vw+0.5rem,1.5rem)] rounded-full p-4 xl:p-7 bg-black leading-[0.8] xl:leading-[0.7] whitespace-nowrap h-[clamp(48px,2vw+24px,56px)] flex items-center justify-center opacity-50 cursor-not-allowed`}
           >
             {details.buttons.programButtonText}
           </Button>
