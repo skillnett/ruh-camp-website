@@ -19,11 +19,10 @@ interface NavigationItem {
 
 interface HeaderProps {
   menuItems?: NavigationItem[];
-  phone?: string;
+  phones?: string[];
 }
 
-export function Header({ menuItems = [], phone }: HeaderProps) {
-  console.log("Header received phone:", phone);
+export function Header({ menuItems = [], phones = [] }: HeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [blurValue, setBlurValue] = useState(0);
   const { scrollYProgress, scrollY } = useScroll();
@@ -106,16 +105,23 @@ export function Header({ menuItems = [], phone }: HeaderProps) {
             </div>
           )}
           <div className="flex lg:hidden items-center gap-5 md:gap-12 z-90 relative">
-            {phone && phone.trim() && (
-              <Link
-                href={`tel:${phone}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 hover:text-accent whitespace-nowrap transition-colors transition-hover text-base text-white dark:text-white"
-              >
-                <PhoneIcon className="w-4 lg:w-5 h-4 lg:h-5" />
-                <span>{phone}</span>
-              </Link>
+            {phones.length > 0 && (
+              <div className="flex flex-row items-center gap-2">
+                <PhoneIcon className="w-4 h-4 shrink-0 text-accent" />
+                <div className="flex flex-col items-end gap-0.5">
+                  {phones.map((phone) => (
+                    <Link
+                      key={phone}
+                      href={`tel:${phone}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-accent whitespace-nowrap transition-colors transition-hover text-sm text-white dark:text-white"
+                    >
+                      {phone}
+                    </Link>
+                  ))}
+                </div>
+              </div>
             )}
             {menuItems.length > 0 && (
               <button

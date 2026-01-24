@@ -114,6 +114,7 @@ export async function getFooter() {
     const data = await fetchPayload<{
       contactInfo: {
         phone?: string;
+        phone2?: string;
         email?: string;
         telegram?: string;
         instagram?: string;

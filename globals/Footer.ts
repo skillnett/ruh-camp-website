@@ -18,9 +18,17 @@ export const Footer: GlobalConfig = {
         {
           name: "phone",
           type: "text",
-          label: "Номер телефону",
+          label: "Номер телефону 1",
           admin: {
-            description: "Номер телефону для контактів",
+            description: "Перший номер телефону для контактів",
+          },
+        },
+        {
+          name: "phone2",
+          type: "text",
+          label: "Номер телефону 2",
+          admin: {
+            description: "Другий номер телефону (необовʼязково)",
           },
         },
         {

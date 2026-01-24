@@ -26,16 +26,20 @@ export async function getHeader() {
       return null;
     }
 
+    const data = headerData as {
+      phone?: string | null;
+      phone2?: string | null;
+      menu?: Array<{
+        label: string;
+        url?: string | null;
+        anchor?: string | null;
+        id?: string | null;
+      }> | null;
+    };
     return {
-      phone: (headerData as { phone?: string | null }).phone || null,
-      menu: (headerData as {
-        menu?: Array<{
-          label: string;
-          url?: string | null;
-          anchor?: string | null;
-          id?: string | null;
-        }> | null;
-      }).menu || null,
+      phone: data.phone || null,
+      phone2: data.phone2 || null,
+      menu: data.menu || null,
     };
   } catch (error) {
     console.error("Error fetching header:", error);

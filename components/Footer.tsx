@@ -5,7 +5,7 @@ import {
   PhoneIcon,
   TelegramIcon,
 } from "@/assets/icons";
-import { getFooter } from "@/lib/payload";
+import { getFooter } from "@/lib/getFooter";
 import Link from "next/link";
 
 export async function Footer() {
@@ -31,19 +31,32 @@ export async function Footer() {
               subtitleClassName="text-[6px] lg:text-[8px]"
             />
           </Link>
-          <div className="flex flex-col xl:flex-row gap-3  xl:gap-16 text-[clamp(12px,1.5vw+0.5rem,24px)]">
-            <div className="flex flex-col sm:flex-row items-center  gap-4 lg:gap-8 xl:gap-16 ">
-              {contactInfo?.phone && (
-                <Link
-                  href={`tel:${contactInfo.phone}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 hover:text-accent whitespace-nowrap transition-colors transition-hover"
-                >
-                  <PhoneIcon className="w-4 lg:w-5 h-4 lg:h-5" />
-                  <span>{contactInfo.phone}</span>
-                </Link>
-              )}
+          <div className="flex flex-col xl:flex-row xl:items-center gap-3 xl:gap-16 text-[clamp(12px,1.5vw+0.5rem,18px)] lg:text-[20px]">
+            <div className="flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-4 lg:gap-8 xl:gap-16 ">
+              <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-[clamp(11px,1.2vw+0.4rem,18px)] lg:text-[20px]">
+                {contactInfo?.phone && (
+                  <Link
+                    href={`tel:${contactInfo.phone}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 hover:text-accent whitespace-nowrap transition-colors transition-hover"
+                  >
+                    <PhoneIcon className="w-4 h-4 shrink-0 text-accent" />
+                    <span>{contactInfo.phone}</span>
+                  </Link>
+                )}
+                {contactInfo?.phone2 && (
+                  <Link
+                    href={`tel:${contactInfo.phone2}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 hover:text-accent whitespace-nowrap transition-colors transition-hover"
+                  >
+                    <PhoneIcon className="w-4 h-4 shrink-0 text-accent" />
+                    <span>{contactInfo.phone2}</span>
+                  </Link>
+                )}
+              </div>
               {contactInfo?.email && (
                 <Link
                   href={`mailto:${contactInfo.email}`}
@@ -56,14 +69,14 @@ export async function Footer() {
                 </Link>
               )}
             </div>
-            <div className="flex gap-4 xl:gap-11 justify-between ">
+            <div className="flex flex-wrap items-center justify-center xl:justify-start gap-4 xl:gap-11">
               {additionalLinks &&
                 additionalLinks.length > 0 &&
                 additionalLinks.map((link, index) => (
                   <Link
                     key={index}
                     href={link.url}
-                    className="text-gray-300 hover:text-accent transition-colors transition-hover "
+                    className="text-gray-300 hover:text-accent transition-colors transition-hover whitespace-nowrap"
                   >
                     {link.label}
                   </Link>

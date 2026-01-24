@@ -13,9 +13,17 @@ export const Header: GlobalConfig = {
     {
       name: "phone",
       type: "text",
-      label: "Номер телефону",
+      label: "Номер телефону 1",
       admin: {
-        description: "Номер телефону для відображення в мобільному меню",
+        description: "Перший номер для мобільного меню",
+      },
+    },
+    {
+      name: "phone2",
+      type: "text",
+      label: "Номер телефону 2",
+      admin: {
+        description: "Другий номер для мобільного меню (необовʼязково)",
       },
     },
     {

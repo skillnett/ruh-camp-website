@@ -16,5 +16,8 @@ export async function HeaderWrapper() {
       };
     }) || [];
 
-  return <Header menuItems={menuItems} phone={headerData?.phone || ""} />;
+  const phones = [headerData?.phone, headerData?.phone2].filter(
+    (p): p is string => Boolean(p && String(p).trim()),
+  );
+  return <Header menuItems={menuItems} phones={phones} />;
 }

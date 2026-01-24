@@ -828,9 +828,13 @@ export interface Footer {
   id: string;
   contactInfo?: {
     /**
-     * Номер телефону для контактів
+     * Перший номер телефону для контактів
      */
     phone?: string | null;
+    /**
+     * Другий номер телефону (необовʼязково)
+     */
+    phone2?: string | null;
     /**
      * Email адреса
      */
@@ -863,9 +867,13 @@ export interface Footer {
 export interface Header {
   id: string;
   /**
-   * Номер телефону для відображення в мобільному меню
+   * Перший номер для мобільного меню
    */
   phone?: string | null;
+  /**
+   * Другий номер для мобільного меню (необовʼязково)
+   */
+  phone2?: string | null;
   /**
    * Додайте пункти меню. Якщо вказано посилання (url), воно матиме пріоритет. Якщо url відсутнє, використовується якір (anchor). Посилання може бути як внутрішнім (/blog, /about), так і зовнішнім (https://example.com).
    */
@@ -983,11 +991,11 @@ export interface SeasonDetail {
             /**
              * Ім'я менеджера
              */
-            name: string;
+            name?: string | null;
             /**
              * Телефон менеджера
              */
-            phone: string;
+            phone?: string | null;
             id?: string | null;
           }[]
         | null;
@@ -1390,6 +1398,7 @@ export interface FooterSelect<T extends boolean = true> {
     | T
     | {
         phone?: T;
+        phone2?: T;
         email?: T;
         telegram?: T;
         instagram?: T;
@@ -1411,6 +1420,7 @@ export interface FooterSelect<T extends boolean = true> {
  */
 export interface HeaderSelect<T extends boolean = true> {
   phone?: T;
+  phone2?: T;
   menu?:
     | T
     | {
