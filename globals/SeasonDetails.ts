@@ -328,7 +328,6 @@ export const SeasonDetails: GlobalConfig = {
                 {
                   name: "name",
                   type: "text",
-                  required: true,
                   label: "Ім'я менеджера",
                   admin: {
                     description: "Ім'я менеджера",
@@ -337,7 +336,6 @@ export const SeasonDetails: GlobalConfig = {
                 {
                   name: "phone",
                   type: "text",
-                  required: true,
                   label: "Телефон менеджера",
                   admin: {
                     description: "Телефон менеджера",

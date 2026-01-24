@@ -4,6 +4,7 @@ import { Logo } from "@/assets/icons";
 import { Button, ContactForm, ModalWrapper, PacketCard } from "@/components/ui";
 import { getMediaUrl } from "@/lib/payload";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import "swiper/css";
 import "swiper/css/free-mode";
@@ -412,7 +413,12 @@ export function DetailsPageClient({
                   .filter((manager) => manager && manager.name && manager.phone)
                   .map((manager, index) => (
                     <div key={index} className="flex flex-col gap-2 ">
-                      <span className=" font-bold">{manager.phone}</span>
+                      <Link
+                        href={`tel:${manager.phone}`}
+                        className="font-bold hover:opacity-70 transition-opacity"
+                      >
+                        {manager.phone}
+                      </Link>
                       <span className="text-[clamp(16px,1.5vw+0.5rem,1.375rem)]">
                         Менеджер {manager.name}
                       </span>
