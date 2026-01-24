@@ -401,16 +401,14 @@ export function DetailsPageClient({
         {details?.content?.managers &&
           Array.isArray(details.content.managers) &&
           details.content.managers.length > 0 &&
-          details.content.managers.some(
-            (manager) => manager && manager.name && manager.phone,
-          ) && (
+          details.content.managers.some((manager) => manager && manager.phone) && (
             <div className="flex lg:gap-4 gap-5 flex-col mb-10 lg:mb-20 bg-white lg:p-10 p-5 rounded-4xl">
               <h4 className="text-[clamp(20px,2vw+0.5rem,2.125rem)] font-benzin uppercase  text-black">
                 {details?.content?.contactTitle || "Маєш запитання? Телефонуй!"}
               </h4>
               <div className="flex 2xl:gap-28 gap-6 text-black text-[clamp(18px,1.5vw+0.5rem,1.625rem)] leading-[0.8] whitespace-nowrap">
                 {details.content.managers
-                  .filter((manager) => manager && manager.name && manager.phone)
+                  .filter((manager) => manager && manager.phone)
                   .map((manager, index) => (
                     <div key={index} className="flex flex-col gap-2 ">
                       <Link
@@ -419,9 +417,11 @@ export function DetailsPageClient({
                       >
                         {manager.phone}
                       </Link>
-                      <span className="text-[clamp(16px,1.5vw+0.5rem,1.375rem)]">
-                        Менеджер {manager.name}
-                      </span>
+                      {manager.name && (
+                        <span className="text-[clamp(16px,1.5vw+0.5rem,1.375rem)]">
+                          Менеджер {manager.name}
+                        </span>
+                      )}
                     </div>
                   ))}
               </div>
