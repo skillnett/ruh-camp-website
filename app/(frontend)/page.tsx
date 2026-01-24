@@ -11,7 +11,8 @@ export async function generateMetadata(): Promise<Metadata> {
   const homePage = await getHomePage();
   const baseUrl = getBaseUrl();
   const siteUrl = `${baseUrl}`;
-  
+  const ogImageUrl = `${baseUrl}/images/about-mentor.png`;
+
   const title = homePage?.title || "STEP CAMP — табір, що рухає дітей уперед";
   const description = homePage?.metaDescription || "Дитячий та підлітковий кемп, де кожен прокачує свій STEP LEVEL: спорт, скілли, характер, впевненість, навчання та емоції";
 
@@ -28,11 +29,20 @@ export async function generateMetadata(): Promise<Metadata> {
       title,
       description,
       locale: "uk_UA",
+      images: [
+        {
+          url: ogImageUrl,
+          width: 1200,
+          height: 630,
+          alt: "STEP CAMP — табір, що рухає дітей уперед",
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
+      images: [ogImageUrl],
     },
     alternates: {
       canonical: siteUrl,
