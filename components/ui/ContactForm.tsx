@@ -1,18 +1,31 @@
 "use client";
 
 import { Button } from "@/components/ui";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 interface ContactFormProps {
   className?: string;
+  privacyPolicyUrl?: string;
+  thankYouPage?: string;
 }
 
-export function ContactForm({ className = "" }: ContactFormProps) {
+const THANK_YOU_PAGE = "/thanks";
+
+export function ContactForm({
+  className = "",
+  privacyPolicyUrl = "/policy",
+  thankYouPage,
+}: ContactFormProps) {
+  const redirectUrl = thankYouPage ?? THANK_YOU_PAGE;
+  const router = useRouter();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
   });
+  const [agreePrivacy, setAgreePrivacy] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<{
     type: "success" | "error" | null;
@@ -22,7 +35,12 @@ export function ContactForm({ className = "" }: ContactFormProps) {
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
-    const { name, value } = e.target;
+    const target = e.target;
+    if (target.type === "checkbox") {
+      setAgreePrivacy((target as HTMLInputElement).checked);
+      return;
+    }
+    const { name, value } = target;
     setFormData((prev) => ({
       ...prev,
       [name]: value,
@@ -31,6 +49,13 @@ export function ContactForm({ className = "" }: ContactFormProps) {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!agreePrivacy) {
+      setSubmitStatus({
+        type: "error",
+        message: "Потрібно погодитися з політикою конфіденційності.",
+      });
+      return;
+    }
     setIsSubmitting(true);
     setSubmitStatus({ type: null, message: "" });
 
@@ -48,11 +73,9 @@ export function ContactForm({ className = "" }: ContactFormProps) {
         throw new Error(errorData.message || "Помилка відправки форми");
       }
 
-      setSubmitStatus({
-        type: "success",
-        message: "Дякуємо! Ваша заявка успішно відправлена.",
-      });
       setFormData({ name: "", email: "", phone: "" });
+      setAgreePrivacy(false);
+      router.push(redirectUrl);
     } catch (error) {
       setSubmitStatus({
         type: "error",
@@ -69,7 +92,7 @@ export function ContactForm({ className = "" }: ContactFormProps) {
   return (
     <form
       onSubmit={handleSubmit}
-      className={`flex flex-col gap-4 lg:gap-6  px-4  ${className}`}
+      className={`flex flex-col gap-4 lg:gap-6 px-4 pb-2 ${className}`}
     >
       <div className="flex flex-col gap-2">
         <label
@@ -140,11 +163,33 @@ export function ContactForm({ className = "" }: ContactFormProps) {
         </div>
       )}
 
+      <label className="flex items-start gap-3 cursor-pointer group mx-auto w-fit">
+        <input
+          type="checkbox"
+          name="agreePrivacy"
+          checked={agreePrivacy}
+          onChange={handleChange}
+          className="mt-1 w-4 h-4 shrink-0 rounded border-white/30 bg-white/40 accent-accent focus:ring-accent focus:ring-offset-0"
+        />
+        <span className="text-black text-sm lg:text-base">
+          Я погоджуюсь з{" "}
+          <Link
+            href={privacyPolicyUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline hover:opacity-80 transition-opacity"
+          >
+            політикою конфіденційності
+          </Link>{" "}
+        </span>
+      </label>
+
       <Button
         type="submit"
         variant="primary"
         size="sm"
         className="mx-auto mt-4"
+        disabled={!agreePrivacy || isSubmitting}
       >
         {isSubmitting ? "Відправка..." : "Відправити заявку"}
       </Button>

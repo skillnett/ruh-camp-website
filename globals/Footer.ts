@@ -57,6 +57,15 @@ export const Footer: GlobalConfig = {
               "Instagram username або посилання (наприклад: @username або https://instagram.com/username)",
           },
         },
+        {
+          name: "tiktok",
+          type: "text",
+          label: "TikTok",
+          admin: {
+            description:
+              "TikTok username або посилання (наприклад: @username або https://tiktok.com/@username)",
+          },
+        },
       ],
     },
     {

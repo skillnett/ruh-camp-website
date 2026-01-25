@@ -4,6 +4,7 @@ import {
   Logo,
   PhoneIcon,
   TelegramIcon,
+  TikTokIcon,
 } from "@/assets/icons";
 import { getFooter } from "@/lib/getFooter";
 import Link from "next/link";
@@ -41,7 +42,7 @@ export async function Footer() {
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 hover:text-accent whitespace-nowrap transition-colors transition-hover"
                   >
-                    <PhoneIcon className="w-4 h-4 shrink-0 text-accent" />
+                    <PhoneIcon className="w-[0.7rem] h-[0.7rem] shrink-0 text-accent" />
                     <span>{contactInfo.phone}</span>
                   </Link>
                 )}
@@ -52,7 +53,7 @@ export async function Footer() {
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 hover:text-accent whitespace-nowrap transition-colors transition-hover"
                   >
-                    <PhoneIcon className="w-4 h-4 shrink-0 text-accent" />
+                    <PhoneIcon className="w-[0.7rem] h-[0.7rem] shrink-0 text-accent" />
                     <span>{contactInfo.phone2}</span>
                   </Link>
                 )}
@@ -64,12 +65,18 @@ export async function Footer() {
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 hover:text-accent lg:text-left text-center break-all lg:break-normal transition-colors transition-hover"
                 >
-                  <EmailIcon className="w-4 lg:w-5 h-4 lg:h-5" />
+                  <EmailIcon className="w-[0.7rem] lg:w-[0.875rem] h-[0.7rem] lg:h-[0.875rem]" />
                   <span>{contactInfo.email}</span>
                 </Link>
               )}
             </div>
             <div className="flex flex-wrap items-center justify-center xl:justify-start gap-4 xl:gap-11">
+              <Link
+                href="/policy"
+                className="text-gray-300 hover:text-accent transition-colors transition-hover whitespace-nowrap"
+              >
+                Політика конфіденційності
+              </Link>
               {additionalLinks &&
                 additionalLinks.length > 0 &&
                 additionalLinks.map((link, index) => (
@@ -93,7 +100,7 @@ export async function Footer() {
                   className="hover:text-accent transition-colors transition-hover cursor-pointer"
                   aria-label="Telegram"
                 >
-                  <TelegramIcon className="w-6 xl:w-11 h-6 xl:h-11" />
+                  <TelegramIcon className="w-[1.05rem] xl:w-[1.925rem] h-[1.05rem] xl:h-[1.925rem]" />
                 </Link>
               )}
               {contactInfo?.instagram && (
@@ -111,7 +118,22 @@ export async function Footer() {
                   className="hover:text-accent transition-colors transition-hover cursor-pointer"
                   aria-label="Instagram"
                 >
-                  <InstagramIcon className="w-6 xl:w-11 h-6 xl:h-11" />
+                  <InstagramIcon className="w-[1.05rem] xl:w-[1.925rem] h-[1.05rem] xl:h-[1.925rem]" />
+                </Link>
+              )}
+              {contactInfo?.tiktok && (
+                <Link
+                  href={
+                    contactInfo.tiktok.startsWith("http")
+                      ? contactInfo.tiktok
+                      : `https://tiktok.com/@${contactInfo.tiktok.replace("@", "")}`
+                  }
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-accent transition-colors transition-hover cursor-pointer"
+                  aria-label="TikTok"
+                >
+                  <TikTokIcon className="w-[1.05rem] xl:w-[1.925rem] h-[1.05rem] xl:h-[1.925rem]" />
                 </Link>
               )}
             </div>

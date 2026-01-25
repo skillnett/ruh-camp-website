@@ -22,6 +22,7 @@ export async function getFooter() {
         email?: string | null;
         telegram?: string | null;
         instagram?: string | null;
+        tiktok?: string | null;
       } | null;
       additionalLinks?: Array<{ label: string; url: string }> | null;
     };
@@ -34,6 +35,7 @@ export async function getFooter() {
             email: raw.contactInfo.email ?? undefined,
             telegram: raw.contactInfo.telegram ?? undefined,
             instagram: raw.contactInfo.instagram ?? undefined,
+            tiktok: raw.contactInfo.tiktok ?? undefined,
           }
         : null,
       additionalLinks: raw.additionalLinks ?? null,

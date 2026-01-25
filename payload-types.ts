@@ -847,6 +847,10 @@ export interface Footer {
      * Instagram username або посилання (наприклад: @username або https://instagram.com/username)
      */
     instagram?: string | null;
+    /**
+     * TikTok username або посилання (наприклад: @username або https://tiktok.com/@username)
+     */
+    tiktok?: string | null;
   };
   additionalLinks?:
     | {
@@ -1402,6 +1406,7 @@ export interface FooterSelect<T extends boolean = true> {
         email?: T;
         telegram?: T;
         instagram?: T;
+        tiktok?: T;
       };
   additionalLinks?:
     | T

@@ -10,6 +10,7 @@ interface ButtonProps {
   ) => void;
   type?: "button" | "submit" | "reset";
   href?: string;
+  disabled?: boolean;
 }
 
 export function Button({
@@ -20,9 +21,13 @@ export function Button({
   onClick,
   type = "button",
   href,
+  disabled = false,
 }: ButtonProps) {
   const baseStyles =
-    "font-medium transition-all cursor-pointer transition-hover w-fit hover:opacity-80 ";
+    "font-medium transition-all w-fit " +
+    (disabled
+      ? "cursor-not-allowed opacity-50 pointer-events-none"
+      : "cursor-pointer transition-hover hover:opacity-80 ");
   const variantStyles = {
     primary: "bg-black text-accent hover:-translate-y-1",
     secondary: "bg-white text-accent hover:-translate-y-1 ",
@@ -47,7 +52,12 @@ export function Button({
   }
 
   return (
-    <button type={type} onClick={onClick} className={classes}>
+    <button
+      type={type}
+      onClick={onClick}
+      className={classes}
+      disabled={disabled}
+    >
       {children}
     </button>
   );
