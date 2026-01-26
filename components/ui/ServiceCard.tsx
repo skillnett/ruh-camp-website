@@ -11,6 +11,7 @@ interface ServiceCardProps {
   secondButtonText?: string;
   secondButtonLink?: string;
   onSecondButtonClick?: () => void;
+  disabled?: boolean;
 }
 
 export function ServiceCard({
@@ -23,6 +24,7 @@ export function ServiceCard({
   secondButtonText = "Sign up",
   secondButtonLink,
   onSecondButtonClick,
+  disabled = false,
 }: ServiceCardProps) {
   const variantCard = {
     green: {
@@ -58,7 +60,9 @@ export function ServiceCard({
     variantCard[variant as keyof typeof variantCard] || variantCard.green;
 
   return (
-    <div className="w-full md:max-w-131 ">
+    <div
+      className={`w-full md:max-w-131 ${disabled ? "opacity-40 pointer-events-none select-none" : ""}`}
+    >
       <div
         className={`${variantStyles.background} py-7 pr-6 pl-10 rounded-t-[40px] mb-4 min-h-[256px]`}
       >
@@ -108,7 +112,8 @@ export function ServiceCard({
           <Button
             variant="custom"
             className={variantStyles.firstButton}
-            onClick={onFirstButtonClick}
+            onClick={disabled ? undefined : onFirstButtonClick}
+            disabled={disabled}
           >
             {firstButtonText}
           </Button>
@@ -117,8 +122,15 @@ export function ServiceCard({
           <Button
             variant="custom"
             className={variantStyles.secondButton}
-            href={onSecondButtonClick ? undefined : secondButtonLink}
-            onClick={onSecondButtonClick}
+            href={
+              disabled
+                ? undefined
+                : onSecondButtonClick
+                  ? undefined
+                  : secondButtonLink
+            }
+            onClick={disabled ? undefined : onSecondButtonClick}
+            disabled={disabled}
           >
             {secondButtonText}
           </Button>

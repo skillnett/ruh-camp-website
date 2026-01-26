@@ -287,6 +287,16 @@ export const Home: GlobalConfig = {
                 description: "Текст другої кнопки (відкриває форму зв'язку)",
               },
             },
+            {
+              name: "disabled",
+              type: "checkbox",
+              label: "Неактивна",
+              defaultValue: false,
+              admin: {
+                description:
+                  "Увімкніть, щоб картка була видимою, але неактивною (не клікається)",
+              },
+            },
           ],
           admin: {
             description: "Додайте до 4 карточок для секції 'Послуги'",

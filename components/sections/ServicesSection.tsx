@@ -40,6 +40,7 @@ export function ServicesSection({ section, id }: SectionProps) {
     firstButtonText?: string;
     firstButtonLink?: string;
     secondButtonText?: string;
+    disabled?: boolean;
   }> = [];
 
   if (section.serviceCards && Array.isArray(section.serviceCards)) {
@@ -53,6 +54,7 @@ export function ServicesSection({ section, id }: SectionProps) {
         firstButtonText: itemData.firstButtonText as string | undefined,
         firstButtonLink: itemData.firstButtonLink as string | undefined,
         secondButtonText: itemData.secondButtonText as string | undefined,
+        disabled: Boolean(itemData.disabled),
       });
     });
   }
@@ -107,6 +109,7 @@ export function ServicesSection({ section, id }: SectionProps) {
                 )}
                 secondButtonText={card.secondButtonText}
                 onSecondButtonClick={() => setIsContactFormOpen(true)}
+                disabled={card.disabled}
               />
             </div>
           ))}
@@ -125,6 +128,7 @@ export function ServicesSection({ section, id }: SectionProps) {
                 )}
                 secondButtonText={card.secondButtonText}
                 onSecondButtonClick={() => setIsContactFormOpen(true)}
+                disabled={card.disabled}
               />
             </div>
           ))}
@@ -145,6 +149,7 @@ export function ServicesSection({ section, id }: SectionProps) {
               )}
               secondButtonText={card.secondButtonText}
               onSecondButtonClick={() => setIsContactFormOpen(true)}
+              disabled={card.disabled}
             />
           ))}
         </div>

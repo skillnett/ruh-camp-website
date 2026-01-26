@@ -1,7 +1,8 @@
 import { Footer } from "@/components/Footer";
 import { HeaderWrapper } from "@/components/HeaderWrapper";
 import { HomePage } from "@/fauters/Home";
-import { getBaseUrl, getHomePage } from "@/lib/payload";
+import { getBaseUrl } from "@/lib/payload";
+import { getHomePage } from "@/lib/getHomePage";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 

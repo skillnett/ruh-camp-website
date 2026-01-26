@@ -655,6 +655,10 @@ export interface Home {
            * Текст другої кнопки (відкриває форму зв'язку)
            */
           secondButtonText?: string | null;
+          /**
+           * Увімкніть, щоб картка була видимою, але неактивною (не клікається)
+           */
+          disabled?: boolean | null;
           id?: string | null;
         }[]
       | null;
@@ -1320,6 +1324,7 @@ export interface HomeSelect<T extends boolean = true> {
               firstButtonText?: T;
               firstButtonLink?: T;
               secondButtonText?: T;
+              disabled?: T;
               id?: T;
             };
       };
