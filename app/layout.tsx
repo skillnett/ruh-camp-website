@@ -2,6 +2,7 @@ import "@/assets/style/globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
+import Script from "next/script";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -52,7 +53,8 @@ export const metadata: Metadata = {
     default: "STEP CAMP — табір, що рухає дітей уперед",
     template: "%s | STEP CAMP — табір, що рухає дітей уперед",
   },
-  description: "Дитячий та підлітковий кемп, де кожен прокачує свій STEP LEVEL: спорт, скілли, характер, впевненість, навчання та емоції",
+  description:
+    "Дитячий та підлітковий кемп, де кожен прокачує свій STEP LEVEL: спорт, скілли, характер, впевненість, навчання та емоції",
   openGraph: {
     type: "website",
     siteName: "STEP CAMP",
@@ -67,6 +69,30 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="uk" className="h-full" suppressHydrationWarning>
+      <head>
+        <Script id="meta-pixel" strategy="beforeInteractive">
+          {`!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '733298562942059');
+fbq('track', 'PageView');`}
+        </Script>
+        <noscript>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            height="1"
+            width="1"
+            style={{ display: "none" }}
+            src="https://www.facebook.com/tr?id=733298562942059&ev=PageView&noscript=1"
+            alt=""
+          />
+        </noscript>
+      </head>
       <body
         className={`${inter.variable} ${benzin.variable} antialiased flex flex-col min-h-screen`}
         suppressHydrationWarning
